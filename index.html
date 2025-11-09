@@ -3,443 +3,456 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Cronoviajes — Descubre el pasado, vive el origen</title>
-<meta name="description" content="Cronoviajes: agencia educativa para viajes temporales (Cámbrico). Galería, juegos, calendario y recursos científicos." />
+<title>Cronoviajes — Agencia de viajes al pasado (Cámbrico)</title>
+<meta name="description" content="Cronoviajes: agencia educativa. Viajes al Cámbrico con guía paleontológica. Galería, fichas, juegos y reservas." />
 <meta name="author" content="Cronoviajes S.A." />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  /* ---------------------------
-     RESET Y VARIABLES
-     --------------------------- */
   :root{
-    --bg:#f5fbfb;
+    --bg:#f6fbfb;
     --card:#ffffff;
     --muted:#6b7c82;
-    --turq:#0fb3a6;
     --accent:#ffd166;
-    --deep:#052a2a;
-    --radius:12px;
-    --maxw:1180px;
-    --shadow: 0 14px 40px rgba(6,30,32,0.06);
-    --glass: rgba(255,255,255,0.85);
+    --turq:#0fb3a6;
+    --deep:#072022;
+    --maxw:1200px;
+    --shadow: 0 18px 60px rgba(6,30,32,0.06);
+    --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);background:linear-gradient(180deg,var(--bg),#eef8fb);-webkit-font-smoothing:antialiased}
-  img{display:block;max-width:100%;height:auto}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--maxw);margin:18px auto;padding:0 18px}
-
-  /* header */
-  header.top{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-  .brand{display:flex;gap:12px;align-items:center}
-  .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--turq));display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--deep);font-family:"Playfair Display";font-size:20px;box-shadow:var(--shadow)}
-  .brand h1{font-family:"Playfair Display";font-size:20px;margin:0}
-  .slogan{font-style:italic;font-weight:600;opacity:.95;font-size:13px;color:var(--muted)}
-
+  html,body{height:100%;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);background:linear-gradient(180deg,var(--bg),#eaf9f8);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:18px auto;padding:18px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:14px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:70px;height:70px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--turq));display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--deep);font-family:"Playfair Display";font-size:22px;box-shadow:var(--shadow)}
+  .brand h1{font-family:"Playfair Display";font-size:22px;margin:0}
   nav.topnav{display:flex;gap:10px;align-items:center}
-  nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.9);box-shadow:0 6px 18px rgba(2,48,40,0.03);font-weight:700;color:var(--deep)}
-
-  /* hero */
-  .hero{border-radius:16px;padding:36px;overflow:hidden;background:linear-gradient(180deg,#e8fbfb,#e6f9f8);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:18px}
-  @media(max-width:980px){ .hero{flex-direction:column;align-items:flex-start;padding:20px} }
-  .hero-left{max-width:64%}
-  .hero h2{font-family:"Playfair Display";font-size:44px;margin:0;color:var(--deep)}
-  .hero p{margin-top:8px;color:var(--muted);max-width:62ch}
-  .hero .cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-  .btn{background:var(--turq);color:#fff;padding:12px 16px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(15,179,166,0.12)}
+  nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.9);box-shadow:0 8px 26px rgba(2,48,40,0.03);font-weight:700;color:var(--deep)}
+  .hero{display:flex;gap:18px;padding:28px;border-radius:16px;background:linear-gradient(180deg,#ffffff,#f0fbfa);box-shadow:var(--shadow);align-items:flex-start}
+  @media(max-width:980px){ .hero{flex-direction:column} nav.topnav{overflow:auto;white-space:nowrap} }
+  .hero-left{flex:1}
+  .hero h2{font-family:"Playfair Display";font-size:40px;margin:0;color:var(--deep)}
+  .hero p{color:var(--muted);margin-top:10px;line-height:1.6}
+  .hero-cta{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{background:var(--turq);color:#fff;padding:10px 14px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(15,179,166,0.12)}
   .btn.secondary{background:transparent;color:var(--deep);border:1px solid rgba(5,42,42,0.06)}
-
-  .hero-right{width:360px;background:linear-gradient(180deg,#ffffff,#f7fffd);padding:16px;border-radius:12px;box-shadow:0 10px 26px rgba(2,40,40,0.04)}
+  .hero-right{width:360px;background:linear-gradient(180deg,#f7fffd,#ffffff);padding:16px;border-radius:12px;box-shadow:0 10px 26px rgba(2,40,40,0.04)}
   .pill{display:inline-block;padding:8px 10px;border-radius:10px;background:#f1fffe;font-weight:700;color:var(--deep)}
-
-  /* slider */
-  .slider-wrap{margin:18px 0;position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-  .slider{position:relative;height:420px;background:linear-gradient(180deg,#f8ffff,#eef9fa)}
+  .slider-wrap{margin:16px 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .slider{position:relative;height:420px;background:linear-gradient(180deg,#eefdfc,#ecfbfa)}
   .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .9s ease,transform .9s ease}
   .slide.active{opacity:1;transform:scale(1)}
-  .slider .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:14px;display:flex;gap:8px;z-index:20}
-  .slider .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.6);cursor:pointer;box-shadow:0 4px 12px rgba(2,40,40,0.08)}
+  .slider .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:10px;z-index:20}
+  .slider .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.7);cursor:pointer;box-shadow:0 6px 18px rgba(2,40,40,0.08)}
   .slider .dot.active{background:var(--turq)}
-
-  /* sections */
-  main{margin-bottom:26px}
+  main{margin-top:16px}
   section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:var(--shadow)}
-  h2.section-title{color:var(--turq);margin-bottom:10px}
-  .muted{color:var(--muted);line-height:1.55}
-
+  h2.section-title{color:var(--turq);margin-bottom:8px}
+  .muted{color:var(--muted);line-height:1.6}
+  .flex{display:flex;gap:12px;align-items:center}
   /* gallery */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-  .gallery .thumb{border-radius:12px;overflow:hidden;background:#f5fdfc;padding:8px;box-shadow:0 10px 26px rgba(2,40,40,0.03);display:flex;flex-direction:column;gap:8px}
-  .gallery .thumb img{width:100%;height:150px;object-fit:cover;display:block;transition:transform .16s}
-  .gallery .thumb:hover img{transform:translateY(-6px)}
-  .caption{font-size:13px;color:var(--muted)}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .thumb{background:#f7fffe;border-radius:10px;padding:10px;box-shadow:0 8px 26px rgba(2,40,40,0.04);display:flex;flex-direction:column;gap:8px}
+  .thumb img{width:100%;height:160px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .16s}
+  .thumb:hover img{transform:translateY(-6px)}
   .species{font-weight:700;color:var(--deep)}
-  .credit{font-size:12px;color:#0a5d55;margin-top:6px}
-
+  .caption{font-size:13px;color:var(--muted)}
+  .credit{font-size:12px;color:#14736a;margin-top:6px}
   /* lightbox */
-  .lb-backdrop{position:fixed;inset:0;background:rgba(2,8,10,0.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-  .lb-backdrop.open{display:flex}
-  .lb-card{max-width:1100px;width:100%;background:#fff;border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 380px;gap:12px;box-shadow:0 20px 60px rgba(2,20,20,0.25)}
-  .lb-media{border-radius:10px;overflow:hidden;background:#f3f8f9;display:flex;align-items:center;justify-content:center}
+  .lb{position:fixed;inset:0;background:rgba(3,9,10,0.75);display:none;align-items:center;justify-content:center;padding:18px;z-index:999}
+  .lb.open{display:flex}
+  .lb-card{max-width:1100px;width:100%;background:#fff;border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 360px;gap:12px;box-shadow:0 30px 80px rgba(1,20,20,0.3)}
+  .lb-media{border-radius:10px;overflow:hidden;background:#f3fbfb;display:flex;align-items:center;justify-content:center}
   .lb-media img{width:100%;height:100%;object-fit:contain}
   .lb-info{padding:8px;overflow:auto;max-height:76vh}
-  .lb-close{position:absolute;right:22px;top:18px;background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:800}
+  .lb-close{position:absolute;right:20px;top:20px;background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:800}
   @media(max-width:980px){ .lb-card{grid-template-columns:1fr} .lb-info{max-height:48vh} .slider{height:260px} .hero-right{width:100%} }
 
-  /* games layout */
+  /* games */
   .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
   .game{background:linear-gradient(180deg,#fff,#fbfffe);border-radius:12px;padding:12px;box-shadow:0 12px 30px rgba(2,40,40,0.04);min-height:320px}
   canvas{width:100%;height:220px;border-radius:10px;display:block;background:linear-gradient(180deg,#f7fefe,#ffffff)}
-
   /* calendar */
   .calendar{width:360px;background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow)}
   .weekday,.day{padding:8px;border-radius:8px;text-align:center;font-weight:600;color:var(--muted)}
   .day.box{background:#f6fdff;cursor:pointer;border:1px solid rgba(0,0,0,0.04)}
   .day.disabled{opacity:.25;cursor:not-allowed}
   .day.selected{background:linear-gradient(180deg,var(--turq),#00d1f0);color:#012;font-weight:800}
-
   footer{margin-top:22px;padding:18px;background:linear-gradient(90deg,var(--turq),#0aa09a);color:#fff;border-radius:10px;text-align:center}
-
   input,textarea,select{width:100%;padding:8px;border-radius:8px;border:1px solid #e9f6f5;margin-top:6px}
   .small{font-size:13px;color:var(--muted)}
+  /* timeline */
+  .timeline{display:grid;grid-template-columns:1fr;gap:12px}
+  .timeline .item{padding:12px;border-radius:10px;background:#fbfffe;box-shadow:0 8px 26px rgba(2,40,40,0.03)}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- HEADER -->
-    <header class="top" role="banner">
+    <header>
       <div class="brand" aria-hidden="false">
-        <div class="logo" id="logoBadge">Cv</div>
+        <div class="logo">Cv</div>
         <div>
           <h1>Cronoviajes</h1>
-          <div class="slogan">Descubre el pasado, vive el origen</div>
+          <div class="small muted">Agencia educativa — Viajes temporales al Cámbrico</div>
         </div>
       </div>
 
-      <nav class="topnav" aria-label="Navegación principal">
+      <nav class="topnav" aria-label="Menú principal">
         <a href="#hero" onclick="goTo('hero')">Inicio</a>
         <a href="#info" onclick="goTo('info')">Información</a>
         <a href="#galeria" onclick="goTo('galeria')">Galería</a>
+        <a href="#timeline" onclick="goTo('timeline')">Cronología</a>
         <a href="#juegos" onclick="goTo('juegos')">Juegos</a>
         <a href="#reservas" onclick="goTo('reservas')">Reservas</a>
       </nav>
     </header>
 
     <!-- HERO -->
-    <section class="hero" id="hero" aria-label="Hero">
+    <section class="hero" id="hero">
       <div class="hero-left">
-        <h2>Cronoviajes</h2>
-        <p>Agencia educativa especializada en viajes temporales al período Cámbrico. Programas guiados por paleontólogos y geólogos para centros educativos. Experiencias seguras, material curricular y visitas a yacimientos virtuales.</p>
-        <div class="cta">
-          <button class="btn" id="btnReserve">Reservar viaje temporal</button>
-          <button class="btn secondary" id="btnContrast">Modo contraste</button>
+        <h2>Cronoviajes — Agencia de viajes al pasado</h2>
+        <p>Ofrecemos experiencias educativas inmersivas al Período Cámbrico: visitas guiadas virtuales, talleres prácticos y material curricular. Ideal para institutos y actividades divulgativas. Nuestro equipo está formado por paleontólogos y educadores.</p>
+        <div class="hero-cta">
+          <button class="btn" id="btnReserveTop">Reservar salida</button>
+          <button class="btn secondary" id="btnGuide">Ver guía docente</button>
+          <button class="btn secondary" id="btnNarration">Escuchar explicación (TTS)</button>
         </div>
-        <div style="margin-top:12px;font-size:13px;color:var(--muted)">
-          <strong>Recomendado:</strong> visita guiada interactiva para estudiantes de secundaria con actividades y cuadernillo descargable.
-        </div>
+        <p class="small muted" style="margin-top:8px">Consejo: usa el quiz y los juegos para repasar antes de la defensa del trabajo.</p>
       </div>
 
       <aside class="hero-right" aria-hidden="false">
         <h4 style="margin:0 0 8px">Próximas salidas</h4>
-        <p style="margin:0 0 8px;color:var(--muted)">Sesiones diarias en grupos reducidos — Madrid, Barcelona y salidas especiales para colegios.</p>
+        <p style="margin:0 0 8px;color:var(--muted)">Excursiones virtuales diarias — grupos reducidos. Salidas especiales para colegios.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-          <div class="pill">Cámbrico Explorador</div>
-          <div class="pill">Cámbrico Premium</div>
+          <div class="pill">Cámbrico Educativo</div>
+          <div class="pill">Cámbrico Investigación</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>Contacto</strong>
+          <div class="small muted" style="margin-top:6px">info@cronoviajes.edu — +34 600 000 000</div>
         </div>
       </aside>
     </section>
 
     <!-- SLIDER -->
-    <div class="slider-wrap" aria-hidden="false">
-      <div class="slider" id="mainSlider" aria-label="Carrusel de imágenes">
-        <!-- Imágenes públicas en Wikimedia Commons -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Anomalocaris_reconstruction.jpg" alt="Anomalocaris (reconstrucción)" class="slide active" loading="lazy" onerror="this.dataset.broken='true'; this.style.display='none'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Trilobite_fossil.jpg" alt="Trilobite (fósil)" class="slide" loading="lazy" onerror="this.dataset.broken='true'; this.style.display='none'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Opabinia_regalis_model.jpg" alt="Opabinia (reconstrucción)" class="slide" loading="lazy" onerror="this.dataset.broken='true'; this.style.display='none'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Pikaia_gracilens_fossil.jpg" alt="Pikaia (fósil)" class="slide" loading="lazy" onerror="this.dataset.broken='true'; this.style.display='none'">
+    <div class="slider-wrap" style="margin-top:18px">
+      <div class="slider" id="mainSlider" aria-label="Carrusel principal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Anomalocaris_reconstruction.jpg" alt="Anomalocaris" class="slide active" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Trilobite_fossil.jpg" alt="Trilobite" class="slide" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Opabinia_regalis_model.jpg" alt="Opabinia" class="slide" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Pikaia_gracilens_fossil.jpg" alt="Pikaia" class="slide" loading="lazy" onerror="this.style.display='none'">
         <div class="dots" id="sliderDots" aria-hidden="true"></div>
       </div>
     </div>
 
     <main>
-      <!-- INFO -->
+      <!-- INFO ampliada -->
       <section id="info" class="panel" aria-labelledby="infoTitle">
-        <h2 id="infoTitle" class="section-title">Información científica — Período Cámbrico (ampliada)</h2>
+        <h2 id="infoTitle" class="section-title">Información científica ampliada — El Cámbrico</h2>
 
         <p class="muted">
-          El <strong>Cámbrico</strong> (aprox. <strong>541–485 millones de años</strong>) es el primer periodo del Paleozoico y representa una de las fases más importantes en la historia de la vida: la denominada <strong>Explosión Cámbrica</strong>.
-          En un intervalo relativamente corto (desde la escala geológica) aparecen muchos filos animales y una gran innovación en los planes corporales: esqueletos mineralizados, apéndices segmentados, estructuras ópticas mejores y nuevas estrategias tróficas (depredación, filtración, vida epibentónica).
+          El <strong>Período Cámbrico</strong> abarca aproximadamente <strong>541–485 millones de años</strong>. Es famoso por la <em>Explosión Cámbrica</em>, un intervalo en el que aparecieron rápidamente numerosos planes corporales animales.
+          Aunque los detalles aún se discuten, el registro fósil sugiere una combinación de factores: cambios en la química oceánica (disponibilidad de oxígeno), innovación genética (desarrollo de genes reguladores del cuerpo) y la aparición de la depredación, que impulsó adaptaciones defensivas.
         </p>
 
-        <h3 style="margin-top:12px">Yacimientos y preservación</h3>
+        <h3 style="margin-top:12px">Qué sabemos y cómo lo sabemos</h3>
         <p class="muted">
-          La información anatómica más detallada del Cámbrico proviene de lagerstätten (yacimientos de conservación excepcional) como <strong>Burgess Shale</strong> (Canadá) y <strong>Chengjiang</strong> (China). Estos depósitos han preservado partes blandas (tejidos, apéndices, ojos) lo que permite reconstrucciones anatómicas y ecológicas de alta resolución.
-          Gracias a estos yacimientos conocemos la morfología de animales que no dejaron equivalentes en la fauna actual o que muestran combinaciones de rasgos hoy perdidos.
+          Mucho del conocimiento proviene de dos tipos de fuentes: estratigrafía (capas de roca) y lagerstätten (yacimientos con conservación excepcional, p. ej. Burgess Shale y Chengjiang) que han preservado partes blandas. A partir de esos fósiles reconstruimos morfologías, dietas, relaciones filogenéticas y dinámicas comunitarias.
         </p>
 
-        <h3 style="margin-top:12px">Ecosistemas y organismos emblemáticos</h3>
-        <p class="muted">
-          Entre los organismos más representativos están:
-          <ul style="margin-top:8px;margin-left:18px;color:var(--muted);line-height:1.6">
-            <li><strong>Trilobites</strong>: artrópodos bentónicos con exoesqueleto calcificado, útiles para datación estratigráfica.</li>
-            <li><strong>Anomalocaris</strong>: uno de los primeros grandes depredadores; sus apéndices frontales y su aparato oral muestran adaptación a captura activa.</li>
-            <li><strong>Pikaia</strong>: un cordado basal, importante para entender los orígenes de los vertebrados.</li>
-            <li><strong>Opabinia</strong> y <strong>Hallucigenia</strong>: organismos con morfologías insólitas que demuestran la experimentación evolutiva del periodo.</li>
-            <li><strong>Archaeocyatha</strong>: esponjas calcáreas formadoras de arrecifes en el Cámbrico temprano.</li>
+        <h3 style="margin-top:12px">Aspectos clave para tu trabajo</h3>
+        <div style="margin-top:6px">
+          <ul style="margin-left:18px;color:var(--muted);line-height:1.6">
+            <li><strong>Fechas:</strong> 541–485 Ma (millones de años).</li>
+            <li><strong>Eventos:</strong> Explosión Cámbrica (radiación filogenética rápida), aparición de esqueletos mineralizados.</li>
+            <li><strong>Yacimientos clave:</strong> Burgess Shale (Canadá), Chengjiang (China), Emu Bay (Australia).</li>
+            <li><strong>Ecosistemas:</strong> comunas bentónicas variadas, arrecifes tempranos (archaeocyath), depredadores pelágicos.</li>
           </ul>
-        </p>
+        </div>
 
-        <h3 style="margin-top:12px">Importancia científica</h3>
+        <h3 style="margin-top:12px">Recomendaciones para la defensa</h3>
         <p class="muted">
-          La explosión de novedad morfológica y la aparición de interacciones tróficas complejas (depredación y defensa) durante el Cámbrico tuvieron un papel clave en la evolución de la biodiversidad posterior.
-          El estudio del Cámbrico combina paleontología descriptiva, tafonomía (cómo se fosilizó la materia orgánica), estudios paleoecológicos y datos geoquímicos que permiten reconstruir condiciones ambientales (niveles de oxígeno, cambios paleogeográficos).
+          - Usa ejemplos concretos (Anomalocaris, Trilobites, Pikaia, Opabinia) y explica por qué cada uno es relevante.<br>
+          - Señala la importancia de la conservación de partes blandas para entender anatomía (no solo conchas).<br>
+          - Incluye una breve sección sobre métodos: tafonomía, dataciones relativas (estratigrafía) y absolutas (radiométría cuando aplique).
         </p>
       </section>
 
-      <!-- GALERÍA -->
+      <!-- TIMELINE / CRONOLOGÍA -->
+      <section id="timeline" class="panel" aria-labelledby="timeTitle">
+        <h2 id="timeTitle" class="section-title">Cronología y contexto geológico</h2>
+        <div class="timeline" style="margin-top:10px">
+          <div class="item">
+            <strong>Fanerozoico — Cámbrico temprano (≈541 Ma)</strong>
+            <p class="muted">Inicio del Cámbrico, con registros de 'small shelly fossils' y primeros esqueletos mineralizados.</p>
+          </div>
+          <div class="item">
+            <strong>Cámbrico medio (≈510–505 Ma)</strong>
+            <p class="muted">Máxima diversidad de muchos grupos; yacimientos como Burgess Shale proporcionan fósiles de partes blandas.</p>
+          </div>
+          <div class="item">
+            <strong>Cámbrico tardío (≈505–485 Ma)</strong>
+            <p class="muted">Diversificación continua y estabilización de ecosistemas marinos; final del Cámbrico y transición al Ordovícico.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERÍA EXTENSA -->
       <section id="galeria" class="panel" aria-labelledby="galTitle">
-        <h2 id="galTitle" class="section-title">Galería — Fósiles y reconstrucciones del Cámbrico</h2>
-        <p class="muted">Haz clic en cualquier miniatura para abrir una ficha ampliada (imagen, descripción científica ampliada, créditos y enlace al archivo original en Commons). Si la imagen no carga, verás un enlace al archivo en Commons como fallback.</p>
+        <h2 id="galTitle" class="section-title">Galería — Fauna y reconstrucciones (click para ficha)</h2>
+        <p class="muted">Haz clic en cualquier miniatura para abrir una ficha ampliada con texto científico, cronología, hábitat y enlace al archivo en Commons.</p>
 
         <div class="gallery" id="galleryGrid" style="margin-top:12px" role="list">
-          <!-- Galería amplia: múltiples elementos con data para lightbox y fallback -->
-          <!-- 1 -->
+          <!-- Cada figura incluye data-src (lazy) y data-* para lightbox -->
+          <!-- 1 Anomalocaris -->
           <figure class="thumb" role="listitem">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Anomalocaris_reconstruction.jpg"
-                 alt="Reconstrucción de Anomalocaris"
-                 data-title="Anomalocaris — depredador radiodóntido"
-                 data-desc="Anomalocaris fue un gran depredador del Cámbrico medio, con apéndices delanteros especializados y una boca compuesta. Su estudio muestra adaptaciones a la captura de presas activas y su rol en las redes tróficas primitivas."
+                 alt="Anomalocaris - reconstrucción"
+                 data-title="Anomalocaris — gran depredador"
+                 data-desc="Anomalocaris es un radiodóntido pelágico del Cámbrico medio. Sus apéndices delanteros articulados y su boca circular le permitieron capturar presas de caparazón blando; es un ejemplo de depredación temprana que influyó en la evolución de defensas."
                  data-credit="https://commons.wikimedia.org/wiki/File:Anomalocaris_reconstruction.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Anomalocaris</div>
-              <div class="caption">Depredador radiodóntido con apéndices frontales.</div>
+              <div class="caption">Depredador radiodóntido; estructura oral compleja.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Anomalocaris_reconstruction.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 2 -->
+          <!-- 2 Trilobite -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Trilobite_fossil.jpg"
-                 alt="Fósil de trilobite"
-                 data-title="Trilobites — artrópodos dominantes del fondo marino"
-                 data-desc="Los trilobites fueron extremadamente diversos y se encuentran en múltiples estratos cámbricos. Estudiar sus morfologías y cámaras oculares permite reconstruir modos de vida (depredador, carroñero, excavador)."
+                 alt="Trilobite - fósil"
+                 data-title="Trilobite — artrópodo bentónico"
+                 data-desc="Los trilobites fueron artrópodos marinos que dominaron muchos fondos marinos durante el Paleozoico. Su exoesqueleto segmentado y ojos compuestos los hacen un grupo clave para biocronología y estudios de comportamiento."
                  data-credit="https://commons.wikimedia.org/wiki/File:Trilobite_fossil.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Trilobite</div>
-              <div class="caption">Artrópodo segmentado con exoesqueleto calcificado.</div>
+              <div class="caption">Artrópodo segmentado, útil en bioestratigrafía.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Trilobite_fossil.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 3 -->
+          <!-- 3 Opabinia -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/9/93/Opabinia_regalis_fossil.jpg"
-                 alt="Fósil de Opabinia"
+                 alt="Opabinia - fósil"
                  data-title="Opabinia — cinco ojos y trompa"
-                 data-desc="Opabinia regalis presenta una anatomía única: cinco ojos dorsales y una trompa anterior. Este organismo resalta la gran experimentación morfológica del Cámbrico y plantea preguntas sobre la evolución del diseño corporal."
+                 data-desc="Opabinia regalis, con cinco ojos dorsales y un apéndice anterior en forma de trompa, ilustra la gran experimentación evolutiva del Cámbrico y plantea desafíos para clasificar formas primitivas."
                  data-credit="https://commons.wikimedia.org/wiki/File:Opabinia_regalis_fossil.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Opabinia</div>
-              <div class="caption">Organismo con cinco ojos y apéndice anterior.</div>
+              <div class="caption">Organismo singular con múltiples ojos.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Opabinia_regalis_fossil.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 4 -->
+          <!-- 4 Pikaia -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Pikaia_gracilens_fossil.jpg"
-                 alt="Fósil de Pikaia"
+                 alt="Pikaia - fósil"
                  data-title="Pikaia — cordado basal"
-                 data-desc="Pikaia gracilens es interpretado como uno de los primeros cordados. Posee una estructura alargada y una notocorda primitiva; su importancia radica en ser un posible antepasado distante de los vertebrados."
+                 data-desc="Pikaia gracilens es uno de los primeros cordados documentados. Posee una notocorda primitiva y rasgos que apuntan hacia una evolución temprana de estructuras que luego darían lugar a los vertebrados."
                  data-credit="https://commons.wikimedia.org/wiki/File:Pikaia_gracilens_fossil.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Pikaia</div>
-              <div class="caption">Cordado basal, clave en estudios de evolución de vertebrados.</div>
+              <div class="caption">Cordado basal; relevante para origen de vertebrados.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Pikaia_gracilens_fossil.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 5 -->
+          <!-- 5 Hallucigenia -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Hallucigenia_reconstruction.jpg"
-                 alt="Reconstrucción de Hallucigenia"
-                 data-title="Hallucigenia — lobopodiano espinoso"
-                 data-desc="Hallucigenia destacaba por sus espinas dorsales y apéndices ventrales. Históricamente su interpretación anatómica ha cambiado (arriba/abajo invertido al principio), lo que subraya la complejidad de interpretar fósiles de partes blandas."
+                 alt="Hallucigenia - reconstrucción"
+                 data-title="Hallucigenia — lobopodiano con púas"
+                 data-desc="Hallucigenia fue inicialmente interpretado al revés; su registro demuestra cómo la reinterpretación de fósiles puede cambiar la comprensión morfológica. Tenía espinas dorsales y apéndices locomotores ventrales."
                  data-credit="https://commons.wikimedia.org/wiki/File:Hallucigenia_reconstruction.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Hallucigenia</div>
-              <div class="caption">Lobopodiano extraño, con espinas dorsales.</div>
+              <div class="caption">Lobopodiano con espinas dorsales; interpretaciones históricas interesantes.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Hallucigenia_reconstruction.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 6 -->
+          <!-- 6 Wiwaxia -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Wiwaxia_fossil.jpg"
-                 alt="Fósil de Wiwaxia"
-                 data-title="Wiwaxia — cubierto de placas y espinas"
-                 data-desc="Wiwaxia ostentaba un conjunto de placas y espinas, y su posición evolutiva ha sido debatida (posible relación con moluscos o lobopodianos). Su estructura añade datos sobre los modos de defensa en fauna temprana."
+                 alt="Wiwaxia - fósil"
+                 data-title="Wiwaxia — con placas y espinas"
+                 data-desc="Wiwaxia presentaba placas y espinas; su filogenia es discutida, pero ilustra estrategias defensivas y tipos de recubrimiento corporal que surgieron temprano en la evolución."
                  data-credit="https://commons.wikimedia.org/wiki/File:Wiwaxia_fossil.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Wiwaxia</div>
-              <div class="caption">Organismo con placas y espinas; filogenia discutida.</div>
+              <div class="caption">Organismo con placas; defensa y filogenia debatida.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Wiwaxia_fossil.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 7 -->
+          <!-- 7 Marrella -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Marrella_splendens_Burgess_Shale_fossil.jpg"
-                 alt="Marrella (Burgess Shale)"
+                 alt="Marrella - Burgess Shale"
                  data-title="Marrella — artrópodo de Burgess Shale"
-                 data-desc="Marrella splendens fue descrito por Charles Walcott y es uno de los artrópodos más característicos de Burgess Shale; su abundancia ayuda a entender la comunidad ecológica del sedimento."
+                 data-desc="Marrella splendens fue descrito por Walcott y es muy abundante en Burgess Shale; sus hallazgos ayudan a reconstruir las comunidades del sedimento y su dinámica."
                  data-credit="https://commons.wikimedia.org/wiki/File:Marrella_splendens_%28Burgess_Shale_Formation%2C_Middle_Cambrian%29.jpg"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Marrella</div>
-              <div class="caption">Pequeño artrópodo abundante en Burgess Shale.</div>
+              <div class="caption">Artrópodo abundante en Burgess Shale.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Marrella_splendens_%28Burgess_Shale_Formation%2C_Middle_Cambrian%29.jpg" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 8 -->
+          <!-- 8 Archaeocyatha -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/3/33/Archeocyathids.JPG"
-                 alt="Archaeocyathids"
-                 data-title="Archaeocyatha — esponjas arrecifales del Cámbrico"
-                 data-desc="Las archaeocyathas fueron constructores de arrecifes calcáreos en el Cámbrico temprano; su presencia señala ambientes bentónicos estables y procesos de construcción biogénica temprana."
+                 alt="Archaeocyatha - arrecifes"
+                 data-title="Archaeocyatha — esponjas arrecifales"
+                 data-desc="Las archaeocyathas construyeron estructuras tipo arrecife en el Cámbrico temprano; su estudio informa sobre ecología bentónica temprana y procesos de construcción biogénica."
                  data-credit="https://commons.wikimedia.org/wiki/File:Archeocyathids.JPG"
                  onerror="this.dataset.broken='true'">
             <figcaption>
               <div class="species">Archaeocyatha</div>
-              <div class="caption">Esponjas calcáreas formadoras de arrecifes.</div>
+              <div class="caption">Constructores de arrecifes calcáreos tempranos.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/File:Archeocyathids.JPG" target="_blank" rel="noopener">Ver archivo / licencia</a>
             </figcaption>
           </figure>
 
-          <!-- 9 -->
-          <figure class="thumb">
-            <img loading="lazy"
-                 data-src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Ectenocrinus.png"
-                 alt="Ectenocrinus (ejemplo crinoideo temprano)"
-                 data-title="Ectenocrinus — crinoideo primitivo"
-                 data-desc="Representación de un equinodermo con disco y brazos; los equinodermos experimentaron gran diversificación en el Paleozoico y su estudio ayuda a entender la evolución de simetrías y sistemas esqueléticos."
-                 data-credit="https://commons.wikimedia.org/wiki/Category:Echinodermata"
-                 onerror="this.dataset.broken='true'">
-            <figcaption>
-              <div class="species">Equinodermo (ejemplo)</div>
-              <div class="caption">Equinodermo primitivo con brazos radiales.</div>
-              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Echinodermata" target="_blank" rel="noopener">Ver archivos / licencia</a>
-            </figcaption>
-          </figure>
-
-          <!-- 10 -->
-          <figure class="thumb">
-            <img loading="lazy"
-                 data-src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Anabaritida_mill_illustration.jpg"
-                 alt="Anabaritida (ejemplo de concha)" 
-                 data-title="Anabaritida — conchas mineralizadas"
-                 data-desc="Anabaritida y otros pequeños esqueletos mineralizados muestran la proliferación de estructuras duras en el Cámbrico que favorecieron la preservación fósil y nuevas estrategias ecológicas."
-                 data-credit="https://commons.wikimedia.org/wiki/Category:Small_shelly_fossils"
-                 onerror="this.dataset.broken='true'">
-            <figcaption>
-              <div class="species">Conchas mineralizadas</div>
-              <div class="caption">Small shelly fossils — fragmentos de conchas tempranas.</div>
-              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Small_shelly_fossils" target="_blank" rel="noopener">Ver archivos / licencia</a>
-            </figcaption>
-          </figure>
-
-          <!-- 11 -->
-          <figure class="thumb">
-            <img loading="lazy"
-                 data-src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Chengjiang_Fossil_2.png"
-                 alt="Fósil Chengjiang (ejemplo)"
-                 data-title="Fauna de Chengjiang — conservación de tejidos blandos"
-                 data-desc="Yacimientos como Chengjiang ofrecen preservación de tejidos blandos que permite estudiar músculos, órganos y apéndices; estos datos refinan reconstrucciones filogenéticas."
-                 data-credit="https://commons.wikimedia.org/wiki/Category:Chengjiang_fossils"
-                 onerror="this.dataset.broken='true'">
-            <figcaption>
-              <div class="species">Chengjiang (ejemplo)</div>
-              <div class="caption">Yacimiento con conservación excepcional.</div>
-              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Chengjiang_fossils" target="_blank" rel="noopener">Ver archivos / licencia</a>
-            </figcaption>
-          </figure>
-
-          <!-- 12 -->
+          <!-- 9 Burgess Shale specimen -->
           <figure class="thumb">
             <img loading="lazy"
                  data-src="https://upload.wikimedia.org/wikipedia/commons/2/25/Burgess_Shale_specimen.png"
-                 alt="Burgess Shale specimen"
+                 alt="Especimen Burgess Shale"
                  data-title="Burgess Shale — conservación excepcional"
-                 data-desc="Burgess Shale preserva una comunidad marina roma con muchos taxa morfológicamente novedosos. Es esencial para estudiar la estructura de ecosistemas cámbricos."
+                 data-desc="Burgess Shale ofrece conservación de tejidos blandos que permite estudiar músculos, apéndices y órganos; es una ventana incomparable a las comunidades cámbricas."
                  data-credit="https://commons.wikimedia.org/wiki/Category:Burgess_Shale_fossils"
                  onerror="this.dataset.broken='true'">
             <figcaption>
-              <div class="species">Burgess Shale</div>
-              <div class="caption">Fósiles con preservación de tejidos blandos.</div>
+              <div class="species">Burgess Shale (ej.)</div>
+              <div class="caption">Lagerstätte clave para anatomía de partes blandas.</div>
               <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Burgess_Shale_fossils" target="_blank" rel="noopener">Ver archivos / licencia</a>
             </figcaption>
           </figure>
 
+          <!-- 10 Chengjiang -->
+          <figure class="thumb">
+            <img loading="lazy"
+                 data-src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Chengjiang_Fossil_2.png"
+                 alt="Fósil Chengjiang"
+                 data-title="Chengjiang — fauna del Cámbrico temprano"
+                 data-desc="El yacimiento de Chengjiang (China) preserva una biodiversidad temprana y complementa la información de Burgess Shale; aporta datos fundamentales sobre la diversidad y anatomía."
+                 data-credit="https://commons.wikimedia.org/wiki/Category:Chengjiang_fossils"
+                 onerror="this.dataset.broken='true'">
+            <figcaption>
+              <div class="species">Chengjiang</div>
+              <div class="caption">Yacimiento con preservación de tejidos blandos.</div>
+              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Chengjiang_fossils" target="_blank" rel="noopener">Ver archivos / licencia</a>
+            </figcaption>
+          </figure>
+
+          <!-- 11 Small shelly -->
+          <figure class="thumb">
+            <img loading="lazy"
+                 data-src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Anabaritida_mill_illustration.jpg"
+                 alt="Small shelly fossils"
+                 data-title="Small shelly fossils — conchas tempranas"
+                 data-desc="Conjuntos de pequeños esqueletos mineralizados ('small shelly fossils') representan los primeros experimentos con mineralización y ayuda a entender la diversidad temprana de conchas."
+                 data-credit="https://commons.wikimedia.org/wiki/Category:Small_shelly_fossils"
+                 onerror="this.dataset.broken='true'">
+            <figcaption>
+              <div class="species">Small shelly fossils</div>
+              <div class="caption">Fragmentos de conchas y estructuras mineralizadas tempranas.</div>
+              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Small_shelly_fossils" target="_blank" rel="noopener">Ver archivos / licencia</a>
+            </figcaption>
+          </figure>
+
+          <!-- 12 Equinodermo (ejemplo) -->
+          <figure class="thumb">
+            <img loading="lazy"
+                 data-src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Ectenocrinus.png"
+                 alt="Equinodermo - ilustración"
+                 data-title="Equinodermo primitivo — brazos radiales"
+                 data-desc="Equinodermos tempranos muestran la evolución de simetría radial y exoesqueletos calcáreos; sus registros permiten analizar cambios en la morfología esquelética."
+                 data-credit="https://commons.wikimedia.org/wiki/Category:Echinodermata"
+                 onerror="this.dataset.broken='true'">
+            <figcaption>
+              <div class="species">Equinodermo (ej.)</div>
+              <div class="caption">Simetría radial y evolución de esqueletos calcáreos.</div>
+              <a class="credit small" href="https://commons.wikimedia.org/wiki/Category:Echinodermata" target="_blank" rel="noopener">Ver archivos / licencia</a>
+            </figcaption>
+          </figure>
+
         </div>
-        <!-- /gallery -->
+      </section>
+
+      <!-- Fichas / descarga PDF -->
+      <section class="panel" aria-labelledby="fichasTitle">
+        <h2 id="fichasTitle" class="section-title">Fichas científicas</h2>
+        <p class="muted">Genera una ficha PDF de cualquier especie de la galería. El PDF se crea en el navegador (sin subir datos) con la imagen y la descripción.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <select id="speciesSelect" style="min-width:260px;padding:8px;border-radius:8px;border:1px solid #e9f6f6">
+            <option value="">— Selecciona especie para generar ficha —</option>
+          </select>
+          <button class="btn" id="btnGeneratePDF">Generar ficha PDF</button>
+          <button class="btn secondary" id="btnExportAll">Exportar todas (zip) — no descargable aquí</button>
+        </div>
+        <p class="small muted" style="margin-top:8px">La opción "Exportar todas" simula el proceso — si quieres el zip real puedo prepararlo.</p>
       </section>
 
       <!-- JUEGOS -->
       <section id="juegos" class="panel" aria-labelledby="gamesTitle">
-        <h2 id="gamesTitle" class="section-title">Zona de juegos — Aprendizaje interactivo</h2>
-        <p class="muted">Tres experiencias didácticas: Quiz avanzado, Submarino temporal y Vuelo del tiempo. Útiles para trabajar vocabulario y reconocimiento de fauna.</p>
+        <h2 id="gamesTitle" class="section-title">Zona de juegos</h2>
+        <p class="muted">Actividades para repasar conceptos: quiz, submarino y vuelo del tiempo.</p>
 
         <div class="games" style="margin-top:12px">
-          <!-- QUIZ -->
+          <!-- Quiz -->
           <div class="game" id="quizGame">
-            <h3>Quiz avanzado</h3>
+            <h3>Quiz interactivo</h3>
             <div id="quizArea" style="margin-top:8px"></div>
             <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
               <button class="btn" id="startQuiz">Iniciar Quiz</button>
               <button class="btn secondary" id="checkQuiz">Comprobar</button>
               <div style="margin-left:auto;font-weight:700;color:var(--deep)" id="quizState">Estado: inactivo</div>
             </div>
-            <p class="small" style="margin-top:10px;color:var(--muted)">Trucos: usa números 1/2/3 para atajos (teclas asignadas).</p>
           </div>
 
-          <!-- SUBMARINO -->
+          <!-- Submarino -->
           <div class="game" id="subGame">
             <h3>Submarino Temporal</h3>
-            <canvas id="subCanvas" width="640" height="260" aria-label="Submarino Temporal"></canvas>
+            <canvas id="subCanvas" width="640" height="260" aria-label="Submarino"></canvas>
             <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
               <button class="btn" id="startSub">Iniciar Submarino</button>
               <button class="btn secondary" id="resetSub">Parar / Reiniciar</button>
               <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntuación: <span id="subScore">0</span></div>
             </div>
-            <p class="small" style="margin-top:8px;color:var(--muted)">Recoge fósiles cámbricos y evita objetos modernos. Controla el submarino con el ratón o touch.</p>
           </div>
 
-          <!-- PLANE -->
+          <!-- Plane -->
           <div class="game" id="planeGame">
-            <h3>Vuelo del Tiempo — Avión</h3>
+            <h3>Vuelo del Tiempo — Atrapa palabras</h3>
             <canvas id="planeCanvas" width="640" height="260" aria-label="Vuelo del Tiempo"></canvas>
             <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
               <button class="btn" id="startPlane">Iniciar Vuelo</button>
               <button class="btn secondary" id="stopPlane">Parar / Reiniciar</button>
               <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntos: <span id="planeScore">0</span></div>
             </div>
-            <p class="muted" style="margin-top:8px">Controla con las flechas ← → o el ratón. Atrapa palabras relacionadas con el Cámbrico.</p>
           </div>
         </div>
       </section>
@@ -447,10 +460,10 @@
       <!-- RESERVAS -->
       <section id="reservas" class="panel" aria-labelledby="resTitle">
         <h2 id="resTitle" class="section-title">Reservas — Calendario interactivo</h2>
-        <p class="muted">Selecciona fecha de entrada y salida. No se permiten fechas pasadas (simulado para demo).</p>
+        <p class="muted">Selecciona entrada y salida para reservar una salida escolar (simulado).</p>
 
         <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-top:12px">
-          <div class="calendar" id="calendarWidget" aria-label="Calendario de reservas"></div>
+          <div class="calendar" id="calendarWidget"></div>
 
           <div style="flex:1;min-width:320px">
             <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,0.06)">
@@ -462,14 +475,14 @@
               </div>
 
               <form id="bookingForm" style="margin-top:12px">
-                <label class="muted">Nombre</label>
-                <input id="bookName" placeholder="Tu nombre" required>
+                <label class="muted">Nombre del centro / responsable</label>
+                <input id="bookName" placeholder="Nombre" required>
                 <label class="muted">Email</label>
-                <input id="bookEmail" type="email" placeholder="correo@ejemplo.com" required>
+                <input id="bookEmail" type="email" placeholder="correo@centro.edu" required>
                 <label class="muted">Teléfono</label>
                 <input id="bookPhone" placeholder="+34 ...">
                 <label class="muted">Comentarios</label>
-                <textarea id="bookNotes" placeholder="Alergias, observaciones..." rows="3"></textarea>
+                <textarea id="bookNotes" placeholder="Número de alumnos, necesidades..." rows="3"></textarea>
                 <button class="btn" type="submit" style="margin-top:8px">Enviar reserva</button>
                 <p id="bookingMsg" class="muted" style="margin-top:8px"></p>
               </form>
@@ -477,515 +490,271 @@
           </div>
         </div>
 
-        <p class="muted" style="margin-top:10px">Nota: esto es un prototipo para un proyecto educativo. Las reservas son simuladas.</p>
+        <p class="muted" style="margin-top:10px">Nota: demostración prototipo para trabajo escolar.</p>
       </section>
-
     </main>
 
     <footer>
-      <div style="max-width:var(--maxw);margin:0 auto;padding:6px">
+      <div style="max-width:var(--maxw);margin:0 auto;padding:6px;text-align:center">
         <strong>Cronoviajes S.A.</strong> — © <span id="year"></span> — Descubre el pasado, vive el origen
       </div>
     </footer>
   </div>
 
-  <!-- LIGHTBOX (modal) -->
-  <div id="lightbox" class="lb-backdrop" role="dialog" aria-hidden="true" aria-label="Visor de imagen">
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lb" role="dialog" aria-hidden="true" aria-label="Visor de imagen">
     <div class="lb-card" role="document">
       <div class="lb-media"><img id="lbImg" alt=""></div>
       <div class="lb-info">
         <h3 id="lbTitle"></h3>
         <p id="lbDesc" class="muted"></p>
         <p id="lbCredit" style="font-size:13px;margin-top:10px"></p>
-        <div style="margin-top:12px">
-          <button id="lbClose" class="lb-close" aria-label="Cerrar visor">✕ Cerrar</button>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+          <button id="lbClose" class="lb-close" aria-label="Cerrar">✕ Cerrar</button>
+          <button id="lbDownload" class="btn secondary">Abrir en Commons</button>
+          <button id="lbPDF" class="btn">Descargar ficha (PDF)</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- =========================
-       SCRIPTS
-       ========================= -->
+  <!-- SCRIPTS -->
   <script>
-  // util
+  // Util
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function goTo(id){
-    const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-  }
+  function goTo(id){ const el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
 
-  /* -------------------------
-     SLIDER FUNCIONAL (3s)
-     robust: cicla slides visibles (oculta las que no existan)
-     ------------------------- */
-  (function mainSlider(){
-    const slider = $('#mainSlider');
-    if(!slider) return;
-    let slides = Array.from(slider.querySelectorAll('.slide')).filter(img => window.getComputedStyle(img).display !== 'none');
-    let idx = 0, timer = null, paused = false;
-
-    function refreshSlides(){
-      slides = Array.from(slider.querySelectorAll('.slide')).filter(img => window.getComputedStyle(img).display !== 'none');
-      if(slides.length === 0) return;
-      slides.forEach((s,i)=> s.classList.toggle('active', i === idx % slides.length));
-      buildDots();
-    }
-
-    function show(i){
-      slides.forEach((s,j)=> s.classList.toggle('active', i===j));
-    }
-
+  /* =========================
+     SLIDER
+     ========================= */
+  (function slider(){
+    const slider = $('#mainSlider'); if(!slider) return;
+    let slides = Array.from(slider.querySelectorAll('.slide')).filter(i=>i.style.display !== 'none');
+    let idx = 0, paused=false, timer=null;
+    const dotsWrap = $('#sliderDots');
     function buildDots(){
-      const dotsWrap = $('#sliderDots');
-      if(!dotsWrap) return;
-      dotsWrap.innerHTML = '';
-      slides.forEach((_,i)=> {
-        const d = document.createElement('div'); d.className='dot'; if(i===idx) d.classList.add('active');
-        d.addEventListener('click', ()=> { idx = i; show(idx); updateDots(); });
-        dotsWrap.appendChild(d);
-      });
+      if(!dotsWrap) return; dotsWrap.innerHTML='';
+      slides.forEach((_,i)=>{ const d=document.createElement('div'); d.className='dot'; if(i===0) d.classList.add('active'); d.addEventListener('click', ()=> show(i)); dotsWrap.appendChild(d); });
     }
-    function updateDots(){
-      const dots = Array.from(document.querySelectorAll('#sliderDots .dot'));
-      dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
-    }
-
-    function start(){
-      stop();
-      timer = setInterval(()=> {
-        if(paused) return;
-        if(slides.length === 0) return;
-        idx = (idx + 1) % slides.length;
-        show(idx);
-        updateDots();
-      }, 3000);
-    }
-    function stop(){ if(timer) clearInterval(timer); timer = null; }
-
-    refreshSlides();
-    start();
-    slider.addEventListener('mouseenter', ()=> paused = true);
-    slider.addEventListener('mouseleave', ()=> paused = false);
-    setInterval(refreshSlides, 1200);
+    function refresh(){ slides = Array.from(slider.querySelectorAll('.slide')).filter(i=>i.style.display !== 'none'); slides.forEach((s,i)=> s.classList.toggle('active', i===idx % slides.length)); buildDots(); }
+    function show(i){ idx = i; slides.forEach((s,j)=> s.classList.toggle('active', j===i)); Array.from(dotsWrap.children).forEach((d,j)=> d.classList.toggle('active', j===i)); }
+    function start(){ stop(); timer = setInterval(()=>{ if(paused) return; idx = (idx+1)%slides.length; show(idx); }, 3000); }
+    function stop(){ if(timer) clearInterval(timer); timer=null; }
+    slider.addEventListener('mouseenter', ()=> paused=true); slider.addEventListener('mouseleave', ()=> paused=false);
+    refresh(); start(); setInterval(refresh, 1200);
   })();
 
-  /* -------------------------
-     GALLERY: lazy load, lightbox, fallback
-     ------------------------- */
-  (function galleryModule(){
-    const grid = document.getElementById('galleryGrid');
-    if(!grid) return;
+  /* =========================
+     GALLERY + LIGHTBOX + SELECT FILL
+     ========================= */
+  (function gallery(){
+    const grid = $('#galleryGrid'); if(!grid) return;
     const imgs = Array.from(grid.querySelectorAll('img'));
+    const select = $('#speciesSelect');
 
-    // IntersectionObserver for lazy loading
+    // fill select with species (texto breve)
+    imgs.forEach((img,i)=>{
+      const title = img.dataset.title || img.alt || `Especie ${i+1}`;
+      const opt = document.createElement('option'); opt.value = i; opt.textContent = title;
+      select.appendChild(opt);
+    });
+
+    // lazy load: IntersectionObserver
     const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries, obs) => {
       entries.forEach(en => {
         if(!en.isIntersecting) return;
-        const img = en.target;
-        const src = img.dataset.src;
-        if(src){ img.src = src; img.removeAttribute('data-src'); }
+        const img = en.target; const src = img.dataset.src; if(src){ img.src = src; img.removeAttribute('data-src'); }
         obs.unobserve(img);
       });
     }, {root:null,rootMargin:'200px'}) : null;
 
-    imgs.forEach(img => {
+    imgs.forEach(img=>{
       if(img.dataset.src && io) io.observe(img);
       else if(img.dataset.src) img.src = img.dataset.src;
 
-      // click -> lightbox or fallback to Commons page
-      img.addEventListener('click', (e) => {
-        if(img.dataset.broken === 'true' || img.style.display === 'none'){
-          // open Commons link as fallback
-          const link = img.parentElement.querySelector('.credit')?.href;
-          if(link) window.open(link, '_blank', 'noopener');
-          return;
+      img.addEventListener('click', ()=> {
+        if(img.dataset.broken === 'true'){ // fallback: open Commons
+          const link = img.parentElement.querySelector('.credit')?.href; if(link) window.open(link,'_blank','noopener'); return;
         }
         openLB({
           src: img.src || img.getAttribute('data-src'),
-          title: img.dataset.title || img.alt || 'Imagen',
+          title: img.dataset.title || img.alt || '',
           desc: img.dataset.desc || '',
           credit: img.parentElement.querySelector('.credit')?.href || ''
         });
       });
 
-      // error handling: mark broken and make credit link visible
-      img.addEventListener('error', () => {
+      img.addEventListener('error', ()=> {
         img.dataset.broken = 'true';
-        img.style.opacity = '.28';
-        img.style.filter = 'grayscale(60%)';
-        // add small fallback text if missing
-        const c = img.parentElement.querySelector('.credit');
-        if(c) c.style.display = 'inline-block';
+        img.style.opacity = '.28'; img.style.filter = 'grayscale(60%)';
+        const c = img.parentElement.querySelector('.credit'); if(c) c.style.display = 'inline-block';
       });
     });
 
-    // Lightbox functions
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbTitle = document.getElementById('lbTitle');
-    const lbDesc = document.getElementById('lbDesc');
-    const lbCredit = document.getElementById('lbCredit');
-    const lbClose = document.getElementById('lbClose');
+    // LD: lightbox elements
+    const lb = $('#lightbox'), lbImg = $('#lbImg'), lbTitle = $('#lbTitle'), lbDesc = $('#lbDesc'), lbCredit = $('#lbCredit'), lbClose = $('#lbClose'), lbDownload = $('#lbDownload'), lbPDF = $('#lbPDF');
+    let currentCreditUrl = null, currentTitle='', currentDesc='';
 
-    function openLB({src,title,desc,credit}){
-      lbImg.src = src || '';
-      lbImg.alt = title || '';
-      lbTitle.textContent = title || '';
-      lbDesc.textContent = desc || '';
-      if(credit){
-        const short = credit.replace('https://commons.wikimedia.org/wiki/File:','Commons: ');
-        lbCredit.innerHTML = `Fuente / licencia: <a href="${credit}" target="_blank" rel="noopener">${short}</a>`;
-      } else lbCredit.textContent = '';
-      lb.classList.add('open');
-      lb.style.display = 'flex';
-      lb.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-      // focus trap: move focus to close
-      setTimeout(()=> lbClose.focus(), 160);
+    function openLB({src,title,desc,credit}){ lbImg.src = src || ''; lbImg.alt = title || ''; lbTitle.textContent = title || ''; lbDesc.textContent = desc || ''; currentCreditUrl = credit || ''; currentTitle = title; currentDesc = desc;
+      if(credit){ const short = credit.replace('https://commons.wikimedia.org/wiki/File:','Commons: '); lbCredit.innerHTML = `Fuente / licencia: <a href="${credit}" target="_blank" rel="noopener">${short}</a>`; } else lbCredit.textContent = '';
+      lb.classList.add('open'); lb.style.display='flex'; lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; setTimeout(()=> lbClose.focus(),160);
     }
-    function closeLB(){
-      lb.classList.remove('open');
-      lb.style.display = 'none';
-      lb.setAttribute('aria-hidden','true');
-      lbImg.src = '';
-      document.body.style.overflow = '';
-    }
+    function closeLB(){ lb.classList.remove('open'); lb.style.display='none'; lb.setAttribute('aria-hidden','true'); lbImg.src=''; document.body.style.overflow=''; }
+
     lbClose.addEventListener('click', closeLB);
     lb.addEventListener('click', (e)=> { if(e.target === lb) closeLB(); });
     window.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeLB(); });
 
+    lbDownload.addEventListener('click', ()=> { if(currentCreditUrl) window.open(currentCreditUrl,'_blank','noopener'); else alert('No hay enlace de origen disponible.'); });
+
+    // PDF generation for modal image (simple)
+    lbPDF.addEventListener('click', ()=> {
+      // Use a minimal in-browser PDF via canvas and window.print alternative
+      generateSimplePDF(currentTitle, currentDesc, lbImg.src);
+    });
+
+    // helper: generate simple printable page (opens new window)
+    function generateSimplePDF(title, desc, imgSrc){
+      const w = window.open('','_blank');
+      const html = `
+        <html><head><title>Ficha - ${title}</title>
+        <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px} h1{font-size:22px} img{max-width:100%;height:auto;border-radius:8px} .muted{color:#4c6464}</style></head>
+        <body><h1>${title}</h1><img src="${imgSrc}" alt="${title}"><p class="muted">${desc}</p><p class="muted">Fuente: Wikimedia Commons</p></body></html>`;
+      w.document.write(html); w.document.close();
+      w.print();
+    }
+
+    // Generate PDF button in panel: uses selected species
+    $('#btnGeneratePDF').addEventListener('click', ()=> {
+      const idx = parseInt(select.value);
+      if(isNaN(idx)){ alert('Selecciona una especie primero.'); return; }
+      const img = imgs[idx];
+      const title = img.dataset.title || img.alt;
+      const desc = img.dataset.desc || '';
+      const src = img.src || img.getAttribute('data-src');
+      generateSimplePDF(title, desc, src);
+    });
+
+    // Export all placeholder: explain limitation
+    $('#btnExportAll').addEventListener('click', ()=> {
+      alert('Exportar todas las imágenes en un zip requiere crear archivos locales. Si quieres el zip, puedo generarlo y darte un enlace de descarga en el siguiente paso.');
+    });
+
   })();
 
-  /* -------------------------
-     QUIZ module
-     ------------------------- */
-  (function quizModule(){
+  /* =========================
+     PDF / FICHA - helper (already provided in lightbox)
+     ========================= */
+
+  /* =========================
+     QUIZ
+     ========================= */
+  (function quiz(){
     const questions = [
       {q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541"},
       {q: "Cita un depredador emblemático del Cámbrico", a: "anomalocaris"},
       {q: "Nombre de un cordado primitivo", a: "pikaia"},
       {q: "¿Dónde se encuentra el yacimiento Burgess Shale?", a: "canada"},
-      {q: "Organismo con cinco ojos", a: "opabinia"}
+      {q: "Organismo con cinco ojos", a: "opabinia"},
+      {q: "Organismo constructor de arrecifes calcáreos", a: "archaeocyath"}
     ];
-    let active = false;
-    const area = $('#quizArea');
-    const status = $('#quizState');
-
+    let active=false;
+    const area = $('#quizArea'), status = $('#quizState');
     function build(){
-      area.innerHTML = '';
+      area.innerHTML='';
       questions.forEach((it,i)=>{
-        const div = document.createElement('div');
-        div.style.marginBottom='12px';
-        div.innerHTML = `<strong>${i+1}.</strong> ${it.q}
-          <div style="margin-top:8px"><input id="qa${i}" placeholder="Tu respuesta" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e8f6f6"></div>`;
+        const div = document.createElement('div'); div.style.marginBottom='12px';
+        div.innerHTML = `<strong>${i+1}.</strong> ${it.q}<div style="margin-top:8px"><input id="qa${i}" placeholder="Tu respuesta" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e8f6f6"></div>`;
         area.appendChild(div);
       });
-      status.textContent = 'Estado: activo';
-      active = true;
+      status.textContent='Estado: activo'; active=true;
     }
     $('#startQuiz').addEventListener('click', ()=> build());
     $('#checkQuiz').addEventListener('click', ()=> {
-      if(!active){ status.textContent = 'Estado: inactivo (pulsa Iniciar)'; return; }
-      let score = 0;
+      if(!active){ status.textContent='Estado: inactivo (pulsa Iniciar)'; return; }
+      let score=0;
       questions.forEach((it,i)=>{
         const val = (document.getElementById('qa'+i)?.value || '').toLowerCase();
         if(it.a === '541'){ if(val.includes('541')) score++; }
         else if(it.a === 'canada'){ if(val.includes('canad')) score++; }
         else { if(val.includes(it.a)) score++; }
       });
-      status.textContent = `Resultado: ${score} / ${questions.length}`;
-      active = false;
+      status.textContent = `Resultado: ${score} / ${questions.length}`; active=false;
     });
   })();
 
-  /* -------------------------
-     SUBMARINO game
-     ------------------------- */
+  /* =========================
+     SUBMARINO (mantengo versión funcional)
+     ========================= */
   (function submarine(){
-    const canvas = document.getElementById('subCanvas');
-    if(!canvas) return;
+    const canvas = document.getElementById('subCanvas'); if(!canvas) return;
     const ctx = canvas.getContext('2d', {alpha:false});
     let dpr = Math.max(1, window.devicePixelRatio || 1);
-
-    function fit(){
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = Math.round(rect.width * dpr);
-      canvas.height = Math.round(rect.height * dpr);
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
+    function fit(){ const rect = canvas.getBoundingClientRect(); canvas.width = Math.round(rect.width * dpr); canvas.height = Math.round(rect.height * dpr); canvas.style.width = rect.width + 'px'; canvas.style.height = rect.height + 'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
     window.addEventListener('resize', fit);
-
     let state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, mouseY:undefined };
-
-    const goodPool = ['trilobite','anomalocaris','pikaia','opabinia','braquio','marrella','wiwaxia','archaeocyath'];
+    const goodPool = ['trilobite','anomalocaris','pikaia','opabinia','marrella','wiwaxia','archaeocyath'];
     const badPool = ['botella','lata','coche','teléfono','plástico'];
-
-    function spawn(){
-      const pool = Math.random() < 0.75 ? goodPool : badPool;
-      const lab = pool[Math.floor(Math.random()*pool.length)];
-      const ok = goodPool.includes(lab);
-      state.items.push({ x: canvas.width/dpr + 40, y: 20 + Math.random()*(canvas.height/dpr - 80), vx: -1.6 - Math.random()*1.8, label:lab, ok, r: 10 + Math.random()*14 });
-    }
-
-    function drawBG(){
-      const H = canvas.height/dpr, W = canvas.width/dpr;
-      const g = ctx.createLinearGradient(0,0,0,H);
-      g.addColorStop(0,'#e8fbff'); g.addColorStop(1,'#dff5fb');
-      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-      ctx.fillStyle = '#cfeef8'; ctx.fillRect(0,H-18,W,18);
-    }
-
-    function drawPlayer(){
-      const p = state.player;
-      ctx.fillStyle = '#005f7f';
-      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - 28, p.y + 14); ctx.lineTo(p.x + 56, p.y + 14); ctx.closePath(); ctx.fill();
-      ctx.fillStyle = '#00b4d8'; ctx.fillRect(p.x + 8, p.y + 6, p.w - 16, p.h - 12);
-      ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.arc(p.x + 20, p.y + 14, 6, 0, Math.PI*2); ctx.fill();
-    }
-
-    function loop(){
-      if(!state.running) return;
-      state.tick++;
-      if(state.tick % state.spawnRate === 0) spawn();
-      drawBG();
-      drawPlayer();
-
-      for(let i=state.items.length-1;i>=0;i--){
-        const it = state.items[i]; it.x += it.vx;
-        ctx.fillStyle = it.ok ? 'rgba(42,157,143,0.95)' : 'rgba(214,40,40,0.95)';
-        ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font='12px Poppins'; ctx.fillText(it.label, it.x - it.r, it.y - it.r - 6);
-
+    function spawn(){ const pool = Math.random() < 0.75 ? goodPool : badPool; const lab = pool[Math.floor(Math.random()*pool.length)]; const ok = goodPool.includes(lab); state.items.push({ x: canvas.width/dpr + 40, y: 20 + Math.random()*(canvas.height/dpr - 80), vx: -1.6 - Math.random()*1.8, label:lab, ok, r: 10 + Math.random()*14 }); }
+    function drawBG(){ const H = canvas.height/dpr, W = canvas.width/dpr; const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#e8fbff'); g.addColorStop(1,'#dff5fb'); ctx.fillStyle = g; ctx.fillRect(0,0,W,H); ctx.fillStyle = '#cfeef8'; ctx.fillRect(0,H-18,W,18); }
+    function drawPlayer(){ const p = state.player; ctx.fillStyle = '#005f7f'; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - 28, p.y + 14); ctx.lineTo(p.x + 56, p.y + 14); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#00b4d8'; ctx.fillRect(p.x + 8, p.y + 6, p.w - 16, p.h - 12); ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.arc(p.x + 20, p.y + 14, 6, 0, Math.PI*2); ctx.fill(); }
+    function loop(){ if(!state.running) return; state.tick++; if(state.tick % state.spawnRate === 0) spawn(); drawBG(); drawPlayer();
+      for(let i=state.items.length-1;i>=0;i--){ const it = state.items[i]; it.x += it.vx; ctx.fillStyle = it.ok ? 'rgba(42,157,143,0.95)' : 'rgba(214,40,40,0.95)'; ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI*2); ctx.fill(); ctx.fillStyle = '#fff'; ctx.font='12px Poppins'; ctx.fillText(it.label, it.x - it.r, it.y - it.r - 6);
         const p = state.player;
-        if(it.x < p.x + p.w && it.x > p.x - 16 && it.y > p.y && it.y < p.y + p.h + 16){
-          if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5);
-          state.items.splice(i,1);
-          $('#subScore').textContent = state.score;
-        } else if(it.x < -60) state.items.splice(i,1);
+        if(it.x < p.x + p.w && it.x > p.x - 16 && it.y > p.y && it.y < p.y + p.h + 16){ if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5); state.items.splice(i,1); $('#subScore').textContent = state.score; } else if(it.x < -60) state.items.splice(i,1);
       }
-
-      if(state.mouseY !== undefined){
-        state.player.y += (state.mouseY - state.player.y - state.player.h/2) * 0.12;
-        state.player.y = Math.max(6, Math.min(state.player.y, canvas.height/dpr - state.player.h - 6));
-      }
-
+      if(state.mouseY !== undefined){ state.player.y += (state.mouseY - state.player.y - state.player.h/2) * 0.12; state.player.y = Math.max(6, Math.min(state.player.y, canvas.height/dpr - state.player.h - 6)); }
       ctx.fillStyle='#003a55'; ctx.font='13px Poppins'; ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 18);
       requestAnimationFrame(loop);
     }
-
-    function initCanvas(){
-      fit();
-      drawBG();
-      ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.',12,22);
-    }
-
+    function initCanvas(){ fit(); drawBG(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.',12,22); }
     canvas.addEventListener('mousemove', (e)=> { const r = canvas.getBoundingClientRect(); state.mouseY = e.clientY - r.top; });
     canvas.addEventListener('touchmove', (e)=> { const r = canvas.getBoundingClientRect(); if(e.touches && e.touches[0]) state.mouseY = e.touches[0].clientY - r.top; e.preventDefault(); }, {passive:false});
-
     $('#startSub').addEventListener('click', ()=> { initCanvas(); state.running=true; state.tick=0; state.items=[]; state.score=0; $('#subScore').textContent=0; requestAnimationFrame(loop); });
     $('#resetSub').addEventListener('click', ()=> { state.running=false; state={running:false,player:{x:80,y:120,w:64,h:28},items:[],tick:0,score:0,spawnRate:80,mouseY:undefined}; ctx.clearRect(0,0,canvas.width,canvas.height); initCanvas(); $('#subScore').textContent=0; });
-
     initCanvas();
   })();
 
-  /* -------------------------
-     PLANE GAME
-     ------------------------- */
-  (function planeGame(){
-    const canvas = document.getElementById('planeCanvas');
-    if(!canvas) return;
-    const ctx = canvas.getContext('2d', {alpha:false});
-    let dpr = Math.max(1, window.devicePixelRatio || 1);
-
-    function fit(){
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = Math.round(rect.width * dpr);
-      canvas.height = Math.round(rect.height * dpr);
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
+  /* =========================
+     PLANE game
+     ========================= */
+  (function plane(){
+    const canvas = document.getElementById('planeCanvas'); if(!canvas) return;
+    const ctx = canvas.getContext('2d', {alpha:false}); let dpr = Math.max(1, window.devicePixelRatio || 1);
+    function fit(){ const rect = canvas.getBoundingClientRect(); canvas.width = Math.round(rect.width * dpr); canvas.height = Math.round(rect.height * dpr); canvas.style.width = rect.width + 'px'; canvas.style.height = rect.height + 'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
     window.addEventListener('resize', fit);
-
-    // state
-    let state = {
-      running:false,
-      player:{ x: 160, y: 170, w: 46, h: 20, speed:6 },
-      words: [],
-      tick:0,
-      score:0,
-      mouseX: undefined,
-      keys: { left:false, right:false },
-      spawnInterval: 60
-    };
-
-    // pools
+    let state = { running:false, player:{ x: 160, y: 170, w: 46, h: 20, speed:6 }, words: [], tick:0, score:0, mouseX: undefined, keys: { left:false, right:false }, spawnInterval: 60 };
     const pool = ['trilobite','anomalocaris','pikaia','opabinia','braquio','alga','teléfono','coche','fósil','cámbrico','marrella','wiwaxia'];
     const corrects = ['trilobite','anomalocaris','pikaia','opabinia','braquio','fósil','cámbrico','marrella','wiwaxia'];
-
-    function spawnWord(){
-      const text = pool[Math.floor(Math.random()*pool.length)];
-      const x = 30 + Math.random()*(canvas.width/dpr - 60);
-      state.words.push({ x, y:-20, vy: 1 + Math.random()*1.4, text });
-    }
-
-    function drawBackground(){
-      const H = canvas.height/dpr;
-      const g = ctx.createLinearGradient(0,0,0,H);
-      g.addColorStop(0,'#fffaf6'); g.addColorStop(1,'#e6f7ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
-    }
-
-    function drawPlane(){
-      const p = state.player;
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      // body
-      ctx.fillStyle = '#0077b6';
-      ctx.beginPath();
-      ctx.moveTo(0,0);
-      ctx.lineTo(-24,14);
-      ctx.lineTo(-10,14);
-      ctx.lineTo(-6,22);
-      ctx.lineTo(34,22);
-      ctx.lineTo(34,14);
-      ctx.lineTo(10,14);
-      ctx.closePath();
-      ctx.fill();
-      // top wing
-      ctx.fillStyle = '#00b4d8';
-      ctx.beginPath();
-      ctx.moveTo(2,2);
-      ctx.lineTo(-8,-16);
-      ctx.lineTo(28,-16);
-      ctx.lineTo(18,2);
-      ctx.closePath();
-      ctx.fill();
-      // window
-      ctx.fillStyle = 'rgba(255,255,255,0.25)';
-      ctx.beginPath(); ctx.arc(6,6,6,0,Math.PI*2); ctx.fill();
-      ctx.restore();
-    }
-
-    function loop(){
-      if(!state.running) return;
-      state.tick++;
-      if(state.tick % state.spawnInterval === 0) spawnWord();
-
-      // update
-      drawBackground();
-      ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins';
-      ctx.fillText('Pregunta: Atrapa fósiles del Cámbrico', 10, 20);
-
-      // move player with keys
-      if(state.keys.left) state.player.x = Math.max(36, state.player.x - state.player.speed);
-      if(state.keys.right) state.player.x = Math.min(canvas.width/dpr - 36, state.player.x + state.player.speed);
-
-      // move with mouse smooth
-      if(state.mouseX !== undefined){
-        state.player.x += (state.mouseX - state.player.x) * 0.12;
-        state.player.x = Math.max(36, Math.min(state.player.x, canvas.width/dpr - 36));
-      }
-
-      // draw plane
+    function spawnWord(){ const text = pool[Math.floor(Math.random()*pool.length)]; const x = 30 + Math.random()*(canvas.width/dpr - 60); state.words.push({ x, y:-20, vy: 1 + Math.random()*1.4, text }); }
+    function drawBackground(){ const H = canvas.height/dpr; const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fffaf6'); g.addColorStop(1,'#e6f7ff'); ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr); }
+    function drawPlane(){ const p = state.player; ctx.save(); ctx.translate(p.x, p.y); ctx.fillStyle = '#0077b6'; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-24,14); ctx.lineTo(-10,14); ctx.lineTo(-6,22); ctx.lineTo(34,22); ctx.lineTo(34,14); ctx.lineTo(10,14); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#00b4d8'; ctx.beginPath(); ctx.moveTo(2,2); ctx.lineTo(-8,-16); ctx.lineTo(28,-16); ctx.lineTo(18,2); ctx.closePath(); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.arc(6,6,6,0,Math.PI*2); ctx.fill(); ctx.restore(); }
+    function loop(){ if(!state.running) return; state.tick++; if(state.tick % state.spawnInterval === 0) spawnWord(); drawBackground(); ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins'; ctx.fillText('Pregunta: Atrapa fósiles del Cámbrico', 10, 20);
+      if(state.keys.left) state.player.x = Math.max(36, state.player.x - state.player.speed); if(state.keys.right) state.player.x = Math.min(canvas.width/dpr - 36, state.player.x + state.player.speed);
+      if(state.mouseX !== undefined){ state.player.x += (state.mouseX - state.player.x) * 0.12; state.player.x = Math.max(36, Math.min(state.player.x, canvas.width/dpr - 36)); }
       drawPlane();
-
-      // words
-      for(let i=state.words.length-1;i>=0;i--){
-        const w = state.words[i];
-        w.y += w.vy;
-        ctx.font = '13px Poppins';
-        const tw = ctx.measureText(w.text).width + 16;
-        const rx = w.x - tw/2;
-        roundRect(ctx, rx, w.y - 14, tw, 22, 8, '#ffd166');
-        ctx.fillStyle = '#00303a';
-        ctx.fillText(w.text, rx + 8, w.y + 4);
-
-        // collision with plane
+      for(let i=state.words.length-1;i>=0;i--){ const w = state.words[i]; w.y += w.vy; ctx.font = '13px Poppins'; const tw = ctx.measureText(w.text).width + 16; const rx = w.x - tw/2; roundRect(ctx, rx, w.y - 14, tw, 22, 8, '#ffd166'); ctx.fillStyle = '#00303a'; ctx.fillText(w.text, rx + 8, w.y + 4);
         const plx = state.player.x, ply = state.player.y;
-        if(w.y > ply - 8 && w.y < ply + 28 && Math.abs(w.x - plx) < 36){
-          const matched = corrects.some(k => w.text.includes(k));
-          if(matched){ state.score += 10; }
-          else { state.score = Math.max(0, state.score - 5); }
-          state.words.splice(i,1);
-          $('#planeScore').textContent = state.score;
-        } else if(w.y > canvas.height/dpr + 20) {
-          state.words.splice(i,1);
-        }
+        if(w.y > ply - 8 && w.y < ply + 28 && Math.abs(w.x - plx) < 36){ const matched = corrects.some(k => w.text.includes(k)); if(matched){ state.score += 10; } else { state.score = Math.max(0, state.score - 5); } state.words.splice(i,1); $('#planeScore').textContent = state.score; } else if(w.y > canvas.height/dpr + 20) { state.words.splice(i,1); }
       }
-
       requestAnimationFrame(loop);
     }
-
-    function roundRect(ctx,x,y,w,h,r,color){
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(x+r,y);
-      ctx.arcTo(x+w,y,x+w,y+h,r);
-      ctx.arcTo(x+w,y+h,x,y+h,r);
-      ctx.arcTo(x,y+h,x,y,r);
-      ctx.arcTo(x,y,x+w,y,r);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    // input
-    window.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowLeft') state.keys.left = true;
-      if(e.key === 'ArrowRight') state.keys.right = true;
-    });
-    window.addEventListener('keyup', (e)=> {
-      if(e.key === 'ArrowLeft') state.keys.left = false;
-      if(e.key === 'ArrowRight') state.keys.right = false;
-    });
-
-    canvas.addEventListener('mousemove', (e)=> {
-      const r = canvas.getBoundingClientRect();
-      state.mouseX = e.clientX - r.left;
-    });
-    canvas.addEventListener('touchmove', (e)=> {
-      const r = canvas.getBoundingClientRect();
-      if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left;
-      e.preventDefault();
-    }, {passive:false});
-
-    // controls
-    $('#startPlane').addEventListener('click', ()=>{
-      fit();
-      state.running = true;
-      state.score = 0;
-      state.tick = 0;
-      state.words = [];
-      state.mouseX = undefined;
-      $('#planeScore').textContent = 0;
-      requestAnimationFrame(loop);
-    });
-
-    $('#stopPlane').addEventListener('click', ()=>{
-      state.running = false;
-      state = { running:false, player:{ x:160, y:170, w:46, h:20, speed:6 }, words:[], tick:0, score:0, mouseX:undefined, keys:{left:false,right:false}, spawnInterval:60 };
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
-      $('#planeScore').textContent = 0;
-    });
-
-    // initial
-    (function init(){
-      fit();
-      drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
-    })();
-
+    function roundRect(ctx,x,y,w,h,r,color){ ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fill(); }
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'ArrowLeft') state.keys.left = true; if(e.key === 'ArrowRight') state.keys.right = true; });
+    window.addEventListener('keyup', (e)=> { if(e.key === 'ArrowLeft') state.keys.left = false; if(e.key === 'ArrowRight') state.keys.right = false; });
+    canvas.addEventListener('mousemove', (e)=> { const r = canvas.getBoundingClientRect(); state.mouseX = e.clientX - r.left; });
+    canvas.addEventListener('touchmove', (e)=> { const r = canvas.getBoundingClientRect(); if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left; e.preventDefault(); }, {passive:false});
+    $('#startPlane').addEventListener('click', ()=>{ fit(); state.running = true; state.score = 0; state.tick = 0; state.words = []; state.mouseX = undefined; $('#planeScore').textContent = 0; requestAnimationFrame(loop); });
+    $('#stopPlane').addEventListener('click', ()=>{ state.running = false; state = { running:false, player:{ x:160, y:170, w:46, h:20, speed:6 }, words:[], tick:0, score:0, mouseX:undefined, keys:{left:false,right:false}, spawnInterval:60 }; ctx.clearRect(0,0,canvas.width,canvas.height); drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22); $('#planeScore').textContent = 0; });
+    (function init(){ fit(); drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22); })();
   })();
 
-  /* -------------------------
-     CALENDARIO (interactivo)
-     ------------------------- */
+  /* =========================
+     CALENDARIO WIDGET
+     ========================= */
   (function CalendarWidget(){
     const container = document.getElementById('calendarWidget');
     let selectedStart = null, selectedEnd = null;
@@ -1044,43 +813,83 @@
     build(); updateSummary();
   })();
 
-  /* -------------------------
-     BOOKING FORM simulation
-     ------------------------- */
+  /* =========================
+     BOOKING simulation
+     ========================= */
   (function booking(){
     $('#bookingForm').addEventListener('submit', (e)=> {
       e.preventDefault();
       const sel = window.CronoviajesCalendar?.getSelection();
       if(!sel || !sel.start || !sel.end){ $('#bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
-      const name = $('#bookName').value || 'Cliente';
+      const name = $('#bookName').value || 'Centro';
       const email = $('#bookEmail').value || '—';
       const phone = $('#bookPhone').value || '—';
-      $('#bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
+      $('#bookingMsg').textContent = `Gracias ${name}. Reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
     });
   })();
 
-  // accesibilidad: atajos
-  window.addEventListener('keydown', (e)=> {
+  /* =========================
+     Access keys
+     ========================= */
+  window.addEventListener('keydown',(e)=> {
     if(e.key === '1') $('#startQuiz').click();
     if(e.key === '2') $('#startSub').click();
     if(e.key === '3') $('#startPlane').click();
   });
 
-  // init
+  /* =========================
+     Init: populate species select and lazy load
+     ========================= */
   window.addEventListener('load', ()=> {
-    // hide broken gallery thumbs (if there are loads of network errors avoid blank spots)
+    // ensure images with data-src load if not supported intersection observer (fallback)
     $$('.gallery img').forEach(img => {
-      img.onerror = ()=> {
-        img.dataset.broken = 'true';
-        img.style.opacity = '.28';
-        img.style.filter = 'grayscale(60%)';
-      };
+      if(img.dataset.src && !('IntersectionObserver' in window)) img.src = img.dataset.src;
+      img.onerror = ()=> { img.dataset.broken='true'; img.style.opacity='.28'; img.style.filter='grayscale(60%)'; };
     });
-    // init calendar if not already
     if(window.CronoviajesCalendar && typeof window.CronoviajesCalendar.init === 'function') window.CronoviajesCalendar.init();
+  });
+
+  /* =========================
+     Narración TTS (Web Speech API)
+     ========================= */
+  (function narration(){
+    const btn = $('#btnNarration');
+    if(!('speechSynthesis' in window)){ btn.style.display='none'; return; }
+    const texto = `
+      Bienvenidos a Cronoviajes. Este proyecto educativo explora el Período Cámbrico, aproximadamente hace 541 a 485 millones de años.
+      Durante ese tiempo se produjo lo que llamamos la Explosión Cámbrica: la aparición rápida en el registro fósil de muchos grupos animales.
+      En la galería puedes ver reconstrucciones y fósiles de organismos emblemáticos, como Anomalocaris, trilobites, Pikaia y Opabinia.
+      Usa la ficha científica para descargar datos y preparar tu defensa. Cronoviajes combina paleontología, tafonomía y actividades prácticas para estudiantes.
+    `;
+    let speaking=false;
+    btn.addEventListener('click', ()=> {
+      if(speaking){ speechSynthesis.cancel(); speaking=false; btn.textContent='Escuchar explicación (TTS)'; return; }
+      const ut = new SpeechSynthesisUtterance(texto);
+      // prefer Spanish voices if available
+      const voices = speechSynthesis.getVoices();
+      const esVoice = voices.find(v=>/es-/i.test(v.lang) || /spanish/i.test(v.name));
+      if(esVoice) ut.voice = esVoice;
+      ut.rate = 0.95; ut.pitch = 1;
+      ut.onstart = ()=> { speaking=true; btn.textContent='Detener narración'; };
+      ut.onend = ()=> { speaking=false; btn.textContent='Escuchar explicación (TTS)'; };
+      speechSynthesis.speak(ut);
+    });
+    // update voices list when loaded
+    window.speechSynthesis.onvoiceschanged = ()=>{};
+  })();
+
+  /* =========================
+     Botones adicionales
+     ========================= */
+  // reserve top
+  $('#btnReserveTop').addEventListener('click', ()=> { goTo('reservas'); });
+  // guide (sample)
+  $('#btnGuide').addEventListener('click', ()=> {
+    alert('Guía docente: incluye objetivos, actividades y criterios de evaluación. (Incluye: ficha de pre-lectura, actividades de campo virtual, cuestionario y rúbrica).');
   });
 
   </script>
 </body>
 </html>
+
 
