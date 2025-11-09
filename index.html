@@ -1,1 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cronoviajes — Descubre el pasado, vive el origen</title>
+  <meta name="description" content="Cronoviajes: Agencia de viajes al pasado (Cámbrico). Experiencias, galería, juegos y reservas con calendario interactivo. Proyecto educativo.">
+  <meta name="author" content="Cronoviajes S.A.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------------------
+       RESET Y VARIABLES
+       --------------------------- */
+    :root{
+      --bg:#f5fbfb;
+      --card:#ffffff;
+      --muted:#6b7c82;
+      --turq:#0fb3a6;
+      --accent:#ffd166;
+      --deep:#052a2a;
+      --radius:12px;
+      --maxw:1100px;
+      --shadow: 0 14px 40px rgba(6,30,32,0.06);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);background:linear-gradient(180deg,var(--bg),#eef8fb);-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:0 16px}
+
+    /* header */
+    header.top{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--turq));display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--deep);font-family:"Playfair Display";font-size:20px;box-shadow:var(--shadow)}
+    .brand h1{font-family:"Playfair Display";font-size:20px;margin:0}
+    .slogan{font-style:italic;font-weight:600;opacity:.9;font-size:13px;color:var(--muted)}
+
+    nav.topnav{display:flex;gap:10px;align-items:center}
+    nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.9);box-shadow:0 6px 18px rgba(2,48,40,0.03);font-weight:700;color:var(--deep)}
+
+    /* hero (simple y atractivo) */
+    .hero{border-radius:16px;padding:48px;overflow:hidden;background:linear-gradient(180deg,#e8fbfb,#e6f9f8);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:18px}
+    @media(max-width:900px){ .hero{flex-direction:column;align-items:flex-start;padding:26px} }
+    .hero-left{max-width:68%}
+    .hero h2{font-family:"Playfair Display";font-size:44px;margin:0;color:var(--deep)}
+    .hero p{margin-top:8px;color:var(--muted);max-width:62ch}
+    .hero .cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--turq);color:#fff;padding:12px 16px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(15,179,166,0.12)}
+    .btn.secondary{background:transparent;color:var(--deep);border:1px solid rgba(5,42,42,0.06)}
+
+    .hero-right{width:320px;background:linear-gradient(180deg,#ffffff,#f7fffd);padding:16px;border-radius:12px;box-shadow:0 10px 26px rgba(2,40,40,0.04)}
+    .pill{display:inline-block;padding:8px 10px;border-radius:10px;background:#f1fffe;font-weight:700;color:var(--deep)}
+
+    /* SLIDER (debajo del hero) */
+    .slider-wrap{margin:18px 0;position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .slider{position:relative;height:360px;background:linear-gradient(180deg,#f8ffff,#eef9fa)}
+    .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .9s ease,transform .9s ease}
+    .slide.active{opacity:1;transform:scale(1)}
+    .slider .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px;z-index:20}
+    .slider .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6);cursor:pointer;box-shadow:0 4px 12px rgba(2,40,40,0.08)}
+    .slider .dot.active{background:var(--turq)}
+
+    /* sections */
+    main{margin-bottom:26px}
+    section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:var(--shadow)}
+    h2.section-title{color:var(--turq);margin-bottom:10px}
+    .muted{color:var(--muted);line-height:1.5}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .gallery .thumb{border-radius:10px;overflow:hidden;background:#f5fdfc;padding:6px;box-shadow:0 10px 26px rgba(2,40,40,0.03)}
+    .gallery img{width:100%;height:140px;object-fit:cover;display:block;transition:transform .16s}
+    .gallery .thumb:hover img{transform:translateY(-6px)}
+
+    /* games */
+    .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+    .game{background:linear-gradient(180deg,#fff,#fbfffe);border-radius:12px;padding:12px;box-shadow:0 12px 30px rgba(2,40,40,0.04);min-height:320px}
+    .game h3{margin-bottom:10px}
+    canvas{width:100%;height:220px;border-radius:10px;display:block;background:linear-gradient(180deg,#f7fefe,#ffffff)}
+
+    /* calendar & form */
+    .calendar{width:360px;background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow)}
+    .weekday,.day{padding:8px;border-radius:8px;text-align:center;font-weight:600;color:var(--muted)}
+    .day.box{background:#f6fdff;cursor:pointer;border:1px solid rgba(0,0,0,0.04)}
+    .day.disabled{opacity:.25;cursor:not-allowed}
+    .day.selected{background:linear-gradient(180deg,var(--turq),#00d1f0);color:#012;font-weight:800}
+
+    footer{margin-top:22px;padding:18px;background:linear-gradient(90deg,var(--turq),#0aa09a);color:#fff;border-radius:10px;text-align:center}
+
+    input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e9f6f5;margin-top:6px}
+    @media(max-width:640px){ .hero h2{font-size:28px} .hero-right{width:100%} .brand h1{font-size:18px} .slider{height:220px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HEADER -->
+    <header class="top" role="banner">
+      <div class="brand">
+        <div class="logo" id="logoBadge">Cv</div>
+        <div>
+          <h1>Cronoviajes</h1>
+          <div class="slogan">Descubre el pasado, vive el origen</div>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Navegación principal">
+        <a href="#" onclick="goTo('hero')">Inicio</a>
+        <a href="#" onclick="goTo('info')">Información</a>
+        <a href="#" onclick="goTo('galeria')">Galería</a>
+        <a href="#" onclick="goTo('juegos')">Juegos</a>
+        <a href="#" onclick="goTo('reservas')">Reservas</a>
+      </nav>
+    </header>
+
+    <!-- HERO (sin imagen de fondo grande) -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero-left">
+        <h2>Cronoviajes</h2>
+        <p>Agencia educativa especializada en viajes temporales al período Cámbrico. Programas guiados por paleontólogos y geólogos para centros educativos.</p>
+        <div class="cta">
+          <button class="btn" id="btnReserve">Reservar viaje temporal</button>
+          <button class="btn secondary" id="btnContrast">Modo claro</button>
+        </div>
+      </div>
+
+      <aside class="hero-right" aria-hidden="false">
+        <h4 style="margin:0 0 8px">Próximas salidas</h4>
+        <p style="margin:0 0 8px;color:var(--muted)">Sesiones diarias en grupos reducidos — Madrid, Barcelona y salidas especiales para colegios.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <div class="pill">Cámbrico Explorador</div>
+          <div class="pill">Cámbrico Premium</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SLIDER (ahora separado y responsive; cambia cada 3s) -->
+    <div class="slider-wrap">
+      <div class="slider" id="mainSlider" aria-label="Carrusel de imágenes">
+        <!-- Pon tus imágenes en images/img1.jpg, img2.jpg... Si no las pones, no se mostrarán -->
+        <img src="images/img1.jpg" alt="Imagen 1" class="slide active" loading="lazy" onerror="this.style.display='none'">
+        <img src="images/img2.jpg" alt="Imagen 2" class="slide" loading="lazy" onerror="this.style.display='none'">
+        <img src="images/img3.jpg" alt="Imagen 3" class="slide" loading="lazy" onerror="this.style.display='none'">
+        <div class="dots" id="sliderDots" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <main>
+      <!-- INFO -->
+      <section id="info" class="panel">
+        <h2 class="section-title">Información científica — Período Cámbrico</h2>
+        <p class="muted">El Cámbrico (~541–485 millones de años) fue un periodo de rápida diversificación de la vida —la llamada "Explosión Cámbrica". Aquí tienes datos útiles para tu trabajo.</p>
+      </section>
+
+      <!-- GALERÍA (sin imágenes externas; reemplaza imágenes en carpeta images/) -->
+      <section id="galeria" class="panel">
+        <h2 class="section-title">Galería — Fósiles del Cámbrico</h2>
+        <p class="muted">Sustituye las imágenes en la carpeta <code>images/</code> por tus propias fotos (p.ej. <code>images/fossil1.jpg</code>, etc.).</p>
+        <div class="gallery" id="galleryGrid" style="margin-top:12px">
+          <div class="thumb"><img src="images/fossil1.jpg" alt="Fósil 1" onerror="this.style.display='none'"></div>
+          <div class="thumb"><img src="images/fossil2.jpg" alt="Fósil 2" onerror="this.style.display='none'"></div>
+          <div class="thumb"><img src="images/fossil3.jpg" alt="Fósil 3" onerror="this.style.display='none'"></div>
+          <div class="thumb"><img src="images/fossil4.jpg" alt="Fósil 4" onerror="this.style.display='none'"></div>
+          <div class="thumb"><img src="images/fossil5.jpg" alt="Fósil 5" onerror="this.style.display='none'"></div>
+          <div class="thumb"><img src="images/fossil6.jpg" alt="Fósil 6" onerror="this.style.display='none'"></div>
+        </div>
+      </section>
+
+      <!-- JUEGOS -->
+      <section id="juegos" class="panel">
+        <h2 class="section-title">Zona de juegos</h2>
+        <p class="muted">Tres experiencias: Quiz, Submarino y Vuelo del Tiempo. Pulsa INICIAR en cada una para activar.</p>
+
+        <div class="games" style="margin-top:12px">
+          <!-- QUIZ -->
+          <div class="game" id="quizGame">
+            <h3>Quiz avanzado</h3>
+            <div id="quizArea"></div>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <button class="btn" id="startQuiz">Iniciar Quiz</button>
+              <button class="btn secondary" id="checkQuiz">Comprobar</button>
+              <div style="margin-left:auto;font-weight:700;color:var(--deep)" id="quizState">Estado: inactivo</div>
+            </div>
+          </div>
+
+          <!-- SUBMARINO (mantengo) -->
+          <div class="game" id="subGame">
+            <h3>Submarino Temporal</h3>
+            <canvas id="subCanvas" width="640" height="260" aria-label="Submarino Temporal"></canvas>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <button class="btn" id="startSub">Iniciar Submarino</button>
+              <button class="btn secondary" id="resetSub">Parar / Reiniciar</button>
+              <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntuación: <span id="subScore">0</span></div>
+            </div>
+          </div>
+
+          <!-- NUEVO PLANE GAME (desde cero) -->
+          <div class="game" id="planeGame">
+            <h3>Vuelo del Tiempo — Avión</h3>
+            <canvas id="planeCanvas" width="640" height="260" aria-label="Vuelo del Tiempo"></canvas>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <button class="btn" id="startPlane">Iniciar Vuelo</button>
+              <button class="btn secondary" id="stopPlane">Parar / Reiniciar</button>
+              <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntos: <span id="planeScore">0</span></div>
+            </div>
+            <p class="muted" style="margin-top:8px">Controla el avión con las flechas ← →, ratón o touch. Atrapa palabras correctas para sumar puntos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESERVAS (sin cambios importantes) -->
+      <section id="reservas" class="panel">
+        <h2 class="section-title">Reservas — Calendario interactivo</h2>
+        <p class="muted">Selecciona fecha de entrada y salida. No se permiten fechas pasadas.</p>
+
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-top:12px">
+          <div class="calendar" id="calendarWidget"></div>
+
+          <div style="flex:1;min-width:320px">
+            <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,0.06)">
+              <h3>Solicitud de reserva</h3>
+              <div style="margin-top:8px">
+                <div class="muted">Entrada: <strong id="selStart">—</strong></div>
+                <div class="muted">Salida: <strong id="selEnd">—</strong></div>
+                <div class="muted">Duración: <strong id="selDays">—</strong> noche(s)</div>
+              </div>
+
+              <form id="bookingForm" style="margin-top:12px">
+                <label class="muted">Nombre</label>
+                <input id="bookName" placeholder="Tu nombre" required>
+                <label class="muted">Email</label>
+                <input id="bookEmail" type="email" placeholder="correo@ejemplo.com" required>
+                <label class="muted">Teléfono</label>
+                <input id="bookPhone" placeholder="+34 ...">
+                <label class="muted">Comentarios</label>
+                <textarea id="bookNotes" placeholder="Alergias, observaciones..." rows="3"></textarea>
+                <button class="btn" type="submit" style="margin-top:8px">Enviar reserva</button>
+                <p id="bookingMsg" class="muted" style="margin-top:8px"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:10px">Nota: esto es un prototipo para tu trabajo del instituto. Las reservas son simuladas — indícalo en las notas del proyecto.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div style="max-width:var(--maxw);margin:0 auto;padding:6px">
+        <strong>Cronoviajes S.A.</strong> — © <span id="year"></span> — Descubre el pasado, vive el origen
+      </div>
+    </footer>
+  </div>
+
+  <!-- =========================
+       SCRIPTS
+       ========================= -->
+  <script>
+  // util
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function goTo(id){
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  /* -------------------------
+     SLIDER FUNCIONAL (3s)
+     - robust: solo cicla slides visibles (oculta las que no existan)
+     ------------------------- */
+  (function mainSlider(){
+    const slider = $('#mainSlider');
+    if(!slider) return;
+    let slides = Array.from(slider.querySelectorAll('.slide')).filter(img => img.complete !== false && img.style.display !== 'none');
+    // in case images not found (display none by onerror), still keep nodes but we must check visibility
+    slides = Array.from(slider.querySelectorAll('.slide')).filter(img => window.getComputedStyle(img).display !== 'none');
+
+    let idx = 0, timer = null, paused = false;
+
+    function refreshSlides(){
+      slides = Array.from(slider.querySelectorAll('.slide')).filter(img => window.getComputedStyle(img).display !== 'none');
+      // ensure one active
+      if(slides.length === 0) return;
+      slides.forEach((s,i)=> s.classList.toggle('active', i === idx % slides.length));
+      buildDots();
+    }
+
+    function show(i){
+      slides.forEach((s,j)=> s.classList.toggle('active', i===j));
+    }
+
+    function buildDots(){
+      const dotsWrap = $('#sliderDots');
+      if(!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+      slides.forEach((_,i)=>{
+        const d = document.createElement('div'); d.className='dot'; if(i===idx) d.classList.add('active');
+        d.addEventListener('click', ()=> { idx = i; show(idx); updateDots(); });
+        dotsWrap.appendChild(d);
+      });
+    }
+    function updateDots(){
+      const dots = Array.from(document.querySelectorAll('#sliderDots .dot'));
+      dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(()=> {
+        if(paused) return;
+        if(slides.length === 0) return;
+        idx = (idx + 1) % slides.length;
+        show(idx);
+        updateDots();
+      }, 3000);
+    }
+    function stop(){ if(timer) clearInterval(timer); timer = null; }
+
+    // build initial
+    refreshSlides();
+    start();
+
+    // pause on hover/touch
+    slider.addEventListener('mouseenter', ()=> paused = true);
+    slider.addEventListener('mouseleave', ()=> paused = false);
+
+    // in case images are added/removed, refresh periodically short time
+    setInterval(refreshSlides, 1000);
+
+    // expose controls
+    // none necessary now
+  })();
+
+  /* -------------------------
+     QUIZ (como antes)
+     ------------------------- */
+  (function quizModule(){
+    const questions = [
+      {q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541"},
+      {q: "Cita un depredador emblemático del Cámbrico", a: "anomalocaris"},
+      {q: "Nombre de un cordado primitivo", a: "pikaia"},
+      {q: "¿Dónde se encuentra el yacimiento Burgess Shale?", a: "canada"},
+      {q: "Organismo con cinco ojos", a: "opabinia"}
+    ];
+    let active = false;
+    const area = $('#quizArea');
+    const status = $('#quizState');
+
+    function build(){
+      area.innerHTML = '';
+      questions.forEach((it,i)=>{
+        const div = document.createElement('div');
+        div.style.marginBottom='10px';
+        div.innerHTML = `<strong>${i+1}.</strong> ${it.q}<div style="margin-top:6px"><input id="qa${i}" placeholder="Tu respuesta" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e8f6f6"></div>`;
+        area.appendChild(div);
+      });
+      status.textContent = 'Estado: activo';
+      active = true;
+    }
+    $('#startQuiz').addEventListener('click', ()=> build());
+    $('#checkQuiz').addEventListener('click', ()=> {
+      if(!active){ status.textContent = 'Estado: inactivo (pulsa Iniciar)'; return; }
+      let score = 0;
+      questions.forEach((it,i)=>{
+        const val = (document.getElementById('qa'+i)?.value || '').toLowerCase();
+        if(it.a === '541'){ if(val.includes('541')) score++; }
+        else if(it.a === 'canada'){ if(val.includes('canad')) score++; }
+        else { if(val.includes(it.a)) score++; }
+      });
+      status.textContent = `Resultado: ${score} / ${questions.length}`;
+      active = false;
+    });
+  })();
+
+  /* -------------------------
+     SUBMARINO (mantengo versión robusta)
+     ------------------------- */
+  (function submarine(){
+    const canvas = document.getElementById('subCanvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d', {alpha:false});
+    let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+    function fit(){
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize', fit);
+
+    let state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, mouseY:undefined };
+
+    const goodPool = ['trilobite','anomalocaris','pikaia','opabinia','braquio'];
+    const badPool = ['teléfono','coche','lata','plástico'];
+
+    function spawn(){
+      const pool = Math.random() < 0.7 ? goodPool : badPool;
+      const lab = pool[Math.floor(Math.random()*pool.length)];
+      const ok = goodPool.includes(lab);
+      state.items.push({ x: canvas.width/dpr + 40, y: 20 + Math.random()*(canvas.height/dpr - 80), vx: -1.6 - Math.random()*1.8, label:lab, ok, r: 10 + Math.random()*14 });
+    }
+
+    function drawBG(){
+      const H = canvas.height/dpr, W = canvas.width/dpr;
+      const g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,'#e8fbff'); g.addColorStop(1,'#dff5fb');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle = '#cfeef8'; ctx.fillRect(0,H-18,W,18);
+    }
+
+    function drawPlayer(){
+      const p = state.player;
+      ctx.fillStyle = '#005f7f';
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - 28, p.y + 14); ctx.lineTo(p.x + 56, p.y + 14); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#00b4d8'; ctx.fillRect(p.x + 8, p.y + 6, p.w - 16, p.h - 12);
+      ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.arc(p.x + 20, p.y + 14, 6, 0, Math.PI*2); ctx.fill();
+    }
+
+    function loop(){
+      if(!state.running) return;
+      state.tick++;
+      if(state.tick % state.spawnRate === 0) spawn();
+      drawBG();
+      drawPlayer();
+
+      for(let i=state.items.length-1;i>=0;i--){
+        const it = state.items[i]; it.x += it.vx;
+        ctx.fillStyle = it.ok ? 'rgba(42,157,143,0.95)' : 'rgba(214,40,40,0.95)';
+        ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font='12px Poppins'; ctx.fillText(it.label, it.x - it.r, it.y - it.r - 6);
+
+        const p = state.player;
+        if(it.x < p.x + p.w && it.x > p.x - 16 && it.y > p.y && it.y < p.y + p.h + 16){
+          if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5);
+          state.items.splice(i,1);
+          $('#subScore').textContent = state.score;
+        } else if(it.x < -60) state.items.splice(i,1);
+      }
+
+      if(state.mouseY !== undefined){
+        state.player.y += (state.mouseY - state.player.y - state.player.h/2) * 0.12;
+        state.player.y = Math.max(6, Math.min(state.player.y, canvas.height/dpr - state.player.h - 6));
+      }
+
+      ctx.fillStyle='#003a55'; ctx.font='13px Poppins'; ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 18);
+      requestAnimationFrame(loop);
+    }
+
+    function initCanvas(){
+      fit();
+      drawBG();
+      ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.',12,22);
+    }
+
+    canvas.addEventListener('mousemove', (e)=> { const r = canvas.getBoundingClientRect(); state.mouseY = e.clientY - r.top; });
+    canvas.addEventListener('touchmove', (e)=> { const r = canvas.getBoundingClientRect(); if(e.touches && e.touches[0]) state.mouseY = e.touches[0].clientY - r.top; e.preventDefault(); }, {passive:false});
+
+    $('#startSub').addEventListener('click', ()=> { initCanvas(); state.running=true; state.tick=0; state.items=[]; state.score=0; $('#subScore').textContent=0; requestAnimationFrame(loop); });
+    $('#resetSub').addEventListener('click', ()=> { state.running=false; state={running:false,player:{x:80,y:120,w:64,h:28},items:[],tick:0,score:0,spawnRate:80,mouseY:undefined}; ctx.clearRect(0,0,canvas.width,canvas.height); initCanvas(); $('#subScore').textContent=0; });
+
+    initCanvas();
+  })();
+
+  /* -------------------------
+     PLANE GAME: REESCRITO DESDE CERO (simple y funcional)
+     - control: flechas, ratón, touch
+     - plane visible, palabras caen
+     ------------------------- */
+  (function planeGame(){
+    const canvas = document.getElementById('planeCanvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d', {alpha:false});
+    let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+    function fit(){
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize', fit);
+
+    // state
+    let state = {
+      running:false,
+      player:{ x: 160, y: 170, w: 46, h: 20, speed:6 },
+      words: [],
+      tick:0,
+      score:0,
+      mouseX: undefined,
+      keys: { left:false, right:false },
+      spawnInterval: 60
+    };
+
+    // pools
+    const pool = ['trilobite','anomalocaris','pikaia','opabinia','braquio','alga','teléfono','coche','fósil','cámbrico'];
+    const corrects = ['trilobite','anomalocaris','pikaia','opabinia','braquio','fósil','cámbrico'];
+
+    function spawnWord(){
+      const text = pool[Math.floor(Math.random()*pool.length)];
+      const x = 30 + Math.random()*(canvas.width/dpr - 60);
+      state.words.push({ x, y:-20, vy: 1 + Math.random()*1.4, text });
+    }
+
+    function drawBackground(){
+      const H = canvas.height/dpr;
+      const g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,'#fffaf6'); g.addColorStop(1,'#e6f7ff');
+      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
+    }
+
+    function drawPlane(){
+      const p = state.player;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      // body
+      ctx.fillStyle = '#0077b6';
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+      ctx.lineTo(-24,14);
+      ctx.lineTo(-10,14);
+      ctx.lineTo(-6,22);
+      ctx.lineTo(34,22);
+      ctx.lineTo(34,14);
+      ctx.lineTo(10,14);
+      ctx.closePath();
+      ctx.fill();
+      // top wing
+      ctx.fillStyle = '#00b4d8';
+      ctx.beginPath();
+      ctx.moveTo(2,2);
+      ctx.lineTo(-8,-16);
+      ctx.lineTo(28,-16);
+      ctx.lineTo(18,2);
+      ctx.closePath();
+      ctx.fill();
+      // window
+      ctx.fillStyle = 'rgba(255,255,255,0.25)';
+      ctx.beginPath(); ctx.arc(6,6,6,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+
+    function loop(){
+      if(!state.running) return;
+      state.tick++;
+      if(state.tick % state.spawnInterval === 0) spawnWord();
+
+      // update
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins';
+      ctx.fillText('Pregunta: Atrapa fósiles del Cámbrico', 10, 20);
+
+      // move player with keys
+      if(state.keys.left) state.player.x = Math.max(36, state.player.x - state.player.speed);
+      if(state.keys.right) state.player.x = Math.min(canvas.width/dpr - 36, state.player.x + state.player.speed);
+
+      // move with mouse smooth
+      if(state.mouseX !== undefined){
+        state.player.x += (state.mouseX - state.player.x) * 0.12;
+        state.player.x = Math.max(36, Math.min(state.player.x, canvas.width/dpr - 36));
+      }
+
+      // draw plane
+      drawPlane();
+
+      // words
+      for(let i=state.words.length-1;i>=0;i--){
+        const w = state.words[i];
+        w.y += w.vy;
+        // measure
+        ctx.font = '13px Poppins';
+        const tw = ctx.measureText(w.text).width + 16;
+        const rx = w.x - tw/2;
+        // rounded rect
+        roundRect(ctx, rx, w.y - 14, tw, 22, 8, '#ffd166');
+        ctx.fillStyle = '#00303a';
+        ctx.fillText(w.text, rx + 8, w.y + 4);
+
+        // collision with plane
+        const plx = state.player.x, ply = state.player.y;
+        if(w.y > ply - 8 && w.y < ply + 28 && Math.abs(w.x - plx) < 36){
+          const matched = corrects.some(k => w.text.includes(k));
+          if(matched){ state.score += 10; }
+          else { state.score = Math.max(0, state.score - 5); }
+          state.words.splice(i,1);
+          $('#planeScore').textContent = state.score;
+        } else if(w.y > canvas.height/dpr + 20) {
+          state.words.splice(i,1);
+        }
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function roundRect(ctx,x,y,w,h,r,color){
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(x+r,y);
+      ctx.arcTo(x+w,y,x+w,y+h,r);
+      ctx.arcTo(x+w,y+h,x,y+h,r);
+      ctx.arcTo(x,y+h,x,y,r);
+      ctx.arcTo(x,y,x+w,y,r);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // input
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') state.keys.left = true;
+      if(e.key === 'ArrowRight') state.keys.right = true;
+    });
+    window.addEventListener('keyup', (e)=> {
+      if(e.key === 'ArrowLeft') state.keys.left = false;
+      if(e.key === 'ArrowRight') state.keys.right = false;
+    });
+
+    canvas.addEventListener('mousemove', (e)=> {
+      const r = canvas.getBoundingClientRect();
+      state.mouseX = e.clientX - r.left;
+    });
+    canvas.addEventListener('touchmove', (e)=> {
+      const r = canvas.getBoundingClientRect();
+      if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left;
+      e.preventDefault();
+    }, {passive:false});
+
+    // controls
+    $('#startPlane').addEventListener('click', ()=>{
+      fit();
+      state.running = true;
+      state.score = 0;
+      state.tick = 0;
+      state.words = [];
+      state.mouseX = undefined;
+      $('#planeScore').textContent = 0;
+      requestAnimationFrame(loop);
+    });
+
+    $('#stopPlane').addEventListener('click', ()=>{
+      state.running = false;
+      state = { running:false, player:{ x:160, y:170, w:46, h:20, speed:6 }, words:[], tick:0, score:0, mouseX:undefined, keys:{left:false,right:false}, spawnInterval:60 };
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
+      $('#planeScore').textContent = 0;
+    });
+
+    // initial
+    (function init(){
+      fit();
+      drawBackground(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
+    })();
+
+  })();
+
+  /* -------------------------
+     CALENDARIO (copiado y estable)
+     ------------------------- */
+  (function CalendarWidget(){
+    const container = document.getElementById('calendarWidget');
+    let selectedStart = null, selectedEnd = null;
+    const today = new Date(); today.setHours(0,0,0,0);
+    let viewYear = today.getFullYear(), viewMonth = today.getMonth();
+
+    function build(){
+      container.innerHTML = '';
+      const cal = document.createElement('div'); cal.className='cal-inner';
+      const header = document.createElement('div'); header.className='month';
+      header.style.display='flex'; header.style.justifyContent='space-between'; header.style.alignItems='center';
+      const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      const title = document.createElement('div'); title.textContent = `${monthNames[viewMonth]} ${viewYear}`; title.style.fontWeight='800';
+      const prev = document.createElement('button'); prev.textContent='◀'; prev.className='btn secondary'; prev.style.padding='6px 10px';
+      const next = document.createElement('button'); next.textContent='▶'; next.className='btn secondary'; next.style.padding='6px 10px';
+      prev.onclick = ()=> { if(viewMonth===0){ viewMonth=11; viewYear-- } else viewMonth--; renderGrid(); };
+      next.onclick = ()=> { if(viewMonth===11){ viewMonth=0; viewYear++ } else viewMonth++; renderGrid(); };
+      const left = document.createElement('div'); left.appendChild(prev); left.appendChild(title);
+      const right = document.createElement('div'); right.appendChild(next); header.appendChild(left); header.appendChild(right); cal.appendChild(header);
+
+      const weekdays = document.createElement('div'); weekdays.className='weekdays'; weekdays.style.display='grid'; weekdays.style.gridTemplateColumns='repeat(7,1fr)';
+      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; el.style.fontWeight='700'; weekdays.appendChild(el); }); cal.appendChild(weekdays);
+
+      const days = document.createElement('div'); days.className='days'; days.style.display='grid'; days.style.gridTemplateColumns='repeat(7,1fr)'; days.style.gap='6px'; days.style.marginTop='8px'; cal.appendChild(days);
+      container.appendChild(cal);
+
+      function renderGrid(){
+        days.innerHTML = '';
+        const first = new Date(viewYear, viewMonth, 1);
+        const last = new Date(viewYear, viewMonth+1, 0);
+        const firstWeekday = (first.getDay() + 6) % 7;
+        for(let i=0;i<firstWeekday;i++){ const e=document.createElement('div'); e.className='weekday'; days.appendChild(e); }
+        for(let d=1; d<=last.getDate(); d++){
+          const dt = new Date(viewYear, viewMonth, d); dt.setHours(0,0,0,0);
+          const el = document.createElement('div'); el.className='day box'; el.textContent=d;
+          if(dt < today) el.classList.add('disabled'); else el.addEventListener('click', ()=> onDateClick(dt));
+          if(selectedStart && sameDay(dt, selectedStart)) el.classList.add('selected');
+          else if(selectedEnd && sameDay(dt, selectedEnd)) el.classList.add('selected');
+          else if(selectedStart && selectedEnd && dt > selectedStart && dt < selectedEnd) el.classList.add('inrange');
+          days.appendChild(el);
+        }
+      }
+      renderGrid();
+    }
+
+    function onDateClick(dt){
+      if(!selectedStart || (selectedStart && selectedEnd)){ selectedStart = dt; selectedEnd = null; }
+      else { if(dt < selectedStart){ selectedStart = dt; selectedEnd = null; } else selectedEnd = dt; }
+      updateSummary(); build();
+    }
+    function sameDay(a,b){ return a && b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', {day:'2-digit',month:'short',year:'numeric'}); }
+    function updateSummary(){ $('#selStart').textContent = selectedStart ? formatDate(selectedStart) : '—'; $('#selEnd').textContent = selectedEnd ? formatDate(selectedEnd) : '—'; if(selectedStart && selectedEnd){ const days = Math.round((selectedEnd-selectedStart)/(1000*60*60*24)); $('#selDays').textContent = days; } else $('#selDays').textContent = '—'; }
+
+    window.CronoviajesCalendar = { init: ()=> build(), getSelection: ()=> ({start:selectedStart,end:selectedEnd,days:selectedStart && selectedEnd ? Math.round((selectedEnd-selectedStart)/(1000*60*60*24)) : null}) };
+    build(); updateSummary();
+  })();
+
+  /* -------------------------
+     BOOKING FORM simulation
+     ------------------------- */
+  (function booking(){
+    $('#bookingForm').addEventListener('submit', (e)=> {
+      e.preventDefault();
+      const sel = window.CronoviajesCalendar?.getSelection();
+      if(!sel || !sel.start || !sel.end){ $('#bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
+      const name = $('#bookName').value || 'Cliente';
+      const email = $('#bookEmail').value || '—';
+      const phone = $('#bookPhone').value || '—';
+      $('#bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
+    });
+  })();
+
+  // accesibilidad: atajos
+  window.addEventListener('keydown', (e)=> {
+    if(e.key === '1') $('#startQuiz').click();
+    if(e.key === '2') $('#startSub').click();
+    if(e.key === '3') $('#startPlane').click();
+  });
+
+  // init
+  window.addEventListener('load', ()=> {
+    // hide broken gallery thumbs
+    $$('.gallery img').forEach(img => { img.onerror = ()=> img.style.display = 'none'; });
+  });
+  </script>
+</body>
+</html>
 
