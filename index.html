@@ -3,374 +3,371 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cronoviajes — Viaje al Cámbrico · Descubre el pasado, vive el origen</title>
-  <meta name="description" content="Cronoviajes: Agencia de viajes al pasado (Cámbrico). Proyecto educativo con galería, información científica, juegos y reservas." />
+  <title>Cronoviajes — Descubre el pasado, vive el origen</title>
+  <meta name="description" content="Cronoviajes: Agencia de viajes al pasado (Cámbrico). Experiencias, galería, juegos y reservas con calendario interactivo. Proyecto educativo.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    /*******************************
-     * Styles principales
-     *******************************/
-    :root{
-      --green-1:#0b6623;
-      --green-2:#2d6a4f;
-      --accent:#00b4d8;
-      --card:#ffffff;
-      --muted:#5c7a89;
-      --maxw:1200px;
-      --radius:12px;
-      --text-dark:#042a10;
-      --text-light:#ffffff;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--text-dark);background:#f4fbf4;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
+  /* ---------------------------
+     RESET & VARIABLES
+     --------------------------- */
+  :root{
+    --deep:#032b2b;
+    --emerald-1:#0b4f3a;
+    --emerald-2:#118c67;
+    --accent:#00b4d8;
+    --gold:#ffd166;
+    --card:#ffffff;
+    --muted:#5c7a89;
+    --maxw:1200px;
+    --radius:12px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
 
-    /* HEADER */
-    header.top{
-      background:linear-gradient(135deg,var(--green-1),var(--green-2));
-      color:var(--text-light);
-      padding:20px 16px;
-      box-shadow:0 12px 40px rgba(2,40,20,0.14);
-    }
-    .top-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,#ffd166,var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--text-dark);font-size:22px;box-shadow:0 8px 26px rgba(0,0,0,0.15)}
-    .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0}
-    .slogan{font-style:italic;font-weight:600;opacity:.95;font-size:13px}
-    .mini{font-size:12px;opacity:.9}
+  /* ---------------------------
+     HEADER / NAV
+     --------------------------- */
+  header.top{
+    background:linear-gradient(135deg,var(--emerald-1),var(--emerald-2));
+    color:#fff;padding:14px 18px;box-shadow:0 12px 40px rgba(2,40,40,0.12);
+  }
+  .top-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;color:#062328;font-size:24px;box-shadow:0 10px 30px rgba(0,0,0,0.14)}
+  .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0}
+  .slogan{font-style:italic;font-weight:600;opacity:.95;font-size:13px}
 
-    /* NAV */
-    nav.topnav{max-width:var(--maxw);margin:14px auto;display:flex;justify-content:center;gap:10px;padding:8px 12px}
-    nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--text-light);font-weight:700}
-    nav.topnav a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.09)}
+  nav.topnav{max-width:var(--maxw);margin:12px auto;display:flex;justify-content:center;gap:8px;padding:10px 16px}
+  nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.06);color:#fff;font-weight:700}
+  nav.topnav a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.08)}
 
-    main{max-width:var(--maxw);margin:20px auto;padding:0 18px}
+  main{max-width:var(--maxw);margin:20px auto;padding:0 18px}
 
-    /*******************************
-     * HERO - SLIDER (verde)
-     *******************************/
-    .hero{
-      position:relative;height:74vh;min-height:520px;border-radius:18px;overflow:hidden;margin-bottom:24px;background:linear-gradient(135deg,var(--green-1),var(--green-2));box-shadow:0 18px 60px rgba(2,40,20,0.08);color:var(--text-light);
-    }
-    .hero .slider{position:absolute;inset:0;z-index:0;overflow:hidden}
-    .hero .slide{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
-    .hero .slide.active{opacity:1}
-    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.12));z-index:1}
-    .hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;padding:44px;max-width:var(--maxw);margin:0 auto}
-    @media(max-width:980px){.hero .inner{grid-template-columns:1fr;padding:28px}}
-    .hero .title{font-family:"Playfair Display",serif;font-size:44px;line-height:1;margin:0;color:var(--text-light)}
-    .hero .subtitle{margin-top:8px;font-weight:600;color:var(--text-light);font-size:18px}
-    .hero p{color:rgba(255,255,255,0.95);max-width:62ch}
-    .btn{background:var(--accent);color:var(--text-dark);padding:12px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(0,120,160,0.12)}
-    .btn.secondary{background:transparent;color:var(--text-light);border:1px solid rgba(255,255,255,0.12)}
+  /* ---------------------------
+     HERO (slider)
+     --------------------------- */
+  .hero{
+    position:relative;height:78vh;min-height:500px;border-radius:18px;overflow:hidden;margin:0 auto;box-shadow:0 18px 60px rgba(2,40,40,0.08);background:linear-gradient(135deg,var(--emerald-1),var(--emerald-2));
+  }
+  .hero .slider{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
+  .hero img.slide.active{opacity:1}
+  .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,10,8,0.28), rgba(0,40,35,0.22));z-index:1}
 
-    /*******************************
-     * PANELS / CONTENT
-     *******************************/
-    section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 8px 28px rgba(0,0,0,0.06)}
-    h2.section-title{color:var(--green-2);margin-bottom:10px}
-    .muted{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .col-7{grid-column:span 7}.col-5{grid-column:span 5}
-    @media(max-width:900px){.col-7,.col-5{grid-column:1/-1}}
+  .hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px;max-width:var(--maxw);margin:0 auto}
+  @media(max-width:980px){.hero .inner{grid-template-columns:1fr;padding:28px}}
+  .hero .title{font-family:"Playfair Display",serif;font-size:44px;color:#fff;margin:0}
+  .hero .subtitle{margin-top:8px;color:#fff;font-weight:600;font-size:18px}
+  .hero p{color:rgba(255,255,255,0.95);max-width:62ch}
+  .cta{display:flex;gap:10px;margin-top:18px}
+  .btn{background:var(--accent);color:#042; padding:12px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(0,120,160,0.12)}
+  .btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.12)}
 
-    /*******************************
-     * GALLERY
-     *******************************/
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .16s,box-shadow .16s}
-    .gallery img:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,48,71,0.12)}
+  .hero .card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));padding:14px;border-radius:12px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.12)}
 
-    /*******************************
-     * GAMES
-     *******************************/
-    .games{display:flex;gap:16px;flex-wrap:wrap}
-    .game{flex:1 1 320px;background:linear-gradient(180deg,#fff,#f7fffb);border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:260px}
-    canvas{width:100%;height:220px;border-radius:10px;display:block;background:linear-gradient(180deg,#e8f6ff,#ffffff);border:1px solid rgba(0,80,100,0.06)}
-    #memoryBoard{display:grid;grid-template-columns:repeat(4,100px);gap:8px;justify-content:center}
+  /* ---------------------------
+     SECTIONS / PANELS
+     --------------------------- */
+  section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 8px 28px rgba(0,0,0,0.06)}
+  h2.section-title{color:var(--emerald-2);margin-bottom:10px}
+  .muted{color:var(--muted)}
 
-    /*******************************
-     * FORMS
-     *******************************/
-    input,textarea,select{padding:8px;border-radius:6px;border:1px solid var(--green-2);width:100%;max-width:320px;margin-top:8px}
-    textarea{min-height:80px}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .col-7{grid-column:span 7}.col-5{grid-column:span 5}
+  @media(max-width:900px){.col-7,.col-5{grid-column:1/-1}}
 
-    /*******************************
-     * FOOTER
-     *******************************/
-    footer{margin-top:22px;padding:18px;background:linear-gradient(90deg,var(--green-2),var(--accent));color:var(--text-light);border-radius:10px;text-align:center}
+  /* ---------------------------
+     GALLERY
+     --------------------------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .16s,box-shadow .16s}
+  .gallery img:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,48,71,0.12)}
 
-    @media(max-width:720px){
-      nav.topnav{padding:0 8px}
-      .hero .inner{grid-template-columns:1fr}
-      .brand h1{font-size:18px}
-    }
-    /* small helpers */
-    .muted-sm{color:#6b7780;font-size:13px}
-    .kbd{background:#eef7f1;padding:4px 8px;border-radius:6px;font-weight:700;margin-left:6px}
+  /* ---------------------------
+     GAMES
+     --------------------------- */
+  .games{display:flex;gap:16px;flex-wrap:wrap}
+  .game{flex:1 1 320px;background:linear-gradient(180deg,#fff,#f7feff);border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:280px}
+  canvas{width:100%;height:200px;border-radius:10px;display:block;background:linear-gradient(180deg,#e8f6ff,#ffffff)}
+  #memoria{display:grid;grid-template-columns:repeat(4,100px);gap:10px;justify-content:center}
+  #memoria .card{width:100px;height:100px;background:#b2dfdb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;cursor:pointer;user-select:none}
+  #memoria .card.found{background:#80cbc4;color:#fff;cursor:default}
+
+  /* ---------------------------
+     CALENDAR
+     --------------------------- */
+  .calendar{width:360px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+  .month{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .weekdays,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .weekday,.day{padding:8px;border-radius:8px;text-align:center;font-weight:700;color:var(--muted)}
+  .day.box{background:#f6fdff;cursor:pointer;border:1px solid rgba(0,0,0,0.04)}
+  .day.disabled{opacity:.25;cursor:not-allowed}
+  .day.selected{background:linear-gradient(180deg,var(--accent),#00d1f0);color:#012;font-weight:800}
+
+  footer{margin-top:18px;padding:20px;background:linear-gradient(90deg,var(--emerald-2),var(--accent));color:#fff;border-radius:10px;text-align:center}
+
+  @media(max-width:640px){ .hero .title{font-size:28px} .hero .inner{padding:18px} .calendar{width:100%} }
   </style>
 </head>
 <body>
+
   <!-- HEADER -->
-  <header class="top" role="banner">
+  <header class="top">
     <div class="top-inner">
-      <div class="brand" aria-hidden="false">
-        <div class="logo" aria-hidden="true">Cv</div>
+      <div class="brand">
+        <div class="logo" id="logoBadge">Cv</div>
         <div>
           <h1>Cronoviajes</h1>
           <div class="slogan">Descubre el pasado, vive el origen</div>
         </div>
       </div>
-      <div class="mini">Proyecto educativo — Agencia temporal (simulada)</div>
+      <div style="font-size:13px;opacity:.9">Agencia de viajes al pasado — Proyecto educativo</div>
     </div>
   </header>
 
   <!-- NAV -->
-  <nav class="topnav" role="navigation" aria-label="Navegación principal">
-    <a href="#" onclick="openSection('inicio');return false;">Inicio</a>
-    <a href="#" onclick="openSection('galeria');return false;">Galería</a>
-    <a href="#" onclick="openSection('info');return false;">Información</a>
-    <a href="#" onclick="openSection('juegos');return false;">Juegos</a>
-    <a href="#" onclick="openSection('reservar');return false;">Reservar</a>
+  <nav class="topnav" aria-label="Menú principal">
+    <a href="#inicio" onclick="scrollTo('inicio');return false;">Inicio</a>
+    <a href="#info" onclick="scrollTo('info');return false;">Información</a>
+    <a href="#galeria" onclick="scrollTo('galeria');return false;">Galería</a>
+    <a href="#juegos" onclick="scrollTo('juegos');return false;">Juegos</a>
+    <a href="#reservas" onclick="scrollTo('reservas');return false;">Reservas</a>
   </nav>
 
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="slider" id="heroSlider">
+      <!-- Sustituye por images/xxx.jpg si subes tus fotos -->
+      <img class="slide active" src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="Océano antiguo - Cámbrico">
+      <img class="slide" src="https://images.pexels.com/photos/159051/sea-ocean-horizon-sky-159051.jpeg" alt="Mar primitivo">
+      <img class="slide" src="https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg" alt="Investigadores en campo">
+      <img class="slide" src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg" alt="Paisaje marino antiguo">
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="inner">
+      <div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <div class="logo" id="logoHero">Cv</div>
+          <div>
+            <div class="title">Cronoviajes</div>
+            <div class="subtitle">Descubre el pasado, vive el origen</div>
+          </div>
+        </div>
+
+        <p style="margin-top:18px;color:rgba(255,255,255,0.95)">
+          Somos una agencia que organiza viajes temporales al período Cámbrico. Según el guion del proyecto (trabajo escolar), los viajes se describen como supervisados por paleontólogos y geólogos, con itinerarios educativos en ecosistemas marinos del pasado.
+        </p>
+
+        <div class="cta">
+          <button class="btn" id="btnReserve">Reservar viaje temporal</button>
+          <button class="btn secondary" id="btnContrast">Alternar contraste</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" aria-hidden="true">
+          <h4 style="margin:0 0 8px;">Próximas salidas</h4>
+          <p style="margin:0 0 8px;">Salidas diarias para grupos reducidos y visitas escolares. Incluye briefing científico y guía.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <div style="background:#eaf9ff;padding:8px 12px;border-radius:8px;font-weight:700;color:var(--deep)">Cámbrico Explorador</div>
+            <div style="background:#fff3d6;padding:8px 12px;border-radius:8px;font-weight:700;color:var(--deep)">Cámbrico Premium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main>
-    <!-- HERO / INICIO -->
-    <section id="inicio" class="hero panel" role="region" aria-labelledby="inicioTitle">
-      <div class="slider" id="slider">
-        <!-- Slideshow: 4 imágenes enlazadas -->
-        <div class="slide active" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/99/Cambrian_ocean_life.jpg');" aria-hidden="false"></div>
-        <div class="slide" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/01/Hallucigenia_sparsa_Burgess_Shale.png');" aria-hidden="true"></div>
-        <div class="slide" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg');" aria-hidden="true"></div>
-        <div class="slide" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/96/Opabinia_regalis.png');" aria-hidden="true"></div>
-      </div>
+    <!-- INFORMACIÓN -->
+    <section id="info" class="panel">
+      <h2 class="section-title">Información científica — Período Cámbrico (ampliada)</h2>
 
-      <div class="overlay" aria-hidden="true"></div>
+      <p class="muted">El Cámbrico (aprox. 541–485 Ma) se caracteriza por una rápida diversificación morfológica conocida como la <strong>Explosión Cámbrica</strong>. A continuación tienes información útil, presentada de manera clara para tu trabajo del instituto.</p>
 
-      <div class="inner">
-        <div>
-          <h2 class="title" id="inicioTitle">Viaja al Cámbrico con Cronoviajes</h2>
-          <div class="subtitle">Experiencias científicas dirigidas</div>
-          <p>Te ofrecemos viajes controlados por cápsulas blindadas al océano del Cámbrico — observación de fauna, clases de campo con paleontólogos y registro de fósiles excepcionales. (Sitio simulado para proyecto escolar.)</p>
+      <h3 style="margin-top:12px">Geología y paleogeografía</h3>
+      <ul>
+        <li>Grandes plataformas epicontinentales y mares someros: ambientes clave para la vida marina.</li>
+        <li>Placas tectónicas: microplacas y fragmentos continentales como Laurentia, Baltica y Gondwana.</li>
+        <li>Sedimentación rápida y cuencas anóxicas favorecieron la preservación de tejidos blandos en yacimientos como Burgess Shale y Chengjiang.</li>
+      </ul>
 
-          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn" onclick="openSection('reservar')">Reservar ahora</button>
-            <button class="btn secondary" id="toggleContrast">Contraste</button>
-            <div style="align-self:center;color:rgba(255,255,255,0.9);margin-left:8px;font-size:13px">Atajos: <span class="kbd">1</span>=Recolector <span class="kbd">2</span>=Memoria</div>
-          </div>
-        </div>
+      <h3 style="margin-top:12px">Clima y química oceánica</h3>
+      <ul>
+        <li>Predominio de condiciones tipo invernadero; temperaturas globales relativamente cálidas.</li>
+        <li>Estratificación vertical de la columna de agua: capas superficiales oxigenadas y fondos locales anóxicos.</li>
+        <li>Niveles más altos de CO₂ comparados con la era moderna; concentración de nutrientes elevada en plataformas someras.</li>
+      </ul>
 
-        <div>
-          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));padding:14px;border-radius:12px;color:#fff">
-            <strong>Próximas salidas</strong>
-            <p style="margin-top:8px">Tours diarios en grupo reducido. Programas educativos para colegios.</p>
-            <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
-              <div style="background:#eaf9ff;padding:8px 10px;border-radius:8px;font-weight:700;color:var(--text-dark)">Explorador</div>
-              <div style="background:#fff3d6;padding:8px 10px;border-radius:8px;font-weight:700;color:var(--text-dark)">Premium</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3 style="margin-top:12px">Biodiversidad y fauna destacada</h3>
+      <ul>
+        <li><strong>Trilobites:</strong> artrópodos con exoesqueleto mineralizado y ojos compuestos; excelentes marcadores estratigráficos.</li>
+        <li><strong>Anomalocaris:</strong> depredador ápice móvil con apéndices frontales especializados.</li>
+        <li><strong>Pikaia:</strong> cordado primitivo importante en la historia evolutiva de los vertebrados.</li>
+        <li><strong>Hallucigenia y Opabinia:</strong> ejemplos de morfologías únicas que muestran la experimentación evolutiva del Cámbrico.</li>
+        <li><strong>Filtradores bentónicos:</strong> braquiópodos, esponjas y briozoos formaron comunidades fijas en el fondo marino.</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Fósiles y yacimientos clave</h3>
+      <ul>
+        <li><strong>Burgess Shale (Canadá)</strong>: conservación excepcional de tejidos blandos; importante para reconstruir anatomía y ecología.</li>
+        <li><strong>Chengjiang (China)</strong>: otro yacimiento de conservación excepcional; aporta datos complementarios al Burgess Shale.</li>
+        <li><strong>Small Shelly Fauna</strong>: conjunto de estructuras mineralizadas pequeñas que aparecen al inicio del Cámbrico.</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Métodos de estudio</h3>
+      <ul>
+        <li>Datación radiométrica (U-Pb, Pb-Pb) para establecer edades absolutas.</li>
+        <li>Tomografía (micro-CT), SEM y técnicas de imagen para estudiar detalles morfológicos.</li>
+        <li>Análisis paleoecológicos y modelos de redes tróficas para reconstruir interacciones entre especies.</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Curiosidades útiles para exposición</h3>
+      <ul>
+        <li>La Explosión Cámbrica fue un periodo geológico relativamente corto (a escala geológica) que dio lugar a una explosión de innovación corporal.</li>
+        <li>Muchas formas experimentales del Cámbrico no dejaron descendencia directa; otras sí, y dieron origen a linajes que perduran.</li>
+        <li>El estudio de estos fósiles ayuda a comprender la evolución temprana de órganos sensoriales, locomoción y alimentación.</li>
+      </ul>
     </section>
 
     <!-- GALERÍA -->
-    <section id="galeria" class="panel" style="display:none;opacity:0;transform:translateY(30px);" role="region" aria-labelledby="galTitle">
-      <h2 class="section-title" id="galTitle">Galería — Fósiles & Reconstrucciones</h2>
-      <p class="muted">Imágenes públicas (Wikimedia / Pexels) de fósiles y reconstrucciones del Cámbrico — haz clic para ampliar.</p>
-      <div class="gallery" id="galleryGrid" aria-live="polite">
-        <!-- Lista amplia de imágenes públicas -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg" alt="Marrella">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Pikaia_gracilens_Burgess_Shale.png" alt="Pikaia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Hallucigenia_sparsa_Burgess_Shale.png" alt="Hallucigenia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Opabinia_regalis.png" alt="Opabinia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Wiwaxia_fieldensis.jpg" alt="Wiwaxia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Habelia_optata.jpg" alt="Habelia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Leanchoilia_illustris.jpg" alt="Leanchoilia">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Chengjiang_fossil_Diangyi.jpg" alt="Fósil Chengjiang">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/EarlyCambrian_fossil_Marinella.jpg" alt="Small Shelly Fossils">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Burgess_Shale_trilobite_and_associates.jpg" alt="Burgess Shale">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Pikaia_ventral2006.jpg" alt="Pikaia detalle">
-        <img src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="Océano primitivo - ilustración">
-        <img src="https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg" alt="Investigadores (reconstrucción)">
-        <img src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg" alt="Paisaje marino antiguo">
+    <section id="galeria" class="panel">
+      <h2 class="section-title">Galería del Cámbrico</h2>
+      <p class="muted">Haz clic para ampliar. Para usar tus fotos ponlas en la carpeta <code>images/</code> y nómbralas en minúsculas (ej.: <code>trilobite.jpg</code>).</p>
+      <div class="gallery" id="galleryGrid">
+        <!-- Rutas locales (preferidas) -->
+        <img src="images/trilobite.jpg" alt="Trilobite" onerror="this.style.display='none'">
+        <img src="images/anomalocaris.jpg" alt="Anomalocaris" onerror="this.style.display='none'">
+        <img src="images/opabinia.jpg" alt="Opabinia" onerror="this.style.display='none'">
+        <img src="images/pikaia.jpg" alt="Pikaia" onerror="this.style.display='none'">
+        <!-- Fallback público -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris (Wikimedia)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite (Wikimedia)">
       </div>
     </section>
 
-    <!-- INFORMACIÓN EXTENSA -->
-    <section id="info" class="panel" style="display:none;opacity:0;transform:translateY(30px);" role="region" aria-labelledby="infoTitle">
-      <h2 class="section-title" id="infoTitle">Información científica ampliada — El Cámbrico</h2>
-
-      <p class="muted">A continuación tienes una recopilación amplia y ordenada de información útil para tu trabajo del instituto.</p>
-
-      <h3>1. Cronología y contexto</h3>
-      <p>El Cámbrico se extiende aproximadamente desde <strong>541</strong> hasta <strong>485 millones de años</strong> atrás. Se considera el inicio de la Era Paleozoica. En la escala temporal geológica es un intervalo relativamente corto en el que se produjo una gran diversificación biológica conocida como la <strong>Explosión Cámbrica</strong>.</p>
-
-      <h3>2. Geología y paleogeografía</h3>
-      <ul>
-        <li>Los continentes modernos no existían como ahora; predominaban plataformas marinas y archipiélagos sobre grandes plataformas someras.</li>
-        <li>Placas importantes: <em>Laurentia</em>, <em>Baltica</em>, <em>Siberia</em> y el gran <em>Gondwana</em>.</li>
-        <li>Las cuencas epicontinentales eran extensas: favorables para la sedimentación y preservación de fósiles.</li>
-      </ul>
-
-      <h3>3. Clima y química oceánica</h3>
-      <ul>
-        <li>Ambiente generalmente cálido; concentraciones altas de CO₂ comparadas con la era moderna.</li>
-        <li>Estratificación oceánica: capas superficiales oxigenadas y fondos locales anóxicos que favorecieron la preservación de tejidos blandos.</li>
-        <li>Niveles de nutrientes elevaban la productividad primaria en plataformas someras.</li>
-      </ul>
-
-      <h3>4. Biodiversidad - organismos clave</h3>
-      <p>El Cámbrico introdujo una amplia variedad de planes corporales y modos de vida:</p>
-      <ul>
-        <li><strong>Trilobites:</strong> artrópodos con exoesqueleto calcáreo y ojos compuestos; su radiación es una de las más documentadas.</li>
-        <li><strong>Anomalocaris:</strong> depredador ápice, pruebas de cadenas tróficas complejas.</li>
-        <li><strong>Pikaia:</strong> cordado primitivo; importante por su relación con los primeros vertebrados.</li>
-        <li><strong>Wiwaxia, Hallucigenia, Opabinia:</strong> ejemplos de morfologías experimentales del Cámbrico.</li>
-        <li><strong>Braquiópodos, esponjas, briozoos:</strong> filtradores dominantes en fondos someros.</li>
-      </ul>
-
-      <h3>5. Yacimientos con conservación excepcional</h3>
-      <ul>
-        <li><strong>Burgess Shale</strong> (Canadá): fósiles con tejidos blandos, clave para reconstruir anatomías.</li>
-        <li><strong>Chengjiang</strong> (China): registro del Cámbrico inferior con preservación de partes blandas.</li>
-        <li><strong>Sirius Passet</strong> (Groenlandia): aporta información complementaria.</li>
-      </ul>
-
-      <h3>6. Métodos de estudio</h3>
-      <ul>
-        <li>Datación radiométrica (U-Pb, Pb-Pb) para edades absolutas.</li>
-        <li>Tomografía, SEM, análisis de microestructuras y reconstrucción 3D para anatomía.</li>
-        <li>Modelos paleoecológicos, análisis de isótopos y bioestadística para entender ecosistemas.</li>
-      </ul>
-
-      <h3>7. Importancia evolutiva</h3>
-      <p>El evento cámbrico sentó las bases para la evolución de órganos sensoriales complejos, locomoción activa y relaciones tróficas que permiten ecosistemas más estructurados.</p>
-
-      <h3>8. Datos útiles para tu trabajo</h3>
-      <ul>
-        <li>Fecha de inicio de la Explosión Cámbrica ~ <strong>541 Ma</strong>.</li>
-        <li>La duración en millones de años: el Cámbrico dura ~56 Ma (541–485 Ma).</li>
-        <li>Yacimientos con tejidos blandos son cruciales para entender anatomía y comportamiento.</li>
-      </ul>
-
-      <h3>9. Referencias y recursos</h3>
-      <p class="muted">Wikipedias, artículos sobre Burgess Shale y Chengjiang, libros de paleobiología y recursos educativos de museos son buenas fuentes para citar (ver el manual de tu centro para formato de citas).</p>
-    </section>
-
     <!-- JUEGOS -->
-    <section id="juegos" class="panel" style="display:none;opacity:0;transform:translateY(30px);" role="region" aria-labelledby="juegosTitle">
-      <h2 class="section-title" id="juegosTitle">Zona de juegos</h2>
-      <p class="muted">Pulsa INICIAR para empezar cada experiencia — los juegos no arrancan solos.</p>
+    <section id="juegos" class="panel">
+      <h2 class="section-title">Zona de juegos</h2>
+      <p class="muted">Tres experiencias interactivas. Pulsa en INICIAR para comenzar cada juego — ninguno arranca por sí solo.</p>
 
-      <div class="games">
-        <!-- RECOLECTOR -->
-        <div class="game" aria-label="Recolector del Tiempo">
-          <h3>🛸 Recolector del Tiempo (Avión atrapapalabras)</h3>
-          <p>Mueve el avión con las flechas ← →. Atrapa palabras relacionadas con el Cámbrico y evita las equivocadas. Pulsa "Iniciar Recolector".</p>
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-            <button class="btn" id="startCollector">Iniciar Recolector</button>
-            <button class="btn secondary" id="stopCollector">Parar / Reiniciar</button>
-            <div style="margin-left:auto;font-weight:700;color:var(--green-2)">Puntos: <span id="collectorScore">0</span></div>
+      <div class="games" style="margin-top:12px">
+
+        <!-- QUIZ -->
+        <div class="game" id="quizGame">
+          <h3>Quiz avanzado</h3>
+          <div id="quizArea"></div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <button class="btn" id="startQuiz">Iniciar Quiz</button>
+            <button class="btn secondary" id="checkQuiz">Comprobar</button>
+            <div style="margin-left:auto;font-weight:700;color:var(--deep)" id="quizState">Estado: inactivo</div>
           </div>
-          <canvas id="collectorCanvas" width="640" height="260" aria-label="Canvas Recolector"></canvas>
         </div>
 
-        <!-- MEMORIA -->
-        <div class="game" aria-label="Memoria fósil">
-          <h3>🧩 Memoria Fósil</h3>
-          <p>Empareja imágenes idénticas (8 pares). Pulsa "Iniciar Memoria".</p>
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-            <button class="btn" id="startMemory">Iniciar Memoria</button>
-            <button class="btn secondary" id="resetMemory">Reiniciar</button>
-            <div style="margin-left:auto;font-weight:700;color:var(--green-2)">Aciertos: <span id="memoryHits">0</span></div>
+        <!-- SUBMARINO -->
+        <div class="game" id="subGame">
+          <h3>Submarino Temporal</h3>
+          <canvas id="subCanvas" width="640" height="260" aria-label="Submarino Temporal"></canvas>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <button class="btn" id="startSub">Iniciar Submarino</button>
+            <button class="btn secondary" id="resetSub">Parar / Reiniciar</button>
+            <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntuación: <span id="subScore">0</span></div>
           </div>
-          <div id="memoryBoard"></div>
         </div>
+
+        <!-- PLANE -->
+        <div class="game" id="planeGame">
+          <h3>Vuelo del Tiempo — Avión atrapapalabras</h3>
+          <canvas id="planeCanvas" width="640" height="260" aria-label="Vuelo del Tiempo"></canvas>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <button class="btn" id="startPlane">Iniciar Vuelo</button>
+            <button class="btn secondary" id="stopPlane">Parar / Reiniciar</button>
+            <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntos: <span id="planeScore">0</span></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- RESERVAS -->
-    <section id="reservar" class="panel" style="display:none;opacity:0;transform:translateY(30px);" role="region" aria-labelledby="reservTitle">
-      <h2 class="section-title" id="reservTitle">Reservas — Formulario (simulado)</h2>
-      <p class="muted">Selecciona tu entrada y salida. Las reservas son simuladas para el proyecto escolar.</p>
+    <section id="reservas" class="panel">
+      <h2 class="section-title">Reservas — Calendario interactivo</h2>
+      <p class="muted">Selecciona fecha de entrada y salida (no se permiten fechas pasadas).</p>
 
-      <form id="bookingForm" onsubmit="return handleBooking(event)" style="display:grid;gap:10px;max-width:720px">
-        <label>Fecha de entrada: <input type="date" id="dateIn" required></label>
-        <label>Fecha de salida: <input type="date" id="dateOut" required></label>
-        <label>Nombre completo: <input type="text" id="fullName" required></label>
-        <label>Email: <input type="email" id="email" required></label>
-        <label>Número de viajeros: <input type="number" id="numPeople" min="1" max="20" value="1" required></label>
-        <label>Comentarios: <textarea id="notes"></textarea></label>
-        <div style="display:flex;gap:8px">
-          <button class="btn" type="submit">Enviar Reserva</button>
-          <button class="btn secondary" type="button" onclick="document.getElementById('bookingForm').reset()">Limpiar</button>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+        <div class="calendar" id="calendarWidget"></div>
+
+        <div style="flex:1;min-width:320px">
+          <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.06)">
+            <h3>Solicitud de reserva</h3>
+            <div style="margin-top:8px">
+              <div class="muted">Entrada: <strong id="selStart">—</strong></div>
+              <div class="muted">Salida: <strong id="selEnd">—</strong></div>
+              <div class="muted">Duración: <strong id="selDays">—</strong> noche(s)</div>
+            </div>
+
+            <form id="bookingForm" style="margin-top:12px">
+              <label class="muted">Nombre</label>
+              <input id="bookName" placeholder="Tu nombre" required>
+              <label class="muted">Email</label>
+              <input id="bookEmail" type="email" placeholder="correo@ejemplo.com" required>
+              <label class="muted">Teléfono</label>
+              <input id="bookPhone" placeholder="+34 ...">
+              <label class="muted">Comentarios</label>
+              <textarea id="bookNotes" placeholder="Alergias, observaciones..."></textarea>
+              <button class="btn" type="submit" style="margin-top:8px">Enviar reserva</button>
+              <p id="bookingMsg" class="muted" style="margin-top:8px"></p>
+            </form>
+          </div>
         </div>
-        <p id="bookingMsg" class="muted"></p>
-      </form>
+      </div>
+
+      <p class="muted" style="margin-top:10px">Nota: Esta web se ha creado como prototipo para un trabajo de instituto; las reservas son simuladas y la presentación interpreta que la agencia vende viajes al pasado (según instrucciones del proyecto).</p>
     </section>
 
   </main>
 
-  <footer role="contentinfo">
-    <div style="max-width:var(--maxw);margin:0 auto">
-      <strong>Cronoviajes S.A.</strong> — © <span id="year"></span> — “Descubre el pasado, vive el origen.”
+  <footer>
+    <div style="max-width:var(--maxw);margin:0 auto;padding:6px">
+      <strong>Cronoviajes S.A.</strong> — © <span id="year"></span> — Descubre el pasado, vive el origen
     </div>
   </footer>
 
-  <!-- SCRIPTS: slider, gallery lightbox, juegos, reserva -->
+  <!-- =========================
+       SCRIPTS (slider, games, calendar, gallery)
+       ========================= -->
   <script>
-  // Helper short selectors
+  // UTIL helpers
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Section open/hide
-  function openSection(id){
-    const sections = document.querySelectorAll('main > section');
-    sections.forEach(s=>{
-      s.style.display = 'none';
-      s.style.opacity = 0;
-      s.style.transform = 'translateY(30px)';
-    });
+  function scrollTo(id){
     const el = document.getElementById(id);
-    if(!el) return;
-    el.style.display = 'block';
-    setTimeout(()=> { el.style.opacity = 1; el.style.transform = 'translateY(0)'; }, 40);
-    el.scrollIntoView({behavior:'smooth', block:'start'});
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
   }
-  // default
-  openSection('inicio');
+  $('#btnReserve').addEventListener('click', ()=> scrollTo('reservas'));
 
   /* -------------------------
-     SLIDER: cambia cada 3s, pausa on hover
+     HERO SLIDER (3s) - robust init on load
      ------------------------- */
-  (function initSlider(){
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    let idx = 0, timer=null;
-    function show(i){
-      slides.forEach((s,j)=> s.classList.toggle('active', i===j));
+  (function heroSlider(){
+    let slides, index = 0, timer;
+    function init(){
+      slides = Array.from(document.querySelectorAll('.hero .slide'));
+      if(slides.length === 0) return;
+      slides.forEach((s,i)=> s.classList.toggle('active', i===0));
+      timer = setInterval(()=> { index = (index+1)%slides.length; slides.forEach((s,i)=> s.classList.toggle('active', i===index)); }, 3000);
+      const hero = document.querySelector('.hero');
+      hero.addEventListener('mouseenter', ()=> clearInterval(timer));
+      hero.addEventListener('mouseleave', ()=> timer = setInterval(()=> { index = (index+1)%slides.length; slides.forEach((s,i)=> s.classList.toggle('active', i===index)); }, 3000));
+      $('#btnContrast').addEventListener('click', ()=> { hero.classList.toggle('light'); const isLight = hero.classList.contains('light'); $$('.title,.subtitle,.logo').forEach(el=> el.style.color = isLight ? '#012' : '#fff';); });
     }
-    function start(){
-      timer = setInterval(()=> { idx = (idx+1)%slides.length; show(idx); }, 3000);
-    }
-    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-    window.addEventListener('load', start);
-    const slider = $('#slider');
-    slider.addEventListener('mouseenter', stop);
-    slider.addEventListener('mouseleave', ()=> { if(!timer) start(); });
-    // expose
-    window.cronoSlider = { start, stop, show };
+    window.addEventListener('load', init);
   })();
-
-  // Toggle contrast quick effect for hero
-  $('#toggleContrast').addEventListener('click', ()=>{
-    const hero = document.querySelector('.hero');
-    hero.classList.toggle('light');
-    const light = hero.classList.contains('light');
-    document.querySelectorAll('.hero .title,.hero .subtitle').forEach(e=> e.style.color = light ? '#012' : '#fff');
-  });
 
   /* -------------------------
      GALLERY LIGHTBOX
@@ -378,301 +375,562 @@
   (function galleryLightbox(){
     const grid = document.getElementById('galleryGrid');
     if(!grid) return;
-    grid.addEventListener('click', (e) => {
-      if(e.target.tagName !== 'IMG') return;
-      const overlay = document.createElement('div');
-      overlay.style.position='fixed'; overlay.style.inset=0; overlay.style.background='rgba(0,0,0,0.9)'; overlay.style.display='flex';
-      overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=9999; overlay.style.cursor='zoom-out';
-      const img = document.createElement('img'); img.src = e.target.src; img.alt = e.target.alt || ''; img.style.maxWidth='94%'; img.style.maxHeight='94%'; img.style.borderRadius='8px';
-      overlay.appendChild(img);
-      overlay.addEventListener('click', ()=> overlay.remove());
-      document.body.appendChild(overlay);
+    grid.addEventListener('click', (e)=>{
+      if(e.target && e.target.tagName === 'IMG'){
+        const src = e.target.src, alt = e.target.alt || '';
+        const overlay = document.createElement('div');
+        overlay.style.position='fixed'; overlay.style.inset=0; overlay.style.background='rgba(0,0,0,0.9)';
+        overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center';
+        overlay.style.zIndex=9999; overlay.style.cursor='zoom-out';
+        const img = document.createElement('img'); img.src=src; img.alt=alt; img.style.maxWidth='94%'; img.style.maxHeight='94%'; img.style.borderRadius='8px';
+        overlay.appendChild(img);
+        overlay.addEventListener('click', ()=> overlay.remove());
+        document.body.appendChild(overlay);
+      }
     });
   })();
 
   /* -------------------------
-     GAME 1: Recolector del Tiempo (plane)
-     - controlled start/stop
-     - arrow keys left/right
+     QUIZ module
      ------------------------- */
-  (function collector(){
-    const canvas = document.getElementById('collectorCanvas');
+  (function Quiz(){
+    const qlist = [
+      {q:"¿Hace cuántos millones de años comenzó el Cámbrico?", a:"541"},
+      {q:"Nombre de un depredador del Cámbrico", a:"anomalocaris"},
+      {q:"Nombre de un cordado primitivo", a:"pikaia"},
+      {q:"Yacimiento en Canadá con conservación excepcional", a:"burgess"},
+      {q:"Organismo con cinco ojos", a:"opabinia"}
+    ];
+    let active=false;
+    const area = $('#quizArea');
+    const status = $('#quizState');
+
+    function build(){
+      area.innerHTML=''; active=true; status.textContent='Estado: activo';
+      qlist.forEach((it,i)=>{
+        const row = document.createElement('div'); row.style.marginBottom='10px';
+        row.innerHTML = `<strong>${i+1}.</strong> ${it.q}<div style="margin-top:6px"><input id="q_${i}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6f6f6"></div>`;
+        area.appendChild(row);
+      });
+    }
+    $('#startQuiz').addEventListener('click', ()=> build());
+    $('#checkQuiz').addEventListener('click', ()=>{
+      if(!active){ status.textContent = 'Estado: inactivo (pulsa Iniciar)'; return; }
+      let score=0;
+      qlist.forEach((it,i)=>{
+        const v = (document.getElementById('q_'+i).value || '').toLowerCase();
+        if(it.a === '541'){ if(v.includes('541')) score++; }
+        else if(it.a === 'burgess'){ if(v.includes('burgess') || v.includes('canad')) score++; }
+        else if(v && v.includes(it.a)) score++;
+      });
+      status.textContent = `Resultado: ${score} / ${qlist.length}`;
+      active=false;
+    });
+  })();
+
+  /* -------------------------
+     SUBMARINO - canvas interactive
+     ------------------------- */
+  (function Submarine(){
+    const canvas = document.getElementById('subCanvas');
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
     let dpr = window.devicePixelRatio || 1;
     function resize(){
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const r = canvas.getBoundingClientRect();
+      canvas.width = r.width * dpr;
+      canvas.height = r.height * dpr;
       ctx.setTransform(dpr,0,0,dpr,0,0);
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
 
-    const vocab = [
-      { t: 'Trilobite', ok:true },
-      { t: 'Anomalocaris', ok:true },
-      { t: 'Pikaia', ok:true },
-      { t: 'Opabinia', ok:true },
-      { t: 'Hallucigenia', ok:true },
-      { t: 'Dinosaurio', ok:false },
-      { t: 'Teléfono', ok:false },
-      { t: 'Coche', ok:false },
-      { t: 'Braquiópodo', ok:true },
-      { t: 'Esponja', ok:true }
-    ];
-
-    let state = {
-      running:false,
-      player: { x: 300, y: 220, w: 48, h: 18 },
-      vx: 0,
-      objects: [],
-      tick:0,
-      score:0,
-      lives:3,
-      raf: null
-    };
+    let state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, pointerY:null, raf: null };
 
     function spawn(){
-      const p = vocab[Math.floor(Math.random()*vocab.length)];
-      const x = 20 + Math.random()*(canvas.width/dpr - 40);
-      state.objects.push({ x, y: -10, vy: 1 + Math.random()*1.8, t: p.t, ok: p.ok });
+      const pool = [
+        {label:'Trilobite', ok:true},
+        {label:'Anomalocaris', ok:true},
+        {label:'Pikaia', ok:true},
+        {label:'Opabinia', ok:true},
+        {label:'Teléfono', ok:false},
+        {label:'Coche', ok:false},
+        {label:'Botella', ok:false}
+      ];
+      const pick = pool[Math.floor(Math.random()*pool.length)];
+      state.items.push({ x: canvas.width/dpr + 20, y: 20 + Math.random()*(canvas.height/dpr - 80), vx: -1.6 - Math.random()*1.6, r: 10 + Math.random()*14, label: pick.label, ok: pick.ok });
     }
 
-    function update(){
-      state.player.x += state.vx;
-      if(state.player.x < 0) state.player.x = 0;
-      if(state.player.x > canvas.width/dpr - state.player.w) state.player.x = canvas.width/dpr - state.player.w;
-
-      if(Math.random() < 0.03) spawn();
-
-      for(let i = state.objects.length -1; i >= 0; i--){
-        const o = state.objects[i];
-        o.y += o.vy;
-        if(o.y > state.player.y - 6 && o.y < state.player.y + state.player.h + 6 && o.x > state.player.x - 20 && o.x < state.player.x + state.player.w + 20){
-          if(o.ok) state.score += 10; else state.lives = Math.max(0, state.lives - 1);
-          state.objects.splice(i,1);
-          updateHUD();
-        } else if(o.y > canvas.height/dpr + 20){
-          state.objects.splice(i,1);
-        }
-      }
-    }
-
-    function draw(){
-      const H = canvas.height/dpr;
-      const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#e6fbff'); g.addColorStop(1,'#d9f3ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
-      ctx.fillStyle = '#cfeef8'; ctx.fillRect(0,H-18,canvas.width/dpr,18);
-
-      // player
-      ctx.fillStyle = '#005f7f';
-      ctx.fillRect(state.player.x, state.player.y, state.player.w, state.player.h);
-      ctx.fillStyle = '#00b4d8';
-      ctx.fillRect(state.player.x+6, state.player.y+4, state.player.w-12, state.player.h-8);
-
-      // objects
-      ctx.font = '13px Poppins';
-      for(const o of state.objects){
-        ctx.fillStyle = o.ok ? '#2e7d32' : '#c62828';
-        ctx.fillText(o.t, o.x, o.y);
-      }
-
-      // HUD
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins';
-      ctx.fillText('Puntuación: ' + state.score, 12, 20);
-      ctx.fillText('Vidas: ' + state.lives, canvas.width/dpr - 86, 20);
+    function drawBackground(){
+      const H = canvas.height/dpr, W = canvas.width/dpr;
+      const g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,'#e6fbff'); g.addColorStop(1,'#d9f3ff');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle = '#cfeef8'; ctx.fillRect(0,H-18,W,18);
     }
 
     function loop(){
       if(!state.running) return;
       state.tick++;
-      update();
-      draw();
-      if(state.lives <= 0){
-        state.running = false;
-        cancelAnimationFrame(state.raf);
-        alert('Juego terminado. Puntuación: ' + state.score);
-        updateHUD();
-        return;
+      if(state.tick % state.spawnRate === 0) spawn();
+
+      drawBackground();
+
+      // draw player (sub)
+      const p = state.player;
+      ctx.fillStyle = '#005f7f';
+      ctx.fillRect(p.x, p.y, p.w, p.h);
+      ctx.fillStyle = '#00b4d8';
+      ctx.fillRect(p.x+8, p.y+6, p.w-16, p.h-12);
+
+      // draw items
+      for(let i=state.items.length-1;i>=0;i--){
+        const it = state.items[i];
+        it.x += it.vx;
+        ctx.fillStyle = it.ok ? 'rgba(42,157,143,0.95)' : 'rgba(214,40,40,0.95)';
+        ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = '12px Poppins'; ctx.fillText(it.label, it.x - it.r, it.y - it.r - 6);
+
+        // collision simple
+        if(it.x < p.x + p.w && it.x > p.x && it.y > p.y && it.y < p.y + p.h){
+          if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5);
+          state.items.splice(i,1);
+          document.getElementById('subScore').textContent = state.score;
+        } else if(it.x < -40) state.items.splice(i,1);
       }
+
+      // pointer follow
+      if(state.pointerY !== null){
+        p.y += (state.pointerY - p.y - p.h/2) * 0.12;
+        p.y = Math.max(6, Math.min(p.y, canvas.height/dpr - p.h - 6));
+      }
+
+      // hud
+      ctx.fillStyle = '#003a55'; ctx.font = '13px Poppins';
+      ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 16);
+
       state.raf = requestAnimationFrame(loop);
     }
 
-    function updateHUD(){
-      document.getElementById('collectorScore').textContent = state.score;
-    }
-
-    // keyboard control
-    const keys = {};
-    window.addEventListener('keydown', (e)=> {
-      keys[e.key] = true;
-      if(e.key === 'ArrowLeft') state.vx = -5;
-      if(e.key === 'ArrowRight') state.vx = 5;
+    // events
+    canvas.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      state.pointerY = e.clientY - r.top;
     });
-    window.addEventListener('keyup', (e)=> {
-      keys[e.key] = false;
-      if(e.key === 'ArrowLeft' || e.key === 'ArrowRight') state.vx = 0;
-    });
+    canvas.addEventListener('touchmove', e => {
+      const r = canvas.getBoundingClientRect();
+      if(e.touches && e.touches[0]) state.pointerY = e.touches[0].clientY - r.top;
+      e.preventDefault();
+    }, { passive:false });
 
-    // start / stop
-    $('#startCollector').addEventListener('click', ()=>{
+    // controls
+    $('#startSub').addEventListener('click', ()=>{
       resize();
-      state.running = true; state.objects = []; state.tick = 0; state.score = 0; state.lives = 3;
-      state.player.x = canvas.width/dpr/2 - state.player.w/2;
-      updateHUD();
+      state.running = true; state.tick=0; state.items = []; state.score = 0; document.getElementById('subScore').textContent = 0;
       if(state.raf) cancelAnimationFrame(state.raf);
       loop();
     });
-    $('#stopCollector').addEventListener('click', ()=>{
+    $('#resetSub').addEventListener('click', ()=>{
       state.running = false;
-      if(state.raf) cancelAnimationFrame(state.raf);
-      resize();
+      state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, pointerY:null, raf:null };
+      cancelAnimationFrame(state.raf);
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins';
-      ctx.fillText('Pulsa "Iniciar Recolector" para comenzar.', 12, 22);
-      document.getElementById('collectorScore').textContent = 0;
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
+      document.getElementById('subScore').textContent = 0;
     });
 
     // initial draw
-    window.addEventListener('load', ()=>{
+    (function init(){
       resize();
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins';
-      ctx.fillText('Pulsa "Iniciar Recolector" para comenzar.', 12, 22);
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
+    })();
+
+  })();
+
+  /* -------------------------
+     PLANE GAME - Avión atrapapalabras
+     ------------------------- */
+  (function Plane(){
+    const canvas = document.getElementById('planeCanvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let dpr = window.devicePixelRatio || 1;
+    function resize(){ const r = canvas.getBoundingClientRect(); canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
+
+    let state = {
+      running:false,
+      player:{x:320,y:200,w:44,h:20},
+      words:[],
+      tick:0,
+      score:0,
+      mouseX:null,
+      currentQ:null,
+      raf:null
+    };
+
+    const questions = [
+      { q:"Depredador del Cámbrico", correct:["anomalocaris","opabinia"] },
+      { q:"Cordado primitivo", correct:["pikaia"] },
+      { q:"Esqueleto típico", correct:["trilobite","braquiópodo","small shelly"] },
+      { q:"Organismo con cinco ojos", correct:["opabinia"] }
+    ];
+
+    const pool = ['trilobite','anomalocaris','pikaia','dinosaurio','alga','opabinia','braquiópodo','fósil','cámbrico','vida','pez','estrella','teléfono','coche'];
+
+    function spawnWord(){
+      const w = pool[Math.floor(Math.random()*pool.length)];
+      state.words.push({ x: 30 + Math.random()*(canvas.width/dpr-60), y: -20, vy: 1 + Math.random()*1.6, text: w });
+    }
+
+    function drawBG(){
+      const H = canvas.height/dpr;
+      const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fff7f0'); g.addColorStop(1,'#e8f7ff');
+      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
+    }
+
+    function loop(){
+      if(!state.running) return;
+      state.tick++;
+      if(state.tick % 60 === 0) spawnWord();
+      drawBG();
+
+      ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins';
+      ctx.fillText('Pregunta: ' + (state.currentQ?.q || '—'), 10, 20);
+
+      // draw plane
+      const pl = state.player;
+      ctx.fillStyle = '#0077b6';
+      ctx.beginPath(); ctx.moveTo(pl.x,pl.y); ctx.lineTo(pl.x-22,pl.y+16); ctx.lineTo(pl.x+22,pl.y+16); ctx.closePath(); ctx.fill();
+
+      // words
+      for(let i=state.words.length-1;i>=0;i--){
+        const it = state.words[i]; it.y += it.vy;
+        ctx.fillStyle = '#ffd166';
+        ctx.font = '13px Poppins';
+        const tw = ctx.measureText(it.text).width + 14;
+        const rx = it.x - tw/2;
+        ctx.fillRect(rx, it.y - 14, tw, 22);
+        ctx.fillStyle = '#00303a'; ctx.fillText(it.text, rx + 7, it.y + 4);
+
+        // collision detection
+        if(it.y > pl.y - 10 && it.y < pl.y + 18 && Math.abs(it.x - pl.x) < 30){
+          const correctList = state.currentQ?.correct || [];
+          const matched = correctList.some(k => it.text.includes(k));
+          if(matched) { state.score += 10; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; }
+          else { state.score = Math.max(0, state.score - 5); }
+          state.words.splice(i,1);
+          document.getElementById('planeScore').textContent = state.score;
+        } else if(it.y > canvas.height/dpr + 20) state.words.splice(i,1);
+      }
+
+      // plane movement toward mouseX
+      if(state.mouseX !== null){
+        pl.x += (state.mouseX - pl.x) * 0.12;
+        pl.x = Math.max(22, Math.min(pl.x, canvas.width/dpr - 22));
+      }
+
+      state.raf = requestAnimationFrame(loop);
+    }
+
+    // pointer events
+    canvas.addEventListener('mousemove', (e)=> {
+      const r = canvas.getBoundingClientRect(); state.mouseX = e.clientX - r.left;
+    });
+    canvas.addEventListener('touchmove', (e)=> {
+      const r = canvas.getBoundingClientRect();
+      if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left;
+      e.preventDefault();
+    }, { passive:false });
+
+    // controls
+    $('#startPlane').addEventListener('click', ()=>{
+      resize(); state.running = true; state.score = 0; state.tick = 0; state.words = []; state.currentQ = questions[Math.floor(Math.random()*questions.length)];
+      document.getElementById('planeScore').textContent = 0;
+      if(state.raf) cancelAnimationFrame(state.raf);
+      loop();
+    });
+
+    $('#stopPlane').addEventListener('click', ()=>{
+      state.running = false;
+      state = { running:false, player:{x:320,y:200,w:44,h:20}, words:[], tick:0, score:0, mouseX:null, currentQ:null, raf:null };
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawBG();
+      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
+      document.getElementById('planeScore').textContent = 0;
+    });
+
+    // initial draw
+    (function init(){
+      resize();
+      drawBG();
+      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
+    })();
+  })();
+
+  /* -------------------------
+     CALENDAR - simple interactive widget
+     ------------------------- */
+  (function Calendar(){
+    const container = document.getElementById('calendarWidget');
+    if(!container) return;
+    let selectedStart = null, selectedEnd = null;
+    const today = new Date(); today.setHours(0,0,0,0);
+    let viewYear = today.getFullYear(), viewMonth = today.getMonth();
+
+    function build(){
+      container.innerHTML = '';
+      const cal = document.createElement('div');
+
+      const header = document.createElement('div'); header.className='month';
+      const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      const title = document.createElement('div'); title.textContent = `${monthNames[viewMonth]} ${viewYear}`; title.style.fontWeight='800';
+      const prev = document.createElement('button'); prev.textContent='◀'; prev.className='btn secondary'; prev.style.padding='6px 10px';
+      const next = document.createElement('button'); next.textContent='▶'; next.className='btn secondary'; next.style.padding='6px 10px';
+      prev.onclick = ()=> { if(viewMonth===0){ viewMonth=11; viewYear--;} else viewMonth--; renderGrid(); };
+      next.onclick = ()=> { if(viewMonth===11){ viewMonth=0; viewYear++; } else viewMonth++; renderGrid(); };
+      const left = document.createElement('div'); left.appendChild(prev); left.appendChild(title);
+      const right = document.createElement('div'); right.appendChild(next);
+      header.appendChild(left); header.appendChild(right); cal.appendChild(header);
+
+      const weekdays = document.createElement('div'); weekdays.className='weekdays';
+      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; el.style.fontWeight='700'; weekdays.appendChild(el); });
+      cal.appendChild(weekdays);
+
+      const days = document.createElement('div'); days.className='days'; days.style.marginTop='8px';
+      cal.appendChild(days);
+      container.appendChild(cal);
+
+      function renderGrid(){
+        days.innerHTML = '';
+        const first = new Date(viewYear, viewMonth, 1);
+        const last = new Date(viewYear, viewMonth+1, 0);
+        const firstWeekday = (first.getDay()+6)%7; // Mon=0...Sun=6
+        for(let i=0;i<firstWeekday;i++){ const e=document.createElement('div'); e.className='weekday'; days.appendChild(e); }
+        for(let d=1; d<=last.getDate(); d++){
+          const dt = new Date(viewYear, viewMonth, d); dt.setHours(0,0,0,0);
+          const el = document.createElement('div'); el.className='day box'; el.textContent = d;
+          if(dt < today) el.classList.add('disabled'); else el.addEventListener('click', ()=> onDateClick(dt));
+          if(selectedStart && sameDay(dt, selectedStart)) el.classList.add('selected');
+          else if(selectedEnd && sameDay(dt, selectedEnd)) el.classList.add('selected');
+          else if(selectedStart && selectedEnd && dt > selectedStart && dt < selectedEnd) el.classList.add('inrange');
+          days.appendChild(el);
+        }
+      }
+      renderGrid();
+    }
+
+    function onDateClick(dt){
+      if(!selectedStart || (selectedStart && selectedEnd)){ selectedStart = dt; selectedEnd = null; }
+      else { if(dt < selectedStart){ selectedStart = dt; selectedEnd = null; } else selectedEnd = dt; }
+      updateSummary(); build();
+    }
+    function sameDay(a,b){ return a && b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', {day:'2-digit', month:'short', year:'numeric'}); }
+    function updateSummary(){ $('#selStart').textContent = selectedStart ? formatDate(selectedStart) : '—'; $('#selEnd').textContent = selectedEnd ? formatDate(selectedEnd) : '—'; if(selectedStart && selectedEnd){ const days = Math.round((selectedEnd-selectedStart)/(1000*60*60*24)); $('#selDays').textContent = days; } else $('#selDays').textContent = '—'; }
+
+    window.CronoviajesCalendar = { init: ()=> build(), getSelection: ()=> ({ start:selectedStart, end:selectedEnd, days: selectedStart && selectedEnd ? Math.round((selectedEnd-selectedStart)/(1000*60*60*24)) : null }) };
+    build(); updateSummary();
+  })();
+
+  /* -------------------------
+     BOOKING FORM (simulado)
+     ------------------------- */
+  (function Booking(){
+    const form = document.getElementById('bookingForm');
+    if(!form) return;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const sel = window.CronoviajesCalendar?.getSelection();
+      if(!sel || !sel.start || !sel.end){ document.getElementById('bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
+      const name = document.getElementById('bookName').value || 'Cliente';
+      const email = document.getElementById('bookEmail').value || '—';
+      const phone = document.getElementById('bookPhone').value || '—';
+      document.getElementById('bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
     });
   })();
 
   /* -------------------------
-     GAME 2: Memoria - tablero de 8 pares
+     MEMORIA (game simple) - uses #memoria container
      ------------------------- */
-  (function memory(){
-    const board = document.getElementById('memoryBoard');
-    const images = [
-      "https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG",
-      "https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/f/fc/Pikaia_gracilens_Burgess_Shale.png",
-      "https://upload.wikimedia.org/wikipedia/commons/0/01/Hallucigenia_sparsa_Burgess_Shale.png",
-      "https://upload.wikimedia.org/wikipedia/commons/9/96/Opabinia_regalis.png",
-      "https://upload.wikimedia.org/wikipedia/commons/b/b9/Wiwaxia_fieldensis.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/4/49/Habelia_optata.jpg"
-    ];
-
-    let tiles = [];
-    let openTiles = [];
-    let hits = 0;
-
-    function build(){
-      tiles = images.concat(images).map(src => ({ src, revealed:false, matched:false }));
-      tiles.sort(()=>Math.random()-0.5);
-      board.innerHTML = '';
-      board.style.gridTemplateColumns = 'repeat(4,100px)';
-      tiles.forEach((t, i) => {
-        const cell = document.createElement('div');
-        cell.style.width='100px'; cell.style.height='100px'; cell.style.borderRadius='8px';
-        cell.style.background='#cfefe3'; cell.style.display='flex'; cell.style.alignItems='center'; cell.style.justifyContent='center';
-        cell.style.cursor='pointer'; cell.dataset.index = i;
-        const img = document.createElement('img');
-        img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png';
-        img.style.width='62px'; img.style.height='62px';
-        cell.appendChild(img);
-        cell.addEventListener('click', ()=> onClickTile(i, cell));
-        board.appendChild(cell);
+  (function MemoryStarter(){
+    window.iniciarMemoria = function(){
+      const container = document.getElementById('memoria');
+      if(!container) return;
+      container.innerHTML = '';
+      const icons = ['🐚','🦴','🪸','🦑']; // 4 pares
+      const cards = icons.concat(icons).sort(()=>Math.random()-0.5);
+      let open = [], found = 0;
+      cards.forEach((symbol, idx)=>{
+        const d = document.createElement('div'); d.className='card'; d.dataset.sym = symbol;
+        d.addEventListener('click', ()=>{
+          if(d.classList.contains('found') || open.includes(d)) return;
+          d.textContent = symbol;
+          open.push(d);
+          if(open.length === 2){
+            if(open[0].dataset.sym === open[1].dataset.sym){
+              open.forEach(x=> { x.classList.add('found'); x.style.background = '#80cbc4'; x.style.color = '#fff'; });
+              found += 2;
+              open = [];
+              if(found === cards.length) setTimeout(()=> alert('¡Has encontrado todas las parejas!'), 200);
+            } else {
+              setTimeout(()=> { open.forEach(x=> x.textContent = ''); open = []; }, 600);
+            }
+          }
+        });
+        container.appendChild(d);
       });
-      openTiles = []; hits = 0; document.getElementById('memoryHits').textContent = hits;
-    }
-
-    function onClickTile(idx, cell){
-      const t = tiles[idx];
-      if(t.matched || t.revealed || openTiles.length === 2) return;
-      cell.firstElementChild.src = t.src;
-      t.revealed = true;
-      openTiles.push({ idx, cell });
-      if(openTiles.length === 2){
-        const a = openTiles[0], b = openTiles[1];
-        if(tiles[a.idx].src === tiles[b.idx].src){
-          tiles[a.idx].matched = tiles[b.idx].matched = true;
-          a.cell.style.background = b.cell.style.background = '#80cbc4';
-          hits += 1;
-          document.getElementById('memoryHits').textContent = hits;
-          openTiles = [];
-          if(hits === images.length) setTimeout(()=> alert('¡Has encontrado todas las parejas!'), 250);
-        } else {
-          setTimeout(()=>{
-            a.cell.firstElementChild.src = b.cell.firstElementChild.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png';
-            tiles[a.idx].revealed = tiles[b.idx].revealed = false;
-            openTiles = [];
-          }, 700);
-        }
-      }
-    }
-
-    $('#startMemory').addEventListener('click', build);
-    $('#resetMemory').addEventListener('click', build);
-    // build initial board (hidden until user opens JUEGOS)
-    build();
-    window.iniciarMemoria = build;
+    };
   })();
 
   /* -------------------------
-     BOOKING: simple validation
+     RECOLECTOR (avión) - simpler one-shot starter
      ------------------------- */
-  function handleBooking(e){
-    e.preventDefault();
-    const inDate = document.getElementById('dateIn').value;
-    const outDate = document.getElementById('dateOut').value;
-    const name = document.getElementById('fullName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    if(!inDate || !outDate){ document.getElementById('bookingMsg').textContent = 'Selecciona entrada y salida.'; return false; }
-    const d1 = new Date(inDate); const d2 = new Date(outDate); d1.setHours(0,0,0,0); d2.setHours(0,0,0,0);
-    if(d2 <= d1){ document.getElementById('bookingMsg').textContent = 'La fecha de salida debe ser posterior a la de entrada.'; return false; }
-    const today = new Date(); today.setHours(0,0,0,0);
-    if(d1 < today){ document.getElementById('bookingMsg').textContent = 'No se permiten fechas pasadas.'; return false; }
-    document.getElementById('bookingMsg').textContent = `Reserva simulada registrada: ${name} — ${inDate} → ${outDate}. Confirmaremos por ${email} (simulación para proyecto).`;
-    return false;
-  }
+  (function RecolectorStarter(){
+    window.iniciarRecolector = function(){
+      const canvas = document.getElementById('juegoRecolector');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let dpr = window.devicePixelRatio || 1;
+      function resize(){ const r = canvas.getBoundingClientRect(); canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+      window.addEventListener('resize', resize);
 
-  /* -------------------------
-     Accessibility: shortcuts
-     ------------------------- */
-  window.addEventListener('keydown', (e)=>{
-    if(e.key === '1') $('#startCollector').click();
-    if(e.key === '2') $('#startMemory').click();
-    if(e.key === 'g') openSection('galeria');
-    if(e.key === 'i') openSection('info');
+      // game state local variables
+      let player = { x: canvas.width/2/dpr - 20, y: canvas.height/dpr - 40, w:40, h:20, vx:0 };
+      let pool = [
+        {txt:'Trilobite', ok:true},{txt:'Anomalocaris', ok:true},{txt:'Pikaia', ok:true},{txt:'Opabinia', ok:true},
+        {txt:'Dinosaurio', ok:false},{txt:'Teléfono', ok:false},{txt:'Coche', ok:false},{txt:'Lata', ok:false}
+      ];
+      let objs = [], score = 0, lives = 3, running = true, raf;
+
+      function spawn(){
+        const p = pool[Math.floor(Math.random()*pool.length)];
+        objs.push({ x: Math.random()*(canvas.width/dpr - 40)+20, y: -20, vy: 1 + Math.random()*1.8, txt: p.txt, ok: p.ok });
+      }
+
+      // keyboard control
+      const keys = {};
+      function keydown(e){ keys[e.key] = true; }
+      function keyup(e){ keys[e.key] = false; if(e.key === 'ArrowLeft' || e.key === 'ArrowRight') player.vx = 0; }
+
+      function update(){
+        // movement
+        if(keys['ArrowLeft']) player.vx = -5;
+        else if(keys['ArrowRight']) player.vx = 5;
+        else player.vx = 0;
+        player.x += player.vx;
+        player.x = Math.max(0, Math.min(player.x, canvas.width/dpr - player.w));
+
+        if(Math.random() < 0.03) spawn();
+
+        // update objects
+        for(let i=objs.length-1;i>=0;i--){
+          const o = objs[i];
+          o.y += o.vy;
+          // collision
+          if(o.y > player.y - 5 && o.y < player.y + player.h + 5 && Math.abs(o.x - (player.x + player.w/2)) < 40){
+            if(o.ok) score += 10; else lives = Math.max(0, lives - 1);
+            objs.splice(i,1);
+          } else if(o.y > canvas.height/dpr + 20) objs.splice(i,1);
+        }
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        // background
+        const H = canvas.height/dpr;
+        const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fff7ff'); g.addColorStop(1,'#e8f7ff');
+        ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
+
+        // player
+        ctx.fillStyle = '#0077b6'; ctx.fillRect(player.x, player.y, player.w, player.h);
+        // HUD
+        ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins';
+        ctx.fillText('Puntuación: '+score, 12, 22); ctx.fillText('Vidas: '+lives, canvas.width/dpr - 90, 22);
+
+        // objects
+        ctx.font = '13px Poppins';
+        for(const o of objs){
+          ctx.fillStyle = o.ok ? '#2e7d32' : '#c62828';
+          ctx.fillText(o.txt, o.x, o.y);
+        }
+      }
+
+      function loop(){
+        if(!running) return;
+        update();
+        draw();
+        if(lives <= 0){ running = false; cancelAnimationFrame(raf); setTimeout(()=> alert('Juego terminado. Puntuación: '+score), 100); }
+        else raf = requestAnimationFrame(loop);
+      }
+
+      // start the game:
+      resize();
+      player.x = canvas.width/dpr/2 - player.w/2;
+      objs = []; score = 0; lives = 3; running = true;
+      window.addEventListener('keydown', keydown);
+      window.addEventListener('keyup', keyup);
+      loop();
+
+      // attach a cleanup to stop if user navigates away or restarts via re-click
+      // To stop, user can reload page or navigate.
+    };
+  })();
+
+  // Accessibility shortcuts
+  window.addEventListener('keydown', (e)=> {
+    if(e.key === '1') $('#startQuiz').click();
+    if(e.key === '2') $('#startSub').click();
+    if(e.key === '3') $('#startPlane').click();
   });
 
-  /* -------------------------
-     Hide broken gallery images
-     ------------------------- */
-  window.addEventListener('load', ()=>{
-    $$('.gallery img').forEach(img => img.onerror = ()=> img.style.display = 'none');
+  // Init calendar on load
+  window.addEventListener('load', ()=> {
+    if(window.CronoviajesCalendar) window.CronoviajesCalendar.init();
+    // gallery fallback hide broken images
+    $$('.gallery img').forEach(img=> img.onerror = ()=> img.style.display = 'none');
   });
-
   </script>
 
-  <!--
-    INSTRUCCIONES RÁPIDAS (AL FINAL DEL ARCHIVO PARA TU CONVENIENCIA)
+  <!-- =========================
+       INSTRUCCIONES (cómo añadir fotos y subir a GitHub)
+       =========================
+       1) Añadir tus fotos localmente:
+          - En la misma carpeta donde guardes este index.html crea una carpeta llamada "images"
+            por ejemplo:
+              proyecto/
+                index.html
+                images/
+                  trilobite.jpg
+                  anomalocaris.jpg
+                  opabinia.jpg
+                  pikaia.jpg
+          - En la sección GALERÍA del HTML ya hay etiquetas <img src="images/xyz.jpg">.
+            Cámbialas si quieres nombres distintos.
 
-    Cómo cambiar las imágenes (rápido):
-    - Este archivo ya usa imágenes enlazadas públicamente (Wikimedia / Pexels).
-    - Si quieres sustituir una imagen por otra, busca su URL directa (termina en .jpg/.png) y reemplaza la URL en el atributo background-image (slider) o en el src (galería / memoria).
-      Ejemplo (slider):
-        <div class="slide" style="background-image:url('https://mi-nueva-imagen.com/mi.jpg')"></div>
-      Ejemplo (galería):
-        <img src="https://mi-nueva-imagen.com/fosil.jpg" alt="Fósil X">
+       2) Usar URLs externas:
+          - Si no quieres subir imágenes, cambia el src por una URL pública (Pexels/Unsplash/Wikimedia).
+            Ejemplo:
+              <img src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg">
 
-    Subir a GitHub Pages (resumen):
-    1) Crea un repositorio nuevo en GitHub (por ejemplo "cronoviajes").
-    2) Sube este archivo `index.html` a la raíz del repositorio.
-       - Desde web: "Add file" -> "Upload files".
-       - Desde tu PC (git): git init -> git add index.html -> git commit -m "site" -> git remote add origin <repo-url> -> git push -u origin main
-    3) En GitHub, abre Settings -> Pages -> Source: main (branch) / root (/) -> Save. Espera unos minutos.
-    4) Tu sitio estará en https://TU_USUARIO.github.io/TU_REPO/
+       3) Subir a GitHub Pages (pasos rápidos):
+          - Crea repo en GitHub (por ejemplo "cronoviajes").
+          - Sube index.html y la carpeta images/ (usando la web o git).
+            En la web: "Add file" -> "Upload files" -> selecciona index.html y la carpeta images.
+          - Ve a Settings -> Pages, selecciona Branch: main (o la rama que uses) y root (/) como carpeta.
+          - Guarda y espera unos minutos; tu sitio quedará en:
+            https://TU_USUARIO.github.io/TU_REPO/
 
-    Consejos:
-    - Si quieres usar tus fotos locales, súbelas a la carpeta `images/` en el repo y cambia las rutas <img src="images/mi.jpg">.
-    - Comprime imágenes para web antes de subir (TinyPNG / Squoosh) para que la página cargue más rápido.
+       4) Consejos de optimización:
+          - Comprime imágenes (TinyPNG, Squoosh) antes de subir para que la web cargue rápido.
+          - Usa nombres sin espacios y en minúscula (p.ej. trilobite.jpg).
+          - GitHub Pages distingue mayúsculas/minúsculas — revisa las rutas si no se ven las imágenes.
+
+       Si quieres, te doy ahora:
+         A) Los comandos exactos de Git para subir desde tu PC (git init, add, commit, push).  
+         B) Un ZIP listo con index.html + 4 imágenes de ejemplo (te explico cómo descargarlo).  
+       Dime cuál prefieres y te lo doy al instante.
   -->
-
 </body>
 </html>
