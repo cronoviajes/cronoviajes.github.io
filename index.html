@@ -9,11 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset y tipografía */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
     body { background: #f0f4f8; color: #023047; line-height: 1.6; }
 
-    /* Header */
     header {
       background: linear-gradient(135deg,#0077b6,#0096c7);
       color: white;
@@ -24,7 +22,6 @@
     header h1 { font-size: 2.5rem; }
     header p.slogan { font-style: italic; font-size: 1.3rem; margin-top: 0.5rem; opacity: 0.9; }
 
-    /* Navegación */
     nav {
       display: flex;
       justify-content: center;
@@ -39,9 +36,8 @@
     }
     nav a:hover { background: #0077b6; }
 
-    /* Secciones */
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 2rem;
       background: white;
@@ -52,26 +48,13 @@
       transition: all 0.6s ease;
       display: none;
     }
-    section.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.active { display: block; opacity: 1; transform: translateY(0); }
+
     h2 { color: #0077b6; margin-bottom: 1rem; }
 
-    /* Imágenes */
-    img {
-      max-width: 100%;
-      border-radius: 12px;
-      margin: 1rem 0;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
+    img { max-width: 100%; border-radius: 12px; margin: 1rem 0; transition: transform 0.3s, box-shadow 0.3s; }
+    img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    /* Botones y inputs */
     button {
       background: #0077b6;
       color: white;
@@ -84,139 +67,184 @@
       transition: background 0.3s;
     }
     button:hover { background: #00b4d8; }
-    input[type="text"] {
+
+    input[type="text"], input[type="email"], input[type="number"], input[type="date"], textarea {
       padding: 8px;
       border-radius: 6px;
       border: 1px solid #0077b6;
       width: 80%;
       max-width: 300px;
       margin-top: 5px;
+      display: block;
     }
+    textarea { height: 80px; }
 
-    /* Footer */
-    footer {
-      background: #023e8a;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
+    footer { background: #023e8a; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
 
-    /* Lista */
     ul { margin-left: 1.2rem; margin-top: 1rem; }
     li { margin-bottom: 0.5rem; }
 
-    /* Test */
     .correct { color: green; font-weight: bold; }
     .wrong { color: red; font-weight: bold; }
 
-    /* Galería */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+
+    form p { margin: 0.5rem 0; font-weight: 600; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>🌊 Cronoviajes: Aventura al Cámbrico</h1>
-    <p class="slogan">“Descubre el pasado, vive el presente”</p>
-  </header>
+<header>
+  <h1>🌊 Cronoviajes: Aventura al Cámbrico</h1>
+  <p class="slogan">“Descubre el pasado, vive el presente”</p>
+</header>
 
-  <!-- Navegación -->
-  <nav>
-    <a href="#" onclick="showSection('inicio')">Inicio</a>
-    <a href="#" onclick="showSection('fotos')">Fotos</a>
-    <a href="#" onclick="showSection('info')">Información</a>
-    <a href="#" onclick="showSection('juego')">Juego</a>
-  </nav>
+<nav>
+  <a href="#" onclick="showSection('inicio')">Inicio</a>
+  <a href="#" onclick="showSection('fotos')">Fotos</a>
+  <a href="#" onclick="showSection('info')">Información</a>
+  <a href="#" onclick="showSection('juego')">Juego</a>
+  <a href="#" onclick="showSection('reservar')">Reservar</a>
+</nav>
 
-  <!-- Inicio -->
-  <section id="inicio" class="active">
-    <h2>Bienvenido al Viaje Temporal</h2>
-    <p>Explora el Cámbrico, hace 541 millones de años, cuando la vida marina empezó a diversificarse rápidamente durante la <strong>Explosión Cámbrica</strong>.</p>
-    <p>Viaja con Cronoviajes a los océanos primitivos y observa criaturas como los trilobites, anomalocaris y los primeros cordados.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cambrian_Explosion_evolution_spanish.png" alt="Explosión Cámbrica">
-  </section>
+<!-- Inicio -->
+<section id="inicio" class="active">
+  <h2>Bienvenido al Cámbrico</h2>
+  <p>Hace unos <strong>541 millones de años</strong> comenzó el período Cámbrico, con la famosa <strong>Explosión Cámbrica</strong>, donde surgieron casi todos los grupos animales modernos.</p>
+  <p>Los océanos estaban llenos de vida: trilobites, braquiópodos, esponjas, gusanos, hidrozoos y equinodermos. Surgieron los primeros cordados como <em>Pikaia</em>, precursores de los vertebrados.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cambrian_Explosion_evolution_spanish.png" alt="Explosión Cámbrica">
+</section>
 
-  <!-- Fotos -->
-  <section id="fotos">
-    <h2>Galería del Cámbrico</h2>
-    <p>Fósiles y recreaciones de las criaturas que habitaron los mares cámbricos:</p>
-    <div class="gallery">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg" alt="Marrella">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Pikaia_gracilens_Burgess_Shale.png" alt="Pikaia">
-    </div>
-    <p>💡 Tip: Para añadir más fotos, súbelas al repositorio y reemplaza la URL de la imagen en el código.</p>
-  </section>
+<!-- Fotos -->
+<section id="fotos">
+  <h2>Galería del Cámbrico</h2>
+  <div class="gallery">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg" alt="Marrella">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Pikaia_gracilens_Burgess_Shale.png" alt="Pikaia">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Hallucigenia_sparsa_Burgess_Shale.png" alt="Hallucigenia">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Opabinia_regalis.png" alt="Opabinia">
+  </div>
+</section>
 
-  <!-- Información -->
-  <section id="info">
-    <h2>Más información sobre el Cámbrico</h2>
-    <ul>
-      <li>Duración: 541 – 485 millones de años.</li>
-      <li>Clima: cálido y sin casquetes polares, mares poco profundos.</li>
-      <li>Diversidad animal: trilobites, anomalocaris, marrella, cordados primitivos.</li>
-      <li>Plantas: algas marinas simples.</li>
-      <li>Eventos clave: Explosión Cámbrica y extinción masiva al final del período.</li>
-      <li>Nivel del mar: más alto que en la actualidad.</li>
-    </ul>
-    <p>El Cámbrico marcó el inicio de la Era Paleozoica y el desarrollo de la vida multicelular compleja.</p>
-  </section>
+<!-- Información -->
+<section id="info">
+  <h2>Información Detallada</h2>
 
-  <!-- Juego/Test -->
-  <section id="juego">
-    <h2>🧠 Test interactivo del Cámbrico</h2>
-    <p>Responde correctamente y pon a prueba tus conocimientos.</p>
-    <div id="quiz"></div>
-    <button onclick="checkAnswers()">Comprobar respuestas</button>
-    <p id="resultado"></p>
-  </section>
+  <h3>Eventos Clave</h3>
+  <ul>
+    <li>Inicio: Explosión Cámbrica (~541 millones de años).</li>
+    <li>Fin: Extinción masiva (~485 millones de años), redujo la diversidad marina.</li>
+  </ul>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Cronoviajes S.A. | Proyecto educativo sobre el Cámbrico</p>
-  </footer>
+  <h3>Clima y Nivel del Mar</h3>
+  <ul>
+    <li>Clima cálido, sin casquetes polares.</li>
+    <li>Nivel del mar más alto que el actual.</li>
+    <li>Condiciones de invernadero favorecieron la vida marina.</li>
+  </ul>
 
-  <!-- Scripts -->
-  <script>
-    // Mostrar sección
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
+  <h3>Diversidad Animal</h3>
+  <ul>
+    <li>Invertebrados marinos: trilobites, braquiópodos, esponjas, gusanos, hidrozoos, equinodermos.</li>
+    <li>Depredadores: Anomalocaris, Opabinia, Hallucigenia.</li>
+    <li>Primeros cordados: Pikaia.</li>
+  </ul>
 
-    // Quiz del Cámbrico
-    const quizData = [
-      { q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541" },
-      { q: "¿Qué animal marino era muy común en el Cámbrico?", a: "trilobite" },
-      { q: "¿Cómo se llama el evento en el que surgieron muchas especies nuevas?", a: "explosión cámbrica" },
-      { q: "Nombre de un cordado primitivo del Cámbrico", a: "pikaia" },
-      { q: "Nombre de un depredador del Cámbrico con forma extraña", a: "anomalocaris" }
-    ];
+  <h3>Diversidad Vegetal</h3>
+  <ul>
+    <li>Muy limitada en tierra.</li>
+    <li>Algas marinas simples en océanos.</li>
+  </ul>
 
-    const quizContainer = document.getElementById('quiz');
-    quizData.forEach((item, i) => {
-      const div = document.createElement('div');
-      div.innerHTML = `<p>${i+1}. ${item.q}</p><input type='text' id='q${i}' placeholder='Tu respuesta...'>`;
-      quizContainer.appendChild(div);
+  <h3>Fósiles Característicos</h3>
+  <ul>
+    <li>Trilobites, braquiópodos, esponjas, briozoos.</li>
+    <li>Pikaia y otros cordados primitivos.</li>
+    <li>Anomalocaris, Hallucigenia, Opabinia.</li>
+    <li>Small Shelly Fauna.</li>
+  </ul>
+</section>
+
+<!-- Juego/Test -->
+<section id="juego">
+  <h2>🧠 Test Interactivo del Cámbrico</h2>
+  <div id="quiz"></div>
+  <button onclick="checkAnswers()">Comprobar respuestas</button>
+  <p id="resultado"></p>
+</section>
+
+<!-- Reservar -->
+<section id="reservar">
+  <h2>📅 Reserva tu Viaje al Cámbrico</h2>
+  <p>Selecciona las fechas de entrada y salida:</p>
+  <form onsubmit="alert('¡Reserva simulada enviada!'); return false;">
+    <p>Fecha de entrada:</p>
+    <input type="date" required>
+    <p>Fecha de salida:</p>
+    <input type="date" required>
+    <p>Nombre completo:</p>
+    <input type="text" placeholder="Tu nombre" required>
+    <p>Email:</p>
+    <input type="email" placeholder="correo@ejemplo.com" required>
+    <p>Número de personas:</p>
+    <input type="number" min="1" max="10" value="1" required>
+    <p>Comentarios adicionales:</p>
+    <textarea placeholder="Escribe aquí..."></textarea>
+    <button type="submit">Enviar Reserva</button>
+  </form>
+
+  <h3>Resumen del Viaje</h3>
+  <ul>
+    <li>Duración: ~541-485 millones de años, período Cámbrico.</li>
+    <li>Clima cálido, nivel del mar alto.</li>
+    <li>Fauna: Trilobites, Anomalocaris, Opabinia, Pikaia, Hallucigenia.</li>
+    <li>Flora: algas marinas simples.</li>
+    <li>Eventos: Explosión Cámbrica y extinción masiva al final.</li>
+    <li>Eslogan: “Descubre el pasado, vive el presente”.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2025 Cronoviajes S.A. | Proyecto educativo sobre el Cámbrico</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  const quizData = [
+    { q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541" },
+    { q: "¿Qué animal marino era muy común en el Cámbrico?", a: "trilobite" },
+    { q: "¿Cómo se llama el evento de aparición masiva de especies?", a: "explosión cámbrica" },
+    { q: "Nombre de un cordado primitivo del Cámbrico", a: "pikaia" },
+    { q: "Nombre de un depredador extraño del Cámbrico", a: "anomalocaris" },
+    { q: "Nombre de un organismo con cinco ojos del Cámbrico", a: "opabinia" },
+    { q: "¿Cómo era el clima en el Cámbrico?", a: "cálido" }
+  ];
+
+  const quizContainer = document.getElementById('quiz');
+  quizData.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.innerHTML = `<p>${i+1}. ${item.q}</p><input type='text' id='q${i}' placeholder='Tu respuesta...'>`;
+    quizContainer.appendChild(div);
+  });
+
+  function checkAnswers(){
+    let correct=0;
+    quizData.forEach((item,i)=>{
+      const answer = document.getElementById('q'+i).value.trim().toLowerCase();
+      if(answer.includes(item.a)) correct++;
     });
+    const res = document.getElementById('resultado');
+    res.innerHTML = `Has acertado ${correct} de ${quizData.length} preguntas.`;
+    res.className = correct===quizData.length ? "correct" : "wrong";
+  }
+</script>
 
-    function checkAnswers() {
-      let correct = 0;
-      quizData.forEach((item, i) => {
-        const answer = document.getElementById('q'+i).value.trim().toLowerCase();
-        if (answer.includes(item.a)) correct++;
-      });
-      const res = document.getElementById('resultado');
-      res.innerHTML = `Has acertado ${correct} de ${quizData.length} preguntas.`;
-      res.className = correct === quizData.length ? "correct" : "wrong";
-    }
-  </script>
 </body>
 </html>
+
