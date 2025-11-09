@@ -4,18 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cronoviajes — Descubre el pasado, vive el origen</title>
-  <meta name="description" content="Cronoviajes: Agencia de viajes al pasado (Cámbrico). Simulaciones, galería, juegos y reservas con calendario interactivo.">
+  <meta name="description" content="Cronoviajes: Agencia de viajes al Cámbrico. Experiencias, galería, juegos y reservas con calendario interactivo. Proyecto educativo.">
   <meta name="author" content="Cronoviajes S.A.">
 
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------
-       VARIABLES Y RESET
-       ------------------------ */
+    /* ===================================================
+       RESET + VARIABLES
+       =================================================== */
     :root{
-      --bg:#eaf6fb;
       --deep:#032b46;        /* azul profundo */
       --sea:#007a9c;         /* turquesa */
       --accent:#00b4d8;      /* acento */
@@ -25,484 +24,472 @@
       --glass: rgba(255,255,255,0.6);
       --radius:14px;
       --maxw:1200px;
-      --hero-text-light: #ffffff;
-      --hero-text-dark: #032b46;
-    }
-    * { box-sizing: border-box; }
-    html,body { height:100%; margin:0; font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    body { background: linear-gradient(180deg,var(--bg), #e0f5fb); color:var(--deep); line-height:1.45; }
 
-    /* ------------------------
-       HERO / HEADER (landing agencia)
-       ------------------------ */
-    header.hero{
+      --hero-foreground-light: #ffffff;
+      --hero-foreground-dark: #032b46;
+      --hero-bg1: linear-gradient(135deg,#145A32,#1D8348); /* verde esmeralda */
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; margin:0; font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial; color:var(--deep); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    a{ color:inherit; text-decoration:none; }
+
+    /* ===================================================
+       LAYOUT: header / topnav / footer
+       =================================================== */
+    header{
+      background: var(--hero-bg1);
+      color:var(--hero-foreground-light);
+      padding:14px 18px;
+    }
+    header .topbar{
+      max-width:var(--maxw); margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    header h1{ font-family:"Playfair Display", serif; font-size:22px; margin:0; letter-spacing:0.4px; }
+    header .slogan{ font-style:italic; opacity:0.95; font-weight:600; font-size:13px; }
+
+    nav.topnav{
+      position:sticky; top:8px; z-index:30;
+      display:flex; justify-content:center; gap:8px; padding:10px; max-width:var(--maxw); margin:10px auto;
+    }
+    nav.topnav a{
+      padding:8px 12px; border-radius:8px; background:rgba(255,255,255,0.06); color:var(--hero-foreground-light); font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    nav.topnav a:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.09); }
+
+    /* ===================================================
+       HERO — slider verde
+       =================================================== */
+    .hero{
       position:relative;
-      min-height:78vh;
+      height:78vh;
+      min-height:520px;
+      overflow:hidden;
+      background: var(--hero-bg1);
       display:flex;
       align-items:center;
       justify-content:center;
-      overflow:hidden;
-      border-bottom-left-radius:28px;
-      border-bottom-right-radius:28px;
-      box-shadow:0 12px 40px rgba(3,43,70,0.08);
-      margin-bottom:28px;
-    }
-    header.hero video{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      filter:brightness(.56) contrast(1.02) saturate(1.05);
-      transform:scale(1.02);
-      z-index:0;
-    }
-    /* overlay oscuro para garantizar contraste */
-    header.hero .overlay{
-      position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(2,20,30,0.22), rgba(2,40,55,0.18));
-      z-index:1;
-    }
-    /* overlay claro alternativo (para video muy oscuro) */
-    header.hero.light-overlay .overlay{
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.56));
+      border-bottom-left-radius:24px;
+      border-bottom-right-radius:24px;
+      box-shadow: 0 18px 60px rgba(2,32,46,0.12);
     }
 
-    .hero-inner{
-      position:relative; z-index:2;
-      width:100%; max-width:var(--maxw);
-      padding:48px 24px;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:28px; align-items:center;
+    /* slider container */
+    .hero .slider{
+      position:absolute; inset:0; z-index:0; display:block; overflow:hidden;
     }
-    @media (max-width:980px){ .hero-inner{ grid-template-columns:1fr; padding:36px 18px } }
-
-    .branding { display:flex; gap:18px; align-items:center; }
-    .logo {
-      width:96px; height:96px; border-radius:20px;
-      background: linear-gradient(135deg,var(--gold),var(--accent));
-      display:flex; align-items:center; justify-content:center;
-      color:#05232b; font-weight:900; font-size:30px; box-shadow:0 8px 26px rgba(0,0,0,0.16);
-      transform: translateY(0); transition:transform .6s cubic-bezier(.2,.9,.3,1);
+    .hero .slide{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease-in-out;
+      -webkit-backface-visibility:hidden;
     }
-    .logo.anim { transform: translateY(-6px) rotate(-6deg); }
+    .hero .slide.active{ opacity:1; }
 
-    .hero-title { font-family:"Playfair Display", "Poppins", serif; font-size:40px; line-height:1.02; letter-spacing:-0.6px; margin:0; }
-    .hero-sub { margin-top:8px; font-size:18px; font-weight:600; opacity:0.95; font-style:italic; }
+    /* overlays for contrast control */
+    .hero .overlay-dark{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(2,20,10,0.28), rgba(2,40,30,0.24)); z-index:1; pointer-events:none; }
+    .hero.light .overlay-dark{ background:linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5)); }
 
-    .hero-cta{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
-    .btn {
-      background: var(--accent); color:#05232b; border:none; padding:12px 18px; border-radius:10px;
-      font-weight:800; cursor:pointer; box-shadow:0 8px 24px rgba(0,120,160,0.12); transition:transform .12s, box-shadow .12s;
+    /* hero content */
+    .hero .inner{
+      position:relative; z-index:3; max-width:var(--maxw); width:100%; padding:44px 24px; display:grid; grid-template-columns:1fr 420px; gap:32px; align-items:center;
     }
-    .btn.secondary { background:transparent; color:var(--hero-text-light); border:1px solid rgba(255,255,255,0.12); }
-    .btn:hover { transform: translateY(-4px); box-shadow:0 16px 36px rgba(0,120,160,0.14); }
+    @media(max-width:980px){ .hero .inner{ grid-template-columns:1fr; padding:28px 18px } }
 
-    .hero-card {
+    .brand{
+      display:flex; gap:14px; align-items:center;
+    }
+    .logo{
+      width:92px; height:92px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,var(--gold),var(--accent)); font-weight:900; color:#062328; font-size:28px; box-shadow:0 12px 36px rgba(0,0,0,0.18);
+      transition:transform .6s cubic-bezier(.2,.9,.3,1);
+    }
+    .logo.float{ transform: translateY(-8px) rotate(-6deg); }
+
+    .hero-title{ font-family:"Playfair Display", serif; font-size:44px; color:var(--hero-foreground-light); margin:0; line-height:1.02; }
+    .hero-sub{ margin-top:8px; color:var(--hero-foreground-light); font-weight:600; font-size:18px; opacity:0.95; }
+
+    .hero-ctas{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      background:var(--accent); color:#05232b; border:none; padding:12px 18px; border-radius:10px; cursor:pointer; font-weight:800;
+      box-shadow:0 12px 30px rgba(0,120,160,0.12);
+    }
+    .btn.secondary{ background:transparent; color:var(--hero-foreground-light); border:1px solid rgba(255,255,255,0.12); }
+
+    .hero-card{
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border-radius:16px; padding:18px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,0.06);
-      color:var(--hero-text-light);
+      border-radius:12px; padding:16px; box-shadow:0 12px 30px rgba(0,0,0,0.12);
+      color:var(--hero-foreground-light);
     }
-    .hero-card h4 { color:var(--gold); margin:0 0 6px; }
-    .hero-card p { color: rgba(234,251,255,0.95); margin:0; }
 
-    /* topnav */
-    .topnav {
-      position:absolute; top:18px; left:50%; transform:translateX(-50%); z-index:12;
-      display:flex; gap:8px; background: rgba(255,255,255,0.04); padding:8px 10px; border-radius:999px;
-      backdrop-filter: blur(6px); box-shadow:0 10px 28px rgba(0,0,0,0.06);
-    }
-    .topnav a { color: #eaf8ff; font-weight:700; padding:8px 12px; border-radius:8px; }
-    .topnav a:hover { background: rgba(255,255,255,0.04); transform:translateY(-2px) }
+    /* ===================================================
+       MAIN LAYOUT
+       =================================================== */
+    main{ max-width:var(--maxw); margin:26px auto; padding:0 20px; }
 
-    /* ------------------------
-       ESTRUCTURA GENERAL
-       ------------------------ */
-    .container { max-width:var(--maxw); margin:0 auto; padding:0 20px; }
-    .section { margin:26px auto; }
-    .card { background:var(--card); border-radius:12px; padding:16px; box-shadow:0 8px 26px rgba(0,0,0,0.06); border:1px solid rgba(2,40,60,0.04); }
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px; align-items:start; }
-    .col-7 { grid-column:span 7 } .col-5 { grid-column:span 5 }
-    @media (max-width:900px){ .col-7,.col-5{ grid-column:1 / -1 } }
+    section.panel{ background:var(--card); border-radius:12px; padding:18px; box-shadow:0 8px 28px rgba(2,32,46,0.06); margin-bottom:20px; }
 
-    h2 { color:var(--deep); margin-bottom:8px; }
-    .muted { color:var(--muted); font-weight:500; }
+    h2.section-title{ color:var(--deep); margin-bottom:10px; font-size:22px; }
+    .muted{ color:var(--muted); }
 
-    /* ------------------------
-       GALLERY
-       ------------------------ */
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; margin-top:10px; }
-    .gallery img { width:100%; height:160px; object-fit:cover; border-radius:10px; cursor:pointer; transition: transform .18s, box-shadow .18s; }
-    .gallery img:hover { transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,48,71,0.12); }
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:16px; }
+    .col-7{ grid-column: span 7; } .col-5{ grid-column: span 5; }
+    @media(max-width:900px){ .col-7,.col-5{ grid-column:1 / -1 } }
 
-    /* ------------------------
-       JUEGOS
-       ------------------------ */
-    .games { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; }
-    .game { flex:1 1 320px; min-height:260px; background:linear-gradient(180deg,#fff,#f7feff); border-radius:12px; padding:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); }
-    .game canvas { width:100%; height:200px; border-radius:8px; background:linear-gradient(180deg,#e8f6ff,#ffffff); display:block; }
-    .game-controls { display:flex; gap:8px; align-items:center; margin-top:8px; }
-    .status { margin-left:auto; font-weight:700; color:var(--deep); }
+    /* GALLERY */
+    .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:8px; }
+    .gallery img{ width:100%; height:160px; object-fit:cover; border-radius:10px; cursor:pointer; transition:transform .16s, box-shadow .16s; }
+    .gallery img:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,48,71,0.12); }
 
-    /* ------------------------
-       CALENDARIO (reservas)
-       ------------------------ */
-    .calendar-wrap { display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; }
-    .calendar { width:360px; background:var(--card); border-radius:12px; padding:12px; box-shadow:0 8px 20px rgba(0,0,0,0.06); }
-    .calendar .month { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-    .calendar .weekdays, .calendar .days { display:grid; grid-template-columns: repeat(7, 1fr); gap:6px; }
-    .calendar .day, .calendar .weekday { padding:8px; border-radius:8px; text-align:center; font-weight:600; color:var(--muted); }
-    .day.box { background:#f6fdff; cursor:pointer; border:1px solid rgba(0,0,0,0.04); }
-    .day.disabled { opacity:0.25; cursor:not-allowed; }
-    .day.selected { background:linear-gradient(180deg,var(--accent), #00d1f0); color:#012; font-weight:800; box-shadow:0 8px 20px rgba(0,120,160,0.12); }
-    .day.inrange { background: linear-gradient(180deg, rgba(0,180,216,0.09), rgba(0,180,216,0.04)); }
+    /* JUEGOS */
+    .games{ display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; }
+    .game{ flex:1 1 320px; background:linear-gradient(180deg,#fff,#f7feff); border-radius:12px; padding:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); min-height:260px; }
+    .game canvas{ width:100%; height:200px; border-radius:8px; background:linear-gradient(180deg,#e8f6ff,#ffffff); display:block; }
 
-    /* small helpers */
-    .muted-small { color:var(--muted); font-size:14px; }
-    footer { margin-top:26px; padding:18px; background:linear-gradient(90deg,var(--deep),var(--sea)); color:#fff; border-radius:12px; max-width:var(--maxw); margin-left:auto; margin-right:auto; }
-    .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-    .chip { background:rgba(255,255,255,0.08); padding:8px 12px; border-radius:999px; color:#eaf8ff; font-weight:700; }
+    .game-controls{ display:flex; gap:8px; align-items:center; margin-top:8px; }
+    .status{ margin-left:auto; font-weight:700; color:var(--deep); }
 
-    /* RESPONSIVE */
-    @media (max-width:640px){
-      .hero-title { font-size:28px; }
-      .hero-inner { grid-template-columns:1fr; }
-      .hero-card { margin-top:14px; }
-    }
+    /* CALENDARIO */
+    .calendar-wrap{ display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; }
+    .calendar{ width:360px; background:var(--card); border-radius:12px; padding:12px; box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+    .calendar .month{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .calendar .weekdays, .calendar .days{ display:grid; grid-template-columns: repeat(7,1fr); gap:6px; }
+    .calendar .day, .calendar .weekday{ padding:8px; border-radius:8px; text-align:center; font-weight:600; color:var(--muted); }
+    .day.box{ background:#f6fdff; cursor:pointer; border:1px solid rgba(0,0,0,0.04); }
+    .day.disabled{ opacity:0.25; cursor:not-allowed; }
+    .day.selected{ background:linear-gradient(180deg,var(--accent), #00d1f0); color:#012; font-weight:800; box-shadow:0 8px 20px rgba(0,120,160,0.12); }
+    .day.inrange{ background: linear-gradient(180deg, rgba(0,180,216,0.09), rgba(0,180,216,0.04)); }
+
+    /* FOOTER */
+    footer{ margin-top:26px; padding:18px; background:linear-gradient(90deg,var(--deep),var(--sea)); color:#fff; border-radius:12px; max-width:var(--maxw); margin-left:auto; margin-right:auto; text-align:center; }
+
+    /* SMALL */
+    .muted-small{ color:var(--muted); font-size:14px; }
+
+    /* accessibility focus */
+    a:focus, button:focus, input:focus{ outline: 3px solid rgba(0,180,216,0.18); outline-offset:2px; }
+
   </style>
 </head>
 
 <body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="topbar">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div class="logo" id="logo">Cv</div>
+        <div>
+          <h1>Cronoviajes</h1>
+          <div class="slogan">Descubre el pasado, vive el origen</div>
+        </div>
+      </div>
+      <div style="font-size:13px; opacity:0.9;">Agencia de viajes al pasado — Proyecto educativo</div>
+    </div>
+  </header>
 
-  <!-- HERO -->
-  <header class="hero" role="banner" aria-label="Cabecera Cronoviajes" id="hero">
-    <!-- Video externo de océano (Cámbrico style) - ejemplo público -->
-    <video id="heroVideo" autoplay loop muted playsinline>
-      <source src="https://cdn.pixabay.com/vimeo/493406999/pexels-tima-miroshnichenko-8553800-2048x1152.mp4?hash=8899b6d0f4f8a1f6eaf0f2b3f2a1f7c5d2d9b7b2" type="video/mp4">
-    </video>
+  <nav class="topnav" aria-label="Menú principal">
+    <a href="#inicio" onclick="scrollToSection('inicio'); return false;">Inicio</a>
+    <a href="#galeria" onclick="scrollToSection('galeria'); return false;">Galería</a>
+    <a href="#info" onclick="scrollToSection('info'); return false;">Información</a>
+    <a href="#juegos" onclick="scrollToSection('juegos'); return false;">Juegos</a>
+    <a href="#reservas" onclick="scrollToSection('reservas'); return false;">Reservas</a>
+  </nav>
 
-    <div class="overlay"></div>
-
-    <div class="topnav" role="navigation" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#galeria">Galería</a>
-      <a href="#info">Información</a>
-      <a href="#juegos">Juegos</a>
-      <a href="#reservas">Reservas</a>
+  <!-- HERO (slider verde) -->
+  <header class="hero" id="inicio-section" role="banner" aria-label="Portada Cronoviajes">
+    <div class="slider" id="heroSlider">
+      <!-- 4 imágenes; cámbialas por images/mifotoX.jpg si las subes a /images/ -->
+      <img class="slide active" src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="Océano antiguo - Cámbrico">
+      <img class="slide" src="https://images.pexels.com/photos/159051/sea-ocean-horizon-sky-159051.jpeg" alt="Viaje submarino">
+      <img class="slide" src="https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg" alt="Investigadores en campo">
+      <img class="slide" src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg" alt="Paisaje marino antiguo">
     </div>
 
-    <div class="hero-inner container">
+    <div class="overlay-dark" id="heroOverlay"></div>
+
+    <div class="inner">
       <div>
-        <div class="branding">
-          <div class="logo" id="logoEl">Cv</div>
+        <div class="brand">
+          <div class="logo" id="logoBadge">Cv</div>
           <div>
-            <h1 class="hero-title" id="mainTitle">Cronoviajes</h1>
-            <div class="hero-sub" id="heroSlogan">Descubre el pasado, vive el origen</div>
+            <div class="hero-title">Cronoviajes</div>
+            <div class="hero-sub">Descubre el pasado, vive el origen</div>
           </div>
         </div>
 
-        <p style="margin-top:18px; color:rgba(234,251,255,0.95); max-width:62ch;">
-          Agencia de viajes al pasado especializada en experiencias al período Cámbrico. Ofrecemos viajes organizados, seguros y guiados para estudiantes, investigadores y familias.
+        <p style="margin-top:18px; color:rgba(255,255,255,0.95); max-width:62ch;">
+          Somos una agencia que organiza viajes al pasado (período Cámbrico). Según el guion del proyecto, ofrecemos viajes organizados con guías científicos: observación de fauna marina, sesiones formativas y rutas controladas en ecosistemas del pasado.
         </p>
 
-        <div class="hero-cta">
-          <button class="btn" id="heroBookBtn">Reservar viaje temporal</button>
-          <button class="btn secondary" id="toggleContrastBtn">Alternar contraste</button>
+        <div class="hero-ctas">
+          <button class="btn" id="btnReserve">Reservar viaje temporal</button>
+          <button class="btn secondary" id="btnToggleContrast">Alternar contraste</button>
         </div>
 
-        <div class="chips" style="margin-top:16px;">
-          <div class="chip">Plazas limitadas</div>
-          <div class="chip">Asistencia científica</div>
-          <div class="chip">Seguro incluido</div>
+        <div style="margin-top:12px; display:flex; gap:8px;">
+          <div style="background:rgba(255,255,255,0.08); padding:8px 12px; border-radius:999px; color:#f3fff8; font-weight:700;">Plazas limitadas</div>
+          <div style="background:rgba(255,255,255,0.06); padding:8px 12px; border-radius:999px; color:#f3fff8; font-weight:700;">Guias científicos</div>
         </div>
       </div>
 
       <div>
         <div class="hero-card" aria-hidden="true">
-          <h4>Próximas salidas</h4>
-          <p>Sesiones diarias. Consulta disponibilidad en el calendario y solicita entrada/salida arriba.</p>
-          <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
-            <div style="background:#eaf9ff; padding:8px 12px; border-radius:8px; font-weight:700; color:var(--deep)">Cámbrico Explorador</div>
-            <div style="background:#fff3d6; padding:8px 12px; border-radius:8px; font-weight:700; color:var(--deep)">Cámbrico Premium</div>
+          <h4 style="margin:0 0 8px;">Próximas salidas</h4>
+          <p style="margin:0 0 8px;">Consulta disponibilidad en el calendario. Las reservas incluyen briefing científico y seguro de misión.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+            <div style="background:#eaf9ff; padding:8px 12px; border-radius:8px; font-weight:700; color:var(--deep);">Cámbrico Explorador</div>
+            <div style="background:#fff3d6; padding:8px 12px; border-radius:8px; font-weight:700; color:var(--deep);">Cámbrico Premium</div>
           </div>
-          <p style="margin-top:12px; font-size:13px; color:rgba(234,251,255,0.9)">Pulsa “Reservar viaje temporal” para abrir el calendario y elegir entrada y salida.</p>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-
-    <!-- INICIO / SOBRE NOSOTROS -->
-    <section id="inicio" class="section container">
-      <div class="grid">
-        <div class="col-7">
-          <div class="card">
-            <h2>Bienvenido a Cronoviajes</h2>
-            <p class="muted">Como agencia especializada, organizamos viajes temporales al Cámbrico con guías científicos. Nuestros itinerarios incluyen observación de fauna marina, sesiones educativas y asistencia médica y técnica durante el viaje.</p>
-
-            <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;">
-              <div style="flex:1; min-width:150px;">
-                <h4 style="margin:0 0 6px">Educación</h4>
-                <p class="muted">Programas escolares y sesiones familiares con material didáctico.</p>
-              </div>
-              <div style="flex:1; min-width:150px;">
-                <h4 style="margin:0 0 6px">Inmersión</h4>
-                <p class="muted">Experiencias guiadas por paleontólogos.</p>
-              </div>
-              <div style="flex:1; min-width:150px;">
-                <h4 style="margin:0 0 6px">Seguridad</h4>
-                <p class="muted">Protocolos de viaje y seguro incluido en cada sesión.</p>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:18px"></div>
-
-          <div class="card">
-            <h3>Acciones rápidas</h3>
-            <p class="muted">Prueba nuestros juegos o solicita una reserva real en el calendario. Las reservas se procesan y recibirás confirmación por email.</p>
-            <div style="display:flex; gap:8px; margin-top:8px;">
-              <button class="btn" onclick="document.getElementById('juegos').scrollIntoView({behavior:'smooth'})">Ir a juegos</button>
-              <button class="btn secondary" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">Ir a reservas</button>
-            </div>
-          </div>
-        </div>
-
-        <aside class="col-5">
-          <div class="card">
-            <h3>Reservas rápidas</h3>
-            <p class="muted">Selecciona entrada y salida en el calendario principal en la sección reservas.</p>
-            <div style="margin-top:10px;">
-              <div id="miniCalendarContainer" style="padding:8px; border-radius:8px; background:#f6fdff; border:1px solid rgba(0,0,0,0.04);">
-                <small class="muted-small">Calendario disponible en la sección "Reservas".</small>
-              </div>
-
-              <div style="margin-top:10px;">
-                <div class="muted-small">Entrada: <strong id="miniStart">—</strong></div>
-                <div class="muted-small">Salida: <strong id="miniEnd">—</strong></div>
-                <div style="height:8px"></div>
-                <button class="btn" id="miniRequestBtn">Solicitar reserva</button>
-                <p id="miniResMsg" class="muted-small" style="margin-top:8px"></p>
-              </div>
-
-            </div>
-          </div>
-
-          <div style="height:12px"></div>
-
-          <div class="card">
-            <h4>Contacto</h4>
-            <p class="muted">info@cronoviajes.example</p>
-            <p class="muted">Tel: +34 600 000 000</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
     <!-- GALERÍA -->
-    <section id="galeria" class="section container">
-      <div class="card">
-        <h2>Galería del Cámbrico</h2>
-        <p class="muted">Sube tus imágenes a la carpeta <code>images/</code> situada junto a index.html. Pulsa en una imagen para ampliarla.</p>
-        <div class="gallery" id="galleryGrid" style="margin-top:12px;">
-          <!-- Reemplaza por tus imágenes: images/trilobite.jpg, etc. -->
-          <img src="images/trilobite.jpg" alt="Trilobite" loading="lazy">
-          <img src="images/anomalocaris.jpg" alt="Anomalocaris" loading="lazy">
-          <img src="images/opabinia.jpg" alt="Opabinia" loading="lazy">
-          <img src="images/hallucigenia.jpg" alt="Hallucigenia" loading="lazy">
-          <img src="images/pikaia.jpg" alt="Pikaia" loading="lazy">
+    <section class="panel" id="galeria">
+      <h2 class="section-title">Galería del Cámbrico</h2>
+      <p class="muted">Sube tus imágenes a la carpeta <code>/images/</code> (junto a index.html) o usa enlaces directos. Haz clic en una imagen para ampliarla.</p>
+      <div class="gallery" id="galleryGrid" style="margin-top:12px;">
+        <!-- Imágenes ejemplo. Cámbialas por images/archivo.jpg si las subes. -->
+        <img src="images/trilobite.jpg" alt="Trilobite (ejemplo)" onerror="this.style.display='none'">
+        <img src="images/anomalocaris.jpg" alt="Anomalocaris (ejemplo)" onerror="this.style.display='none'">
+        <img src="images/opabinia.jpg" alt="Opabinia (ejemplo)" onerror="this.style.display='none'">
+        <img src="images/hallucigenia.jpg" alt="Hallucigenia (ejemplo)" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <!-- INFORMACIÓN CIENTÍFICA AMPLIADA -->
+    <section class="panel" id="info">
+      <h2 class="section-title">Información científica — Período Cámbrico (ampliado)</h2>
+
+      <p class="muted" style="margin-top:8px;">
+        El Cámbrico (aprox. 541–485 Ma) es famoso por la <strong>Explosión Cámbrica</strong>, un episodio de rápida diversificación morfológica donde aparecen numerosos filos animales con estructuras duras que facilitan la fossilización.
+      </p>
+
+      <h3 style="margin-top:12px;">Geología y tectónica</h3>
+      <ul>
+        <li>Los continentes estaban fragmentados en microplacas; la dinámica tectónica creó cuencas marinas extensas y plataformas someras, ambientes perfectos para la vida marina.</li>
+        <li>La corteza oceánica y la sedimentación rápida favorecieron la preservación de organismos blandos en ciertas condiciones anóxicas (p.ej., Burgess Shale).</li>
+        <li>Eventos de transgresión y regresión marina (variaciones del nivel del mar) controlaron la disponibilidad de hábitats costeros y plataformas continentales.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Clima y química del océano</h3>
+      <ul>
+        <li>Clima predominantemente cálido; ausencia de grandes casquetes polares.</li>
+        <li>Elevados niveles de CO₂ respecto a la era moderna, condiciones tipo invernadero.</li>
+        <li>Estratificación de la columna de agua en algunos lugares: zonas superficiales oxigenadas y fondos anóxicos que favorecieron la conservación fósil.</li>
+        <li>Los nutrientes (fosfatos, nitratos) en plataformas someras promovieron blooms de organismos y mayor productividad primaria.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Fauna: grupos y ejemplos</h3>
+      <p class="muted">Lista ampliada con descripciones cortas:</p>
+      <ul>
+        <li><strong>Trilobites</strong>: artrópodos con exoesqueleto calcáreo, gran diversidad y amplia distribución; útiles para bioestratigrafía.</li>
+        <li><strong>Anomalocaris</strong>: gran depredador cambriano, con apéndices frontales y aparato bucal complejo; indicativo de redes tróficas más estructuradas.</li>
+        <li><strong>Pikaia</strong>: uno de los primeros cordados probables; importante por su relación con la evolución de los vertebrados.</li>
+        <li><strong>Hallucigenia</strong>: animal inusual con espinas dorsales; la interpretación anatómica fue re-evaluada tras hallazgos posteriores.</li>
+        <li><strong>Opabinia</strong>: de morfología singular (cinco ojos), muestra la experimentación evolutiva del Cámbrico.</li>
+        <li><strong>Braquiópodos, esponjas y briozoos</strong>: filtradores bentónicos comunes en comunidades someras.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Flora y biota microbiana</h3>
+      <ul>
+        <li>Vegetación terrestre escasa o inexistente; algas eucariotas y biocapas microbianas dominaron los ecosistemas marinos superficiales.</li>
+        <li>Los tapetes microbianos estabilizaron sedimentos y generaron microhábitats para invertebrados pequeños.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Fósiles y yacimientos clave</h3>
+      <ul>
+        <li><strong>Burgess Shale</strong> (Canadá): conservación excepcional de tejidos blandos; proporciona ventanas únicas a la biodiversidad cambriana.</li>
+        <li><strong>Chengjiang</strong> (China): otro yacimiento de conservación excepcional, con importantes implicaciones en la filogenia animal.</li>
+        <li><strong>Small Shelly Fauna</strong>: organismos con conchas pequeñas y fragmentadas que marcan la aparición de estructuras mineralizadas.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Métodos de estudio</h3>
+      <ul>
+        <li>Estratigrafía y datación radiométrica para fijar marcos temporales.</li>
+        <li>Microscopía y tomografía para estudiar morfología interna de fósiles.</li>
+        <li>Modelos paleoecológicos y simulaciones para reconstruir redes tróficas y circulación oceánica.</li>
+      </ul>
+
+      <h3 style="margin-top:12px;">Curiosidades y datos para tu exposición</h3>
+      <ul>
+        <li>La palabra "Cámbrico" proviene de "Cambria", nombre latino de Gales, lugar de estudios geológicos clásicos.</li>
+        <li>Muchas formas del Cámbrico parecen "experimentales" — algunos filos modernos emergen, otros no perduraron.</li>
+        <li>El estudio de estos fósiles ayuda a entender la evolución temprana de órganos sensoriales y sistemas locomotores.</li>
+      </ul>
+    </section>
+
+    <!-- JUEGOS (realmente interactivos) -->
+    <section class="panel" id="juegos">
+      <h2 class="section-title">Zona de juegos — Interactivos del Cámbrico</h2>
+      <p class="muted">Tres experiencias interactivas. > Pulsa EN INICIAR para empezar — ninguno arranca solo.</p>
+
+      <div class="games">
+        <!-- QUIZ AVANZADO -->
+        <div class="game" id="game-quiz">
+          <h3>Quiz avanzado</h3>
+          <div id="quizArea"></div>
+          <div class="game-controls">
+            <button class="btn" id="startQuizBtn">Iniciar Quiz</button>
+            <button class="btn secondary" id="checkQuizBtn">Comprobar</button>
+            <div class="status" id="quizStatus">Estado: inactivo</div>
+          </div>
+          <p class="muted-small">El quiz está pensado para repasar los conceptos del Cámbrico.</p>
+        </div>
+
+        <!-- SUBMARINO -->
+        <div class="game" id="game-submarine">
+          <h3>Submarino Temporal</h3>
+          <canvas id="submarineCanvas" width="640" height="320" aria-label="Submarino Temporal"></canvas>
+          <div class="game-controls">
+            <button class="btn" id="startSubBtn">Iniciar Submarino</button>
+            <button class="btn secondary" id="stopSubBtn">Parar / Reiniciar</button>
+            <div class="status">Puntuación: <strong id="subPoints">0</strong></div>
+          </div>
+          <p class="muted-small">Mueve el ratón dentro del canvas o toca para controlar. Recolecta fósiles cámbricos (verde) y evita elementos modernos (rojo).</p>
+        </div>
+
+        <!-- AVIÓN -->
+        <div class="game" id="game-plane">
+          <h3>Vuelo del Tiempo — Avión atrapapalabras</h3>
+          <canvas id="planeCanvas" width="640" height="320" aria-label="Vuelo del Tiempo"></canvas>
+          <div class="game-controls">
+            <button class="btn" id="startPlaneBtn">Iniciar Vuelo</button>
+            <button class="btn secondary" id="stopPlaneBtn">Parar / Reiniciar</button>
+            <div class="status">Puntos: <strong id="planePoints">0</strong></div>
+          </div>
+          <p class="muted-small">Atrapa palabras correctas para la pregunta actual. Controla con el ratón o touch.</p>
         </div>
       </div>
     </section>
 
-    <!-- INFORMACION -->
-    <section id="info" class="section container">
-      <div class="card">
-        <h2>Información científica</h2>
-        <div style="display:flex; gap:16px; margin-top:8px; flex-wrap:wrap;">
-          <div style="flex:1; min-width:220px;">
-            <h4>Eventos clave</h4>
-            <ul class="muted-small">
-              <li>Inicio: Explosión Cámbrica (~541 millones de años).</li>
-              <li>Transición hacia Ordovícico (~485 millones de años).</li>
-            </ul>
-          </div>
-          <div style="flex:1; min-width:220px;">
-            <h4>Condiciones</h4>
-            <ul class="muted-small">
-              <li>Clima cálido, océanos extensos.</li>
-            </ul>
-          </div>
-          <div style="flex:1; min-width:220px;">
-            <h4>Fósiles</h4>
-            <ul class="muted-small">
-              <li>Trilobites, anomalocáridos, opabinia, pikaia, small shelly fauna.</li>
-            </ul>
+    <!-- RESERVAS con calendario interactivo entrada/salida -->
+    <section class="panel" id="reservas">
+      <h2 class="section-title">Reservas — Calendario interactivo</h2>
+      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:flex-start;">
+        <div class="calendar" id="calendarWidget"></div>
+
+        <div style="flex:1; min-width:320px;">
+          <div style="background:#fff; padding:12px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06);">
+            <h3>Solicitud de reserva</h3>
+            <p class="muted-small">Selecciona fecha de entrada y salida en el calendario. No se permiten fechas pasadas.</p>
+
+            <div style="margin-top:8px;">
+              <div class="muted-small">Entrada: <strong id="selStart">—</strong></div>
+              <div class="muted-small">Salida: <strong id="selEnd">—</strong></div>
+              <div class="muted-small">Duración: <strong id="selDays">—</strong> noches</div>
+            </div>
+
+            <form id="bookingForm" style="margin-top:12px;">
+              <label class="muted-small">Nombre</label>
+              <input id="bookName" placeholder="Tu nombre" required>
+              <label class="muted-small">Email</label>
+              <input id="bookEmail" type="email" placeholder="correo@ejemplo.com" required>
+              <label class="muted-small">Teléfono</label>
+              <input id="bookPhone" placeholder="+34 ...">
+              <label class="muted-small">Comentarios</label>
+              <textarea id="bookNotes" placeholder="Alergias, preferencias..."></textarea>
+              <button class="btn" type="submit" style="margin-top:10px">Enviar reserva</button>
+              <p id="bookingMsg" class="muted-small" style="margin-top:10px"></p>
+            </form>
+
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- JUEGOS -->
-    <section id="juegos" class="section container">
-      <div class="card">
-        <h2>Zona de juegos</h2>
-        <p class="muted">Tres experiencias: Quiz, Submarino temporal y Vuelo del tiempo. Pulsa INICIAR en la categoría que quieras; ninguno arrancará automáticamente.</p>
-
-        <div class="games" style="margin-top:16px;">
-          <!-- CATEGORIA: QUIZ -->
-          <div class="game" id="cat-quiz">
-            <h4>Quiz educativo</h4>
-            <div id="quizAdvancedArea" style="margin-top:8px;"></div>
-            <div class="game-controls">
-              <button class="btn" id="startQuizBtn">Iniciar Quiz</button>
-              <button class="btn secondary" id="evalQuizBtn">Comprobar</button>
-              <div class="status" id="quizStatus">Estado: inactivo</div>
-            </div>
-            <p class="muted-small" style="margin-top:8px">Responde y pulsa "Comprobar".</p>
-          </div>
-
-          <!-- CATEGORIA: SUBMARINO -->
-          <div class="game" id="cat-sub">
-            <h4>Submarino temporal</h4>
-            <canvas id="subCanvas" width="620" height="200" role="img" aria-label="Canvas Submarino"></canvas>
-            <div class="game-controls">
-              <button class="btn" id="startSubmarineBtn">Iniciar Submarino</button>
-              <button class="btn secondary" id="resetSubmarineBtn">Parar / Reiniciar</button>
-              <div class="status">Puntuación: <strong id="subScore">0</strong></div>
-            </div>
-            <p class="muted-small" style="margin-top:8px">Mueve el ratón dentro del canvas (o toca) para mover el submarino. Recolecta ítems cámbricos (verde).</p>
-          </div>
-
-          <!-- CATEGORIA: AVION -->
-          <div class="game" id="cat-plane">
-            <h4>Vuelo del tiempo — Avión atrapapalabras</h4>
-            <canvas id="planeCanvas" width="620" height="200" role="img" aria-label="Canvas Avión"></canvas>
-            <div class="game-controls">
-              <button class="btn" id="startPlaneGameBtn">Iniciar Vuelo</button>
-              <button class="btn secondary" id="resetPlaneGameBtn">Parar / Reiniciar</button>
-              <div class="status">Puntos: <strong id="planeScore">0</strong></div>
-            </div>
-            <p class="muted-small" style="margin-top:8px">Mueve el cursor dentro del canvas para mover el avión. Atrapa palabras correctas según la pregunta.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESERVAS -->
-    <section id="reservas" class="section container">
-      <div class="card">
-        <h2>Reservas — Calendario interactivo</h2>
-        <p class="muted">Selecciona una fecha de <strong>entrada</strong> y una de <strong>salida</strong>. No se permiten fechas pasadas.</p>
-
-        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:12px;">
-          <div class="calendar" id="calendarWidget"></div>
-
-          <div style="flex:1; min-width:320px;">
-            <div class="card">
-              <h3>Tu solicitud</h3>
-              <div style="margin-top:8px;">
-                <div class="muted-small">Entrada: <strong id="selStart">—</strong></div>
-                <div class="muted-small">Salida: <strong id="selEnd">—</strong></div>
-                <div class="muted-small">Duración: <strong id="selDays">—</strong> noche(s)</div>
-
-                <form id="bookingForm" style="margin-top:12px;">
-                  <label class="muted-small">Nombre</label>
-                  <input id="bookName" required placeholder="Tu nombre">
-                  <label class="muted-small">Email</label>
-                  <input id="bookEmail" type="email" required placeholder="correo@ejemplo.com">
-                  <label class="muted-small">Teléfono</label>
-                  <input id="bookPhone" placeholder="+34 ...">
-                  <label class="muted-small">Comentarios</label>
-                  <textarea id="bookNotes" placeholder="¿Alguna preferencia?"></textarea>
-                  <button class="btn" type="submit" style="margin-top:8px">Enviar reserva</button>
-                  <p id="bookingMsg" class="muted-small" style="margin-top:8px"></p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="muted-small" style="margin-top:12px">Nota: para fines del proyecto (instituto) el sitio simula el proceso de reserva; en el contexto del proyecto se muestra como una agencia que vende viajes al pasado.</p>
-      </div>
+      <p class="muted-small" style="margin-top:10px;">Nota: el sitio está creado para tu trabajo del instituto. El proceso de reserva está simulado y se presenta como si la agencia vendiera viajes al pasado (según las instrucciones del proyecto).</p>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
-      <div>
-        <strong>Cronoviajes S.A.</strong>
-        <div class="muted-small">© <span id="copyYear"></span> — Descubre el pasado, vive el origen</div>
-      </div>
-      <div style="text-align:right">
-        <div class="muted-small">Contacto: <a href="mailto:info@cronoviajes.example" style="color:inherit; text-decoration:underline">info@cronoviajes.example</a></div>
-        <div class="chips" style="justify-content:flex-end; margin-top:8px;">
-          <div class="chip">Twitter</div>
-          <div class="chip">Instagram</div>
-          <div class="chip">YouTube</div>
-        </div>
-      </div>
+    <div style="max-width:var(--maxw); margin:0 auto; padding:10px;">
+      <strong>Cronoviajes S.A.</strong> — © <span id="year"></span> — Descubre el pasado, vive el origen
     </div>
   </footer>
 
-  <!-- SCRIPTS: lógica completa (sin audio) -->
+  <!-- ===================================================
+       SCRIPTS: slider + games + calendar + gallery + helpers
+       =================================================== -->
   <script>
-  /* -------------------------------------------
-     Selectores y utilidades
-  ------------------------------------------- */
+  // Small utilities
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
-  document.getElementById('copyYear').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Logo pequeño anim
-  (function(){
-    const logo = document.getElementById('logoEl');
-    setInterval(()=> logo.classList.toggle('anim'), 2200);
-  })();
+  // Scrolling helper for topnav
+  function scrollToSection(id){
+    const mapping = {
+      'inicio': document.querySelector('.hero'),
+      'galeria': document.getElementById('galeria'),
+      'info': document.getElementById('info'),
+      'juegos': document.getElementById('juegos'),
+      'reservas': document.getElementById('reservas'),
+    };
+    const el = mapping[id] || document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
 
-  // CONTRASTE HERO: manual (útil si video no deja calcular brillo)
-  (function(){
-    const hero = document.getElementById('hero');
-    const toggle = document.getElementById('toggleContrastBtn');
-    let light = false;
-    toggle.addEventListener('click', ()=>{
-      light = !light;
-      if(light){
-        hero.classList.add('light-overlay');
-        $$('.hero-sub, .hero-title, .logo').forEach(el=> el.style.color = 'var(--hero-text-dark)');
-        $$('.topnav a').forEach(a=> a.style.color = 'var(--deep)');
-        toggle.textContent = 'Contraste: claro';
-      } else {
-        hero.classList.remove('light-overlay');
-        $$('.hero-sub, .hero-title, .logo').forEach(el=> el.style.color = 'var(--hero-text-light)');
-        $$('.topnav a').forEach(a=> a.style.color = '#eaf8ff');
-        toggle.textContent = 'Alternar contraste';
-      }
+  /* ===================================================
+     HERO SLIDER
+     - 4 slides, cambia cada 3s
+     - botón alternar contraste: añade clase .light en .hero
+     =================================================== */
+  (function HeroSlider(){
+    const slider = document.getElementById('heroSlider');
+    const slides = Array.from(slider.querySelectorAll('.slide'));
+    let index = 0;
+    const changeInterval = 3000;
+
+    function show(i){
+      slides.forEach((s,idx)=> s.classList.toggle('active', idx === i));
+    }
+
+    let timer = setInterval(()=>{
+      index = (index + 1) % slides.length;
+      show(index);
+    }, changeInterval);
+
+    // Pause on hover (desktop)
+    slider.addEventListener('mouseenter', ()=> clearInterval(timer));
+    slider.addEventListener('mouseleave', ()=> { timer = setInterval(()=>{ index = (index+1)%slides.length; show(index); }, changeInterval); });
+
+    // contrast toggle
+    const btnToggle = document.getElementById('btnToggleContrast');
+    const hero = document.querySelector('.hero');
+    btnToggle.addEventListener('click', ()=>{
+      hero.classList.toggle('light');
+      // adjust hero text color depending on overlay
+      const isLight = hero.classList.contains('light');
+      const elems = [ ...$$('.hero-title'), ...$$('.hero-sub'), ...$$('.logo') ];
+      elems.forEach(el=>{
+        el.style.color = isLight ? 'var(--hero-foreground-dark)' : 'var(--hero-foreground-light)';
+      });
+      // change topnav link colors
+      $$('.topnav a').forEach(a => a.style.color = isLight ? 'var(--deep)' : 'rgba(255,255,255,0.95)');
+      btnToggle.textContent = isLight ? 'Contraste: claro' : 'Alternar contraste';
     });
-    // set initial
-    $$('.hero-sub, .hero-title, .logo').forEach(el=> el.style.color = 'var(--hero-text-light)');
+
+    // CTA reservation scroll
+    $('#btnReserve').addEventListener('click', ()=> { scrollToSection('reservas'); });
+    // slight logo float
+    setInterval(()=> document.getElementById('logo').classList.toggle('float'), 1900);
   })();
 
-  // Hero CTA
-  $('#heroBookBtn').addEventListener('click', ()=> { document.getElementById('reservas').scrollIntoView({behavior:'smooth'}); });
-
-  /* -------------------------------------------
-     LIGHTBOX GALERÍA
-  ------------------------------------------- */
-  (function(){
-    const grid = $('#galleryGrid');
-    grid.addEventListener('click', (e)=>{
+  /* ===================================================
+     GALLERY LIGHTBOX
+     =================================================== */
+  (function Gallery(){
+    const grid = document.getElementById('galleryGrid');
+    grid.addEventListener('click', (e) => {
       if(e.target && e.target.tagName === 'IMG'){
+        const src = e.target.src;
+        const alt = e.target.alt || '';
         const overlay = document.createElement('div');
-        overlay.style.position='fixed'; overlay.style.inset=0; overlay.style.background='rgba(0,0,0,0.85)';
-        overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center';
-        overlay.style.zIndex=9999; overlay.style.cursor='zoom-out';
+        overlay.style.position = 'fixed'; overlay.style.inset = 0; overlay.style.background = 'rgba(0,0,0,0.88)';
+        overlay.style.display = 'flex'; overlay.style.alignItems = 'center'; overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = 9999; overlay.style.cursor = 'zoom-out';
         const img = document.createElement('img');
-        img.src = e.target.src; img.alt = e.target.alt || ''; img.style.maxWidth='92%'; img.style.maxHeight='92%'; img.style.borderRadius='10px';
+        img.src = src; img.alt = alt; img.style.maxWidth = '94%'; img.style.maxHeight = '94%'; img.style.borderRadius = '8px';
         overlay.appendChild(img);
         overlay.addEventListener('click', ()=> overlay.remove());
         document.body.appendChild(overlay);
@@ -510,100 +497,120 @@
     });
   })();
 
-  /* -------------------------------------------
-     QUIZ EDUCATIVO (categoría)
-  ------------------------------------------- */
-  (function(){
-    const quizData = [
+  /* ===================================================
+     QUIZ AVANZADO
+     =================================================== */
+  (function Quiz(){
+    const questions = [
       { q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541" },
-      { q: "Cita un depredador destacado del Cámbrico", a: "anomalocaris" },
-      { q: "Nombre de un cordado primitivo", a: "pikaia" },
-      { q: "Organismo con cinco ojos", a: "opabinia" },
-      { q: "¿Cómo se llama el evento de aparición masiva de especies?", a: "explosión cámbrica" }
+      { q: "Nombre de un depredador ápice del Cámbrico", a: "anomalocaris" },
+      { q: "Un cordado primitivo del Cámbrico", a: "pikaia" },
+      { q: "Organismo con una trompa y cinco ojos", a: "opabinia" },
+      { q: "Yacimiento con conservación de tejidos blandos en Canadá", a: "burgess" },
     ];
     let active = false;
-    const area = $('#quizAdvancedArea');
-    const status = $('#quizStatus');
+    const area = document.getElementById('quizArea');
+    const status = document.getElementById('quizStatus');
 
     function build(){
       area.innerHTML = '';
-      quizData.forEach((it, idx)=>{
+      questions.forEach((it, idx)=>{
         const div = document.createElement('div');
         div.style.marginBottom = '10px';
-        div.innerHTML = `<strong>${idx+1}.</strong> ${it.q}<div style="margin-top:6px"><input id="qa${idx}" style="width:100%; padding:8px; border-radius:8px; border:1px solid #e1f6fb;"></div>`;
+        div.innerHTML = `<strong>${idx+1}.</strong> ${it.q}<div style="margin-top:8px"><input id="qa${idx}" style="width:100%; padding:8px; border-radius:8px; border:1px solid #e1f6fb;"></div>`;
         area.appendChild(div);
       });
+      status.textContent = 'Estado: activo';
+      active = true;
     }
 
-    $('#startQuizBtn').addEventListener('click', ()=>{
-      active = true; build(); status.textContent = 'Estado: activo';
-    });
-
-    $('#evalQuizBtn').addEventListener('click', ()=>{
+    $('#startQuizBtn').addEventListener('click', ()=> build());
+    $('#checkQuizBtn').addEventListener('click', ()=>{
       if(!active){ status.textContent = 'Estado: inactivo (pulsa Iniciar Quiz)'; return; }
       let score = 0;
-      quizData.forEach((it,i)=>{
+      questions.forEach((it,i)=>{
         const val = (document.getElementById('qa'+i)?.value || '').toLowerCase();
-        // compare by keywords
-        if(it.a === 'explosión cámbrica'){
-          if(val.includes('explosión') || val.includes('cámbrica') || val.includes('cambr')) score++;
+        if(it.a === 'burgess'){
+          if(val.includes('burgess') || val.includes('burgess shale')) score++;
+        } else if(it.a === '541'){
+          if(val.includes('541') || val.includes('541')) score++;
         } else {
           if(val.includes(it.a)) score++;
         }
       });
-      status.textContent = `Resultado: ${score} / ${quizData.length}`;
+      status.textContent = `Resultado: ${score} / ${questions.length}`;
       active = false;
     });
   })();
 
-  /* -------------------------------------------
-     SUBMARINO (categoría)
-  ------------------------------------------- */
-  (function(){
-    const canvas = document.getElementById('subCanvas');
+  /* ===================================================
+     SUBMARINO — Canvas real
+     - control mouse/touch
+     - objetos: items[] with ok true/false
+     =================================================== */
+  (function Submarine(){
+    const canvas = document.getElementById('submarineCanvas');
     const ctx = canvas.getContext('2d');
-    let state = null;
-
-    function initState(){
-      state = { running:false, player:{x:36, y: canvas.height/2 - 12, w:56, h:26}, items:[], tick:0, score:0, spawnRate:70, mouseY:undefined };
-      $('#subScore').textContent = state.score;
-      drawInstructions();
+    let dpr = window.devicePixelRatio || 1;
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
     }
+    window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
 
-    function drawInstructions(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      const g = ctx.createLinearGradient(0,0,0,canvas.height);
-      g.addColorStop(0,'#e6f8ff'); g.addColorStop(1,'#d9f3ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#003a55';
-      ctx.font = '14px Poppins';
-      ctx.fillText('Pulsa "Iniciar Submarino" y mueve el ratón en el canvas para controlar el submarino.', 12, 22);
-    }
+    // state
+    let state = {
+      running:false, player:{x:60, y:140, w:60, h:28}, items:[], tick:0, score:0, spawnRate:60, mouseY:undefined
+    };
 
     function spawn(){
+      // mix of cámbrico items (ok) and 'moderno' items (no)
       const pool = [
-        {label:'trilobite', ok:true},{label:'anomalocaris', ok:true},{label:'pikaia', ok:true},{label:'opabinia', ok:true},
-        {label:'t-rex', ok:false},{label:'teléfono', ok:false},{label:'manzana', ok:false}
+        {label:'trilobite', ok:true},
+        {label:'anomalocaris', ok:true},
+        {label:'pikaia', ok:true},
+        {label:'opabinia', ok:true},
+        {label:'alga', ok:true},
+        {label:'tornillo', ok:false},
+        {label:'teléfono', ok:false},
+        {label:'carro', ok:false}
       ];
       const pick = pool[Math.floor(Math.random()*pool.length)];
-      state.items.push({ x: canvas.width + 40, y: 30 + Math.random()*(canvas.height-60), vx: -2 - Math.random()*2, label: pick.label, ok: pick.ok, size: 12 + Math.random()*12 });
+      state.items.push({
+        x: 760, y: 20 + Math.random()*260,
+        vx: -1.6 - Math.random()*1.8, label: pick.label, ok: pick.ok,
+        size: 12 + Math.random()*14
+      });
     }
 
-    function loop(){
+    function drawBackground(){
+      // gradient water
+      const g = ctx.createLinearGradient(0,0,0,320);
+      g.addColorStop(0,'#e6fbff');
+      g.addColorStop(1,'#d9f3ff');
+      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr, canvas.height/dpr);
+      // seabed
+      ctx.fillStyle = '#cfeef8';
+      ctx.fillRect(0, 300, canvas.width/dpr, 20);
+    }
+
+    function draw(){
       if(!state.running) return;
       state.tick++;
       if(state.tick % state.spawnRate === 0) spawn();
 
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      const g = ctx.createLinearGradient(0,0,0,canvas.height);
-      g.addColorStop(0,'#e6f8ff'); g.addColorStop(1,'#d9f3ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#cdeff8'; ctx.fillRect(0, canvas.height-18, canvas.width, 18);
+      // clear
+      ctx.clearRect(0,0,canvas.width/dpr, canvas.height/dpr);
+      drawBackground();
 
       // player
       const p = state.player;
-      ctx.fillStyle = '#005f7f'; ctx.fillRect(p.x, p.y, p.w, p.h);
-      ctx.fillStyle = '#00b4d8'; ctx.fillRect(p.x+8, p.y+6, p.w-16, p.h-12);
+      ctx.fillStyle = '#005f7f';
+      ctx.fillRect(p.x, p.y, p.w, p.h);
+      ctx.fillStyle = '#00b4d8';
+      ctx.fillRect(p.x+8, p.y+6, p.w-16, p.h-12);
 
       // items
       for(let i=state.items.length-1;i>=0;i--){
@@ -613,135 +620,197 @@
         ctx.beginPath(); ctx.arc(it.x, it.y, it.size, 0, Math.PI*2); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = '12px Poppins'; ctx.fillText(it.label, it.x - it.size, it.y - it.size - 6);
 
+        // collision check simple box
         if(it.x < p.x + p.w && it.x > p.x && it.y > p.y && it.y < p.y + p.h){
           if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5);
           state.items.splice(i,1);
-          $('#subScore').textContent = state.score;
+          document.getElementById('subPoints').textContent = state.score;
         } else if(it.x < -40) state.items.splice(i,1);
       }
 
+      // follow mouseY
       if(state.mouseY !== undefined){
-        p.y += (state.mouseY - p.y - p.h/2) * 0.14;
+        p.y += (state.mouseY - p.y - p.h/2) * 0.12;
         if(p.y < 6) p.y = 6;
-        if(p.y > canvas.height - p.h - 6) p.y = canvas.height - p.h - 6;
+        if(p.y > 300 - p.h - 6) p.y = 300 - p.h - 6;
       }
 
-      ctx.fillStyle = '#003a55'; ctx.font = '13px Poppins'; ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 18);
+      // HUD / instructions
+      ctx.fillStyle = '#003a55'; ctx.font = '13px Poppins'; ctx.fillText('Recolecta fósiles cámbricos (verde). Evita objetos modernos (rojo).', 12, 16);
 
-      requestAnimationFrame(loop);
+      requestAnimationFrame(draw);
     }
 
-    $('#startSubmarineBtn').addEventListener('click', ()=>{
-      if(!state) initState();
-      state.running = true; loop();
-    });
-    $('#resetSubmarineBtn').addEventListener('click', ()=> initState());
-
+    // events
     canvas.addEventListener('mousemove', (e)=> {
-      const r = canvas.getBoundingClientRect(); if(state) state.mouseY = e.clientY - r.top;
+      const r = canvas.getBoundingClientRect();
+      state.mouseY = e.clientY - r.top;
     });
     canvas.addEventListener('touchmove', (e)=> {
       const r = canvas.getBoundingClientRect();
-      if(e.touches && e.touches[0] && state) state.mouseY = e.touches[0].clientY - r.top;
+      if(e.touches && e.touches[0]) state.mouseY = e.touches[0].clientY - r.top;
       e.preventDefault();
     }, { passive:false });
 
+    // controls
+    $('#startSubBtn').addEventListener('click', ()=>{
+      resize(); state.running = true; state.tick = 0; state.items = []; state.score = 0; $('#subPoints').textContent = 0; draw();
+    });
+    $('#stopSubBtn').addEventListener('click', ()=>{
+      state.running = false; // reset visuals
+      state = { running:false, player:{x:60, y:140, w:60, h:28}, items:[], tick:0, score:0, spawnRate:60, mouseY:undefined };
+      ctx.clearRect(0,0,canvas.width/dpr, canvas.height/dpr);
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
+      $('#subPoints').textContent = 0;
+    });
+
     // initial draw
-    initState();
+    (function init(){
+      resize();
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
+    })();
+
   })();
 
-  /* -------------------------------------------
-     AVIÓN (Vuelo del tiempo)
-  ------------------------------------------- */
-  (function(){
+  /* ===================================================
+     PLANE GAME - Vuelo del tiempo (canvas)
+     - spawnea palabras que caen
+     - el avión recoge palabras correctas según pregunta actual
+     =================================================== */
+  (function PlaneGame(){
     const canvas = document.getElementById('planeCanvas');
     const ctx = canvas.getContext('2d');
+    let dpr = window.devicePixelRatio || 1;
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
 
-    let state = { running:false, player:{x: canvas.width/2, y: canvas.height-28, w:40, h:18}, words:[], tick:0, score:0, currentQ:null, mouseX:undefined };
+    // state
+    let state = { running:false, player:{x:320, y:260, w:44, h:20}, words:[], tick:0, score:0, mouseX:undefined, currentQ:null };
 
     const questions = [
       { q: "Depredador del Cámbrico", correct: ["anomalocaris","opabinia"] },
       { q: "Cordado primitivo", correct: ["pikaia"] },
-      { q: "Elemento típico", correct: ["trilobite","braquiópodo"] },
+      { q: "Elemento típico (esqueleto)", correct: ["trilobite","braquiópodo","small shelly"] },
       { q: "Organismo con cinco ojos", correct: ["opabinia"] }
     ];
 
-    function drawInstructions(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#005f7f'; ctx.font = '15px Poppins';
-      ctx.fillText('Pulsa "Iniciar Vuelo" y mueve el ratón dentro del canvas para mover el avión.', 10, 20);
-    }
+    const pool = ['trilobite','anomalocaris','pikaia','dinosaurio','alga','opabinia','braquiópodo','fósil','cámbrico','vida','pez','estrella','teléfono','coche'];
 
     function spawnWord(){
-      const pool = ['trilobite','anomalocaris','pikaia','dinosaurio','alga','opabinia','braquiópodo','fósil','cámbrico','vida','pez','estrella'];
       const w = pool[Math.floor(Math.random()*pool.length)];
-      state.words.push({ x: 30 + Math.random()*(canvas.width-60), y: -20, vy: 1 + Math.random()*1.6, text: w });
+      state.words.push({ x: 30 + Math.random()*(canvas.width/dpr - 60), y: -20, vy: 1 + Math.random()*1.8, text: w });
+    }
+
+    function drawBackground(){
+      const g = ctx.createLinearGradient(0,0,0,320); g.addColorStop(0,'#fff7f0'); g.addColorStop(1,'#e8f7ff');
+      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr, canvas.height/dpr);
     }
 
     function loop(){
       if(!state.running) return;
       state.tick++;
-      if(state.tick % 60 === 0) spawnWord();
+      if(state.tick % 55 === 0) spawnWord();
 
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      const g = ctx.createLinearGradient(0,0,0,canvas.height); g.addColorStop(0,'#fff7f0'); g.addColorStop(1,'#e8f7ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.clearRect(0,0,canvas.width/dpr, canvas.height/dpr);
+      drawBackground();
 
-      ctx.fillStyle = '#005f7f'; ctx.font = '15px Poppins';
+      // question
+      ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins';
       ctx.fillText('Pregunta: ' + (state.currentQ?.q || '—'), 10, 20);
 
+      // plane drawing
       const pl = state.player;
-      ctx.fillStyle = '#0077b6'; ctx.beginPath();
-      ctx.moveTo(pl.x, pl.y); ctx.lineTo(pl.x-22, pl.y+16); ctx.lineTo(pl.x+22, pl.y+16); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#0077b6';
+      ctx.beginPath(); ctx.moveTo(pl.x, pl.y); ctx.lineTo(pl.x-22, pl.y+16); ctx.lineTo(pl.x+22, pl.y+16); ctx.closePath(); ctx.fill();
 
+      // words
       for(let i=state.words.length-1;i>=0;i--){
         const it = state.words[i]; it.y += it.vy;
-        ctx.fillStyle = '#ffd166'; ctx.font = '13px Poppins';
-        const tw = ctx.measureText(it.text).width + 14; const rx = it.x - tw/2;
+        ctx.fillStyle = '#ffd166';
+        ctx.font = '13px Poppins';
+        const tw = ctx.measureText(it.text).width + 14;
+        const rx = it.x - tw/2;
         ctx.fillRect(rx, it.y - 14, tw, 22);
-        ctx.fillStyle = '#00303a'; ctx.fillText(it.text, rx + 7, it.y + 4);
+        ctx.fillStyle = '#00303a';
+        ctx.fillText(it.text, rx + 7, it.y + 4);
 
-        if(it.y > pl.y - 10 && it.y < pl.y + 18 && Math.abs(it.x - pl.x) < 28){
+        // collision with plane
+        if(it.y > pl.y - 10 && it.y < pl.y + 18 && Math.abs(it.x - pl.x) < 30){
           const correctList = state.currentQ?.correct || [];
-          if(correctList.includes(it.text)){ state.score += 10; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; }
-          else state.score = Math.max(0, state.score - 5);
+          if(correctList.some(k => it.text.includes(k))) {
+            state.score += 10;
+            // new question
+            state.currentQ = questions[Math.floor(Math.random()*questions.length)];
+          } else {
+            state.score = Math.max(0, state.score - 5);
+          }
           state.words.splice(i,1);
-          $('#planeScore').textContent = state.score;
-        } else if(it.y > canvas.height + 30) state.words.splice(i,1);
+          document.getElementById('planePoints').textContent = state.score;
+        } else if(it.y > canvas.height/dpr + 20) state.words.splice(i,1);
       }
 
+      // plane movement
       if(state.mouseX !== undefined){
         pl.x += (state.mouseX - pl.x) * 0.12;
-        if(pl.x < 22) pl.x = 22; if(pl.x > canvas.width - 22) pl.x = canvas.width - 22;
+        if(pl.x < 22) pl.x = 22;
+        if(pl.x > (canvas.width/dpr)-22) pl.x = (canvas.width/dpr)-22;
       }
 
       requestAnimationFrame(loop);
     }
 
-    $('#startPlaneGameBtn').addEventListener('click', ()=>{
-      state.running = true; state.score = 0; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; state.words = []; state.tick = 0;
-      $('#planeScore').textContent = state.score; loop();
-    });
-    $('#resetPlaneGameBtn').addEventListener('click', ()=>{
-      state.running = false; state.words = []; state.score = 0; state.currentQ = questions[Math.floor(Math.random()*questions.length)];
-      $('#planeScore').textContent = state.score; drawInstructions();
-    });
-
+    // events
     canvas.addEventListener('mousemove', (e)=> {
       const r = canvas.getBoundingClientRect(); state.mouseX = e.clientX - r.left;
     });
     canvas.addEventListener('touchmove', (e)=> {
-      const r = canvas.getBoundingClientRect(); if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left; e.preventDefault();
+      const r = canvas.getBoundingClientRect();
+      if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left;
+      e.preventDefault();
     }, { passive:false });
 
-    drawInstructions();
+    // controls
+    $('#startPlaneBtn').addEventListener('click', ()=>{
+      resize(); state.running = true; state.score = 0; state.tick = 0; state.words = []; state.currentQ = questions[Math.floor(Math.random()*questions.length)];
+      $('#planePoints').textContent = 0; loop();
+    });
+    $('#stopPlaneBtn').addEventListener('click', ()=>{
+      state.running = false; state = { running:false, player:{x:320,y:260,w:44,h:20}, words:[], tick:0, score:0, mouseX:undefined, currentQ:null };
+      ctx.clearRect(0,0,canvas.width/dpr,canvas.height/dpr);
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.', 12, 22);
+      $('#planePoints').textContent = 0;
+    });
+
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    // initial draw
+    (function init(){
+      resize();
+      drawBackground();
+      ctx.fillStyle = '#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.', 12, 22);
+    })();
+
   })();
 
-  /* -------------------------------------------
+  /* ===================================================
      CALENDARIO INTERACTIVO (entrada/salida)
-     Implementación en este archivo: sin dependencias
-  ------------------------------------------- */
-  (function CalendarWidget(){
+     - pura JS, sin librerías
+     =================================================== */
+  (function Calendar(){
     const container = document.getElementById('calendarWidget');
     let selectedStart = null, selectedEnd = null;
     const today = new Date(); today.setHours(0,0,0,0);
@@ -749,29 +818,30 @@
 
     function build(){
       container.innerHTML = '';
-      const cal = document.createElement('div'); cal.className = 'calendar-inner';
+      const cal = document.createElement('div');
 
-      const monthRow = document.createElement('div'); monthRow.className='month';
-      monthRow.style.display='flex'; monthRow.style.justifyContent='space-between'; monthRow.style.alignItems='center'; monthRow.style.marginBottom='8px';
-
+      // header
+      const monthRow = document.createElement('div'); monthRow.className = 'month';
       const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-      const title = document.createElement('div'); title.textContent = `${monthNames[viewMonth]} ${viewYear}`; title.style.fontWeight='800'; title.style.color='var(--deep)';
+      const title = document.createElement('div'); title.textContent = `${monthNames[viewMonth]} ${viewYear}`; title.style.fontWeight = '800';
+      const prev = document.createElement('button'); prev.textContent = '◀'; prev.className='btn secondary'; prev.style.padding='6px 10px';
+      const next = document.createElement('button'); next.textContent = '▶'; next.className='btn secondary'; next.style.padding='6px 10px';
+      prev.onclick = ()=> { if(viewMonth === 0){ viewMonth=11; viewYear--; } else viewMonth--; renderGrid(); };
+      next.onclick = ()=> { if(viewMonth === 11){ viewMonth=0; viewYear++; } else viewMonth++; renderGrid(); };
 
-      const prevBtn = document.createElement('button'); prevBtn.textContent='◀'; prevBtn.className='btn secondary'; prevBtn.style.padding='6px 10px';
-      prevBtn.onclick = ()=> { if(viewMonth===0){ viewMonth=11; viewYear--; } else viewMonth--; renderGrid(); };
-      const nextBtn = document.createElement('button'); nextBtn.textContent='▶'; nextBtn.className='btn secondary'; nextBtn.style.padding='6px 10px';
-      nextBtn.onclick = ()=> { if(viewMonth===11){ viewMonth=0; viewYear++; } else viewMonth++; renderGrid(); };
-
-      const left = document.createElement('div'); left.appendChild(prevBtn); left.appendChild(title);
-      const right = document.createElement('div'); right.appendChild(nextBtn);
+      const left = document.createElement('div'); left.appendChild(prev); left.appendChild(title);
+      const right = document.createElement('div'); right.appendChild(next);
       monthRow.appendChild(left); monthRow.appendChild(right);
       cal.appendChild(monthRow);
 
-      const weekdays = document.createElement('div'); weekdays.className='weekdays';
-      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; el.style.opacity='.8'; el.style.fontWeight='700'; weekdays.appendChild(el);});
+      // weekdays
+      const weekdays = document.createElement('div'); weekdays.className = 'weekdays';
+      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el = document.createElement('div'); el.className='weekday'; el.textContent = d; el.style.fontWeight='700'; weekdays.appendChild(el); });
       cal.appendChild(weekdays);
 
-      const days = document.createElement('div'); days.className='days'; days.style.marginTop='8px'; cal.appendChild(days);
+      // days
+      const days = document.createElement('div'); days.className = 'days'; days.style.marginTop = '8px';
+      cal.appendChild(days);
 
       container.appendChild(cal);
 
@@ -780,10 +850,10 @@
         const first = new Date(viewYear, viewMonth, 1);
         const last = new Date(viewYear, viewMonth+1, 0);
         const firstWeekday = (first.getDay() + 6) % 7; // 0=Mon..6=Sun
-        for(let i=0;i<firstWeekday;i++){ const empty = document.createElement('div'); empty.className='weekday'; days.appendChild(empty); }
+        for(let i=0;i<firstWeekday;i++){ const e = document.createElement('div'); e.className='weekday'; days.appendChild(e); }
         for(let d=1; d<=last.getDate(); d++){
           const dt = new Date(viewYear, viewMonth, d); dt.setHours(0,0,0,0);
-          const el = document.createElement('div'); el.className='day box'; el.textContent=d;
+          const el = document.createElement('div'); el.className='day box'; el.textContent = d;
           if(dt < today){ el.classList.add('disabled'); }
           else { el.addEventListener('click', ()=> onDateClick(dt)); }
           if(selectedStart && sameDay(dt, selectedStart)) el.classList.add('selected');
@@ -799,84 +869,89 @@
       if(!selectedStart || (selectedStart && selectedEnd)){ selectedStart = dt; selectedEnd = null; }
       else { if(dt < selectedStart){ selectedStart = dt; selectedEnd = null; } else selectedEnd = dt; }
       updateSummary(); build();
-      // Update mini summary as well
-      updateMini();
     }
-
     function sameDay(a,b){ return a && b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
-
+    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', {day:'2-digit', month:'short', year:'numeric'}); }
     function updateSummary(){
       $('#selStart').textContent = selectedStart ? formatDate(selectedStart) : '—';
       $('#selEnd').textContent = selectedEnd ? formatDate(selectedEnd) : '—';
-      if(selectedStart && selectedEnd){
-        const days = Math.round((selectedEnd - selectedStart)/(1000*60*60*24));
-        $('#selDays').textContent = days;
-      } else $('#selDays').textContent = '—';
+      if(selectedStart && selectedEnd){ const days = Math.round((selectedEnd - selectedStart)/(1000*60*60*24)); $('#selDays').textContent = days; } else $('#selDays').textContent = '—';
     }
-    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' }); }
 
-    // expose getter for booking forms
     window.CronoviajesCalendar = {
       init: ()=> build(),
-      getSelection: ()=> ({ start: selectedStart, end: selectedEnd, days: selectedStart && selectedEnd ? Math.round((selectedEnd - selectedStart)/(1000*60*60*24)) : null }),
-      setSelection: (s,e)=>{ selectedStart = s; selectedEnd = e; build(); updateSummary(); updateMini(); }
+      getSelection: ()=> ({ start:selectedStart, end:selectedEnd, days: selectedStart && selectedEnd ? Math.round((selectedEnd-selectedStart)/(1000*60*60*24)) : null }),
+      setSelection: (s,e)=>{ selectedStart = s; selectedEnd = e; build(); updateSummary(); }
     };
 
-    function updateMini(){
-      const sel = window.CronoviajesCalendar.getSelection();
-      $('#miniStart').textContent = sel.start ? sel.start.toLocaleDateString('es-ES') : '—';
-      $('#miniEnd').textContent = sel.end ? sel.end.toLocaleDateString('es-ES') : '—';
-    }
+    build();
+    updateSummary();
 
-    build(); updateSummary();
   })();
 
-  // Mini calendar actions (aside)
-  (function(){
-    $('#miniRequestBtn').addEventListener('click', ()=>{
-      const sel = window.CronoviajesCalendar.getSelection();
-      if(!sel || !sel.start || !sel.end){ $('#miniResMsg').textContent = 'Selecciona fechas de entrada y salida primero.'; return; }
-      $('#miniResMsg').textContent = `Solicitud registrada para ${sel.start.toLocaleDateString()} a ${sel.end.toLocaleDateString()}. Nuestro equipo le contactará para confirmar (simulado).`;
-    });
-  })();
-
-  // Booking form submit (acts like real agency: send confirmation text)
-  (function(){
+  // Mini reservation: update on booking form submit
+  (function BookingForm(){
     $('#bookingForm').addEventListener('submit', (e)=>{
       e.preventDefault();
-      const sel = window.CronoviajesCalendar.getSelection();
-      if(!sel || !sel.start || !sel.end){ $('#bookingMsg').textContent = 'Por favor seleccione fecha de entrada y salida en el calendario.'; return; }
+      const sel = window.CronoviajesCalendar?.getSelection();
+      if(!sel || !sel.start || !sel.end){ $('#bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
       const name = $('#bookName').value || 'Cliente';
       const email = $('#bookEmail').value || '—';
       const phone = $('#bookPhone').value || '—';
-      $('#bookingMsg').textContent = `Gracias ${name}. Su reserva provisional para ${sel.start.toLocaleDateString()} — ${sel.end.toLocaleDateString()} ha sido registrada. Recibirá confirmación por email (${email}) y teléfono (${phone}) en breve.`;
-      // Aquí en un sistema real llamaríamos a la API para crear la reserva.
+      $('#bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
     });
   })();
 
-  /* -------------------------------------------
-     Responsive canvases: fix DPI
-  ------------------------------------------- */
-  (function fixDPI(){
-    const canvases = [document.getElementById('subCanvas'), document.getElementById('planeCanvas')];
-    function apply(){
-      canvases.forEach(c=>{
-        const dpr = window.devicePixelRatio || 1;
-        const rect = c.getBoundingClientRect();
-        if(rect.width === 0 || rect.height === 0) return;
-        c.width = rect.width * dpr; c.height = rect.height * dpr;
-        const ctx = c.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
-      });
-      // redraw some instructions if functions exist
-      if(typeof window.drawSubInstructions === 'function') window.drawSubInstructions();
-    }
-    window.addEventListener('resize', ()=> setTimeout(apply, 60));
-    setTimeout(apply, 120);
-  })();
+  /* ===================================================
+     Accessibility: shortcuts to start games
+     =================================================== */
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === '1') $('#startQuizBtn').click();
+    if(e.key === '2') $('#startSubBtn').click();
+    if(e.key === '3') $('#startPlaneBtn').click();
+  });
 
-  console.log('Cronoviajes — página lista. Recuerda añadir tus imágenes a /images y, si lo deseas, reemplazar el video en la etiqueta <video>.');
-
+  // Improve canvas crispness on load/resize
+  window.addEventListener('load', ()=> {
+    // trigger calendar init
+    if(window.CronoviajesCalendar) window.CronoviajesCalendar.init();
+    // small extra: hide images with onerror removed - handled by onerror attr in HTML
+  });
   </script>
+
+  <!-- ===================================================
+       INSTRUCCIONES (no son parte del HTML visual)
+       ===================================================
+       Cómo añadir tus fotos (resumen rápido):
+
+       1) Localmente:
+          - En la misma carpeta donde guardes este index.html, crea una carpeta llamada "images".
+          - Pon tus fotos dentro: e.g.
+            images/trilobite.jpg
+            images/anomalocaris.jpg
+            images/opabinia.jpg
+            images/hallucigenia.jpg
+          - En el HTML, en la GALERÍA (ID: galleryGrid) las rutas ya apuntan a images/*.jpg.
+            Si tus nombres son diferentes, edítalos.
+
+       2) En GitHub:
+          - Crea un repositorio nuevo (por ejemplo "cronoviajes").
+          - Sube index.html a la raíz, y sube la carpeta images/ con tus fotos.
+            (En GitHub web: "Add file" -> "Upload files" o usa git local).
+          - En Settings -> Pages selecciona Branch: main (o la rama que uses) / root (/) y guarda.
+            La página se publicará en https://TU_USUARIO.github.io/TU_REPO/ (tarda unos minutos).
+
+       3) Usar enlaces externos:
+          - Si no quieres subir fotos, sustituye el src en <img src="..."> por un enlace directo (p.ej. de Pexels o Unsplash).
+            Ejemplo:
+            <img src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="...">
+
+       Recomendaciones:
+         - Optimiza las imágenes (herramientas como Squoosh o TinyPNG) antes de subir (reduce tamaño y peso).
+         - Nombres sin espacios y en minúsculas (p.ej. trilobite.jpg).
+         - En Github Pages, si la imagen no aparece, revisa mayúsculas/minúsculas (Linux distingue).
+  -->
 </body>
 </html>
+
 
