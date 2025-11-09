@@ -5,110 +5,115 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cronoviajes — Descubre el pasado, vive el origen</title>
   <meta name="description" content="Cronoviajes: Agencia de viajes al pasado (Cámbrico). Experiencias, galería, juegos y reservas con calendario interactivo. Proyecto educativo.">
+  <meta name="author" content="Cronoviajes S.A.">
+
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-  /* ---------------------------
-     RESET & VARIABLES
-     --------------------------- */
-  :root{
-    --deep:#032b2b;
-    --emerald-1:#0b4f3a;
-    --emerald-2:#118c67;
-    --accent:#00b4d8;
-    --gold:#ffd166;
-    --card:#ffffff;
-    --muted:#5c7a89;
-    --maxw:1200px;
-    --radius:12px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
+    /* ------------------------
+       VARIABLES Y RESET
+       ------------------------ */
+    :root{
+      --deep:#042a2a;
+      --emerald1:#0b4f3a;
+      --emerald2:#118c67;
+      --accent:#00b4d8;
+      --gold:#ffd166;
+      --card:#ffffff;
+      --muted:#5c7a89;
+      --maxw:1200px;
+      --radius:12px;
+      --hero-text-light:#ffffff;
+      --hero-text-dark:#012a2a;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--deep);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    a{text-decoration:none;color:inherit}
 
-  /* ---------------------------
-     HEADER / NAV
-     --------------------------- */
-  header.top{
-    background:linear-gradient(135deg,var(--emerald-1),var(--emerald-2));
-    color:#fff;padding:14px 18px;box-shadow:0 12px 40px rgba(2,40,40,0.12);
-  }
-  .top-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;color:#062328;font-size:24px;box-shadow:0 10px 30px rgba(0,0,0,0.14)}
-  .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0}
-  .slogan{font-style:italic;font-weight:600;opacity:.95;font-size:13px}
+    /* ------------------------
+       HEADER / NAV
+       ------------------------ */
+    header.top{
+      background: linear-gradient(135deg,var(--emerald1),var(--emerald2));
+      color:var(--hero-text-light);
+      padding:14px 18px;
+      box-shadow:0 10px 28px rgba(2,48,40,0.12);
+    }
+    .top-inner{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;color:#042a2a;font-size:24px;box-shadow:0 8px 26px rgba(0,0,0,0.15)}
+    .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0}
+    .slogan{font-style:italic;font-weight:600;opacity:.95;font-size:13px}
 
-  nav.topnav{max-width:var(--maxw);margin:12px auto;display:flex;justify-content:center;gap:8px;padding:10px 16px}
-  nav.topnav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.06);color:#fff;font-weight:700}
-  nav.topnav a:hover{transform:translateY(-3px);background:rgba(255,255,255,0.08)}
+    nav.topnav{display:flex;gap:8px;justify-content:center;padding:10px 12px;max-width:var(--maxw);margin:12px auto}
+    nav.topnav a{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--hero-text-light);font-weight:700}
+    nav.topnav a:hover{background:rgba(255,255,255,0.09);transform:translateY(-3px)}
 
-  main{max-width:var(--maxw);margin:20px auto;padding:0 18px}
+    main{max-width:var(--maxw);margin:22px auto;padding:0 18px}
 
-  /* ---------------------------
-     HERO (slider)
-     --------------------------- */
-  .hero{
-    position:relative;height:78vh;min-height:500px;border-radius:18px;overflow:hidden;margin:0 auto;box-shadow:0 18px 60px rgba(2,40,40,0.08);background:linear-gradient(135deg,var(--emerald-1),var(--emerald-2));
-  }
-  .hero .slider{position:absolute;inset:0;z-index:0;overflow:hidden}
-  .hero img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
-  .hero img.slide.active{opacity:1}
-  .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,10,8,0.28), rgba(0,40,35,0.22));z-index:1}
+    /* ------------------------
+       HERO SLIDER
+       ------------------------ */
+    .hero{
+      position:relative;
+      height:78vh;
+      min-height:520px;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 60px rgba(2,40,40,0.08);
+      margin:0 auto 22px;
+      background: linear-gradient(135deg,var(--emerald1),var(--emerald2));
+    }
+    .hero .slider{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
+    .hero img.slide.active{opacity:1}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(1,10,8,0.26), rgba(1,30,25,0.18));z-index:1}
+    .hero.light .overlay{background:linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.56))}
 
-  .hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px;max-width:var(--maxw);margin:0 auto}
-  @media(max-width:980px){.hero .inner{grid-template-columns:1fr;padding:28px}}
-  .hero .title{font-family:"Playfair Display",serif;font-size:44px;color:#fff;margin:0}
-  .hero .subtitle{margin-top:8px;color:#fff;font-weight:600;font-size:18px}
-  .hero p{color:rgba(255,255,255,0.95);max-width:62ch}
-  .cta{display:flex;gap:10px;margin-top:18px}
-  .btn{background:var(--accent);color:#042; padding:12px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(0,120,160,0.12)}
-  .btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.12)}
+    .hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px;max-width:var(--maxw);margin:0 auto}
+    @media(max-width:980px){.hero .inner{grid-template-columns:1fr;padding:28px}}
+    .hero .title{font-family:"Playfair Display",serif;font-size:44px;color:var(--hero-text-light);line-height:1.02;margin:0}
+    .hero .subtitle{margin-top:8px;font-weight:600;color:var(--hero-text-light);font-size:18px}
+    .hero p{color:rgba(255,255,255,0.95);max-width:62ch}
+    .hero .cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#042a2a;padding:12px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(0,120,160,0.12)}
+    .btn.secondary{background:transparent;color:var(--hero-text-light);border:1px solid rgba(255,255,255,0.12)}
+    .hero .card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));padding:14px;border-radius:12px;color:var(--hero-text-light);box-shadow:0 8px 28px rgba(0,0,0,0.12)}
 
-  .hero .card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));padding:14px;border-radius:12px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.12)}
+    /* ------------------------
+       SECCIONES
+       ------------------------ */
+    section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+    h2.section-title{color:var(--emerald2);margin-bottom:10px}
+    .muted{color:var(--muted)}
 
-  /* ---------------------------
-     SECTIONS / PANELS
-     --------------------------- */
-  section.panel{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 8px 28px rgba(0,0,0,0.06)}
-  h2.section-title{color:var(--emerald-2);margin-bottom:10px}
-  .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .col-7{grid-column:span 7}
+    .col-5{grid-column:span 5}
+    @media(max-width:900px){.col-7,.col-5{grid-column:1 / -1}}
 
-  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-  .col-7{grid-column:span 7}.col-5{grid-column:span 5}
-  @media(max-width:900px){.col-7,.col-5{grid-column:1/-1}}
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .16s,box-shadow .16s}
+    .gallery img:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,48,71,0.12)}
 
-  /* ---------------------------
-     GALLERY
-     --------------------------- */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-  .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .16s,box-shadow .16s}
-  .gallery img:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,48,71,0.12)}
+    /* JUEGOS */
+    .games{display:flex;gap:16px;flex-wrap:wrap}
+    .game{flex:1 1 320px;background:linear-gradient(180deg,#fff,#f7feff);border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:260px}
+    canvas{width:100%;height:200px;border-radius:10px;display:block;background:linear-gradient(180deg,#e8f6ff,#ffffff)}
 
-  /* ---------------------------
-     GAMES
-     --------------------------- */
-  .games{display:flex;gap:16px;flex-wrap:wrap}
-  .game{flex:1 1 320px;background:linear-gradient(180deg,#fff,#f7feff);border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:280px}
-  canvas{width:100%;height:200px;border-radius:10px;display:block;background:linear-gradient(180deg,#e8f6ff,#ffffff)}
-  #memoria{display:grid;grid-template-columns:repeat(4,100px);gap:10px;justify-content:center}
-  #memoria .card{width:100px;height:100px;background:#b2dfdb;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;cursor:pointer;user-select:none}
-  #memoria .card.found{background:#80cbc4;color:#fff;cursor:default}
+    /* CALENDARIO */
+    .calendar{width:360px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+    .weekday,.day{padding:8px;border-radius:8px;text-align:center;font-weight:600;color:var(--muted)}
+    .day.box{background:#f6fdff;cursor:pointer;border:1px solid rgba(0,0,0,0.04)}
+    .day.disabled{opacity:.25;cursor:not-allowed}
+    .day.selected{background:linear-gradient(180deg,var(--accent),#00d1f0);color:#012;font-weight:800}
 
-  /* ---------------------------
-     CALENDAR
-     --------------------------- */
-  .calendar{width:360px;background:var(--card);border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
-  .month{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-  .weekdays,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-  .weekday,.day{padding:8px;border-radius:8px;text-align:center;font-weight:700;color:var(--muted)}
-  .day.box{background:#f6fdff;cursor:pointer;border:1px solid rgba(0,0,0,0.04)}
-  .day.disabled{opacity:.25;cursor:not-allowed}
-  .day.selected{background:linear-gradient(180deg,var(--accent),#00d1f0);color:#012;font-weight:800}
+    footer{margin-top:22px;padding:18px;background:linear-gradient(90deg,var(--emerald2),var(--accent));color:#fff;border-radius:10px;text-align:center}
 
-  footer{margin-top:18px;padding:20px;background:linear-gradient(90deg,var(--emerald-2),var(--accent));color:#fff;border-radius:10px;text-align:center}
-
-  @media(max-width:640px){ .hero .title{font-size:28px} .hero .inner{padding:18px} .calendar{width:100%} }
+    /* Responsive small tweaks */
+    @media(max-width:640px){ .hero .title{font-size:28px} .hero .inner{padding:18px} }
   </style>
 </head>
 <body>
@@ -123,27 +128,27 @@
           <div class="slogan">Descubre el pasado, vive el origen</div>
         </div>
       </div>
-      <div style="font-size:13px;opacity:.9">Agencia de viajes al pasado — Proyecto educativo</div>
+      <div style="font-size:13px;opacity:.9">Agencia de viajes al pasado — Proyecto instituto</div>
     </div>
   </header>
 
   <!-- NAV -->
-  <nav class="topnav" aria-label="Menú principal">
-    <a href="#inicio" onclick="scrollTo('inicio');return false;">Inicio</a>
-    <a href="#info" onclick="scrollTo('info');return false;">Información</a>
-    <a href="#galeria" onclick="scrollTo('galeria');return false;">Galería</a>
-    <a href="#juegos" onclick="scrollTo('juegos');return false;">Juegos</a>
-    <a href="#reservas" onclick="scrollTo('reservas');return false;">Reservas</a>
+  <nav class="topnav" aria-label="Navegación principal">
+    <a href="#" onclick="goTo('hero')">Inicio</a>
+    <a href="#" onclick="goTo('info')">Información</a>
+    <a href="#" onclick="goTo('galeria')">Galería</a>
+    <a href="#" onclick="goTo('juegos')">Juegos</a>
+    <a href="#" onclick="goTo('reservas')">Reservas</a>
   </nav>
 
-  <!-- HERO -->
-  <section id="inicio" class="hero">
+  <!-- HERO SLIDER -->
+  <div class="hero" id="hero">
     <div class="slider" id="heroSlider">
-      <!-- Sustituye por images/xxx.jpg si subes tus fotos -->
-      <img class="slide active" src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="Océano antiguo - Cámbrico">
-      <img class="slide" src="https://images.pexels.com/photos/159051/sea-ocean-horizon-sky-159051.jpeg" alt="Mar primitivo">
-      <img class="slide" src="https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg" alt="Investigadores en campo">
-      <img class="slide" src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg" alt="Paisaje marino antiguo">
+      <!-- Puedes reemplazar estas URLs por "images/xxx.jpg" si subes tus imágenes -->
+      <img src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg" alt="Océano Cámbrico" class="slide active">
+      <img src="https://images.pexels.com/photos/159051/sea-ocean-horizon-sky-159051.jpeg" alt="Mar primitivo" class="slide">
+      <img src="https://images.pexels.com/photos/1076758/pexels-photo-1076758.jpeg" alt="Exploradores" class="slide">
+      <img src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg" alt="Fauna antigua" class="slide">
     </div>
 
     <div class="overlay"></div>
@@ -159,19 +164,20 @@
         </div>
 
         <p style="margin-top:18px;color:rgba(255,255,255,0.95)">
-          Somos una agencia que organiza viajes temporales al período Cámbrico. Según el guion del proyecto (trabajo escolar), los viajes se describen como supervisados por paleontólogos y geólogos, con itinerarios educativos en ecosistemas marinos del pasado.
+          Agencia especializada en viajes temporales al Cámbrico. Según el guion del trabajo escolar, ofrecemos viajes organizados, supervisados por paleontólogos y geólogos, con itinerarios educativos en ecosistemas marinos del pasado.
         </p>
 
         <div class="cta">
           <button class="btn" id="btnReserve">Reservar viaje temporal</button>
           <button class="btn secondary" id="btnContrast">Alternar contraste</button>
         </div>
+
       </div>
 
       <div>
-        <div class="card" aria-hidden="true">
-          <h4 style="margin:0 0 8px;">Próximas salidas</h4>
-          <p style="margin:0 0 8px;">Salidas diarias para grupos reducidos y visitas escolares. Incluye briefing científico y guía.</p>
+        <div class="card" style="border-radius:12px">
+          <h4 style="margin:0 0 8px;color:#fff">Próximas salidas</h4>
+          <p style="margin:0 0 8px;color:rgba(255,255,255,0.95)">Sesiones diarias en grupos reducidos. Madrid (centro), Barcelona (sur), y salidas especiales para colegios.</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
             <div style="background:#eaf9ff;padding:8px 12px;border-radius:8px;font-weight:700;color:var(--deep)">Cámbrico Explorador</div>
             <div style="background:#fff3d6;padding:8px 12px;border-radius:8px;font-weight:700;color:var(--deep)">Cámbrico Premium</div>
@@ -179,71 +185,72 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <main>
-    <!-- INFORMACIÓN -->
-    <section id="info" class="panel">
-      <h2 class="section-title">Información científica — Período Cámbrico (ampliada)</h2>
 
-      <p class="muted">El Cámbrico (aprox. 541–485 Ma) se caracteriza por una rápida diversificación morfológica conocida como la <strong>Explosión Cámbrica</strong>. A continuación tienes información útil, presentada de manera clara para tu trabajo del instituto.</p>
+    <!-- INFORMACIÓN CIENTÍFICA AMPLIADA -->
+    <section id="info" class="panel">
+      <h2 class="section-title">Información científica — Período Cámbrico (extenso)</h2>
+
+      <p class="muted">El Cámbrico (aprox. 541–485 millones de años) se caracteriza por la rápida diversificación de la vida —la llamada "Explosión Cámbrica"— que produjo gran parte de los filos animales que conocemos hoy.</p>
 
       <h3 style="margin-top:12px">Geología y paleogeografía</h3>
       <ul>
-        <li>Grandes plataformas epicontinentales y mares someros: ambientes clave para la vida marina.</li>
-        <li>Placas tectónicas: microplacas y fragmentos continentales como Laurentia, Baltica y Gondwana.</li>
-        <li>Sedimentación rápida y cuencas anóxicas favorecieron la preservación de tejidos blandos en yacimientos como Burgess Shale y Chengjiang.</li>
+        <li>Durante el Cámbrico los continentes estaban fragmentados en masas como Laurentia, Baltica, Siberia y Gondwana.</li>
+        <li>Grandes plataformas someras y mares epicontinentales proporcionaron ambientes de alta productividad biológica.</li>
+        <li>La sedimentación en cuencas anóxicas favoreció la preservación de tejidos blandos en yacimientos especiales.</li>
       </ul>
 
       <h3 style="margin-top:12px">Clima y química oceánica</h3>
       <ul>
-        <li>Predominio de condiciones tipo invernadero; temperaturas globales relativamente cálidas.</li>
-        <li>Estratificación vertical de la columna de agua: capas superficiales oxigenadas y fondos locales anóxicos.</li>
-        <li>Niveles más altos de CO₂ comparados con la era moderna; concentración de nutrientes elevada en plataformas someras.</li>
+        <li>Clima general cálido; niveles de CO₂ más altos que en la actualidad.</li>
+        <li>Oxigenación variable: zonas superficiales bien oxigenadas y fondos anóxicos en cuencas profundas.</li>
+        <li>Concentraciones de nutrientes que permitieron altos niveles de productividad primaria en plataformas someras.</li>
       </ul>
 
-      <h3 style="margin-top:12px">Biodiversidad y fauna destacada</h3>
+      <h3 style="margin-top:12px">Biodiversidad y grupos clave</h3>
+      <p class="muted">Descripción resumida de los grupos y su importancia evolutiva:</p>
       <ul>
-        <li><strong>Trilobites:</strong> artrópodos con exoesqueleto mineralizado y ojos compuestos; excelentes marcadores estratigráficos.</li>
-        <li><strong>Anomalocaris:</strong> depredador ápice móvil con apéndices frontales especializados.</li>
-        <li><strong>Pikaia:</strong> cordado primitivo importante en la historia evolutiva de los vertebrados.</li>
-        <li><strong>Hallucigenia y Opabinia:</strong> ejemplos de morfologías únicas que muestran la experimentación evolutiva del Cámbrico.</li>
-        <li><strong>Filtradores bentónicos:</strong> braquiópodos, esponjas y briozoos formaron comunidades fijas en el fondo marino.</li>
+        <li><strong>Trilobites:</strong> artrópodos muy diversos, usados como indicadores estratigráficos.</li>
+        <li><strong>Anomalocaris:</strong> depredador móvil con apéndices frontales; evidencia de cadenas tróficas complejas.</li>
+        <li><strong>Pikaia:</strong> cordado primitivo, tiene importancia por su relación con la evolución de los vertebrados.</li>
+        <li><strong>Hallucigenia/Opabinia:</strong> ejemplos de experimentación morfológica en el Cámbrico; resultaron claves para entender la diversidad de planes corporales.</li>
+        <li><strong>Braquiópodos, esponjas, briozoos:</strong> filtradores bentónicos comunes en fondos marinos someros.</li>
       </ul>
 
-      <h3 style="margin-top:12px">Fósiles y yacimientos clave</h3>
+      <h3 style="margin-top:12px">Yacimientos y preservación</h3>
       <ul>
-        <li><strong>Burgess Shale (Canadá)</strong>: conservación excepcional de tejidos blandos; importante para reconstruir anatomía y ecología.</li>
-        <li><strong>Chengjiang (China)</strong>: otro yacimiento de conservación excepcional; aporta datos complementarios al Burgess Shale.</li>
-        <li><strong>Small Shelly Fauna</strong>: conjunto de estructuras mineralizadas pequeñas que aparecen al inicio del Cámbrico.</li>
+        <li><strong>Burgess Shale (Canadá)</strong> y <strong>Chengjiang (China)</strong>: conservación excepcional, muchos fósiles con tejidos blandos.</li>
+        <li>El registro fósil cambriano es invaluable para resolver relaciones filogenéticas tempranas.</li>
       </ul>
 
       <h3 style="margin-top:12px">Métodos de estudio</h3>
       <ul>
-        <li>Datación radiométrica (U-Pb, Pb-Pb) para establecer edades absolutas.</li>
-        <li>Tomografía (micro-CT), SEM y técnicas de imagen para estudiar detalles morfológicos.</li>
-        <li>Análisis paleoecológicos y modelos de redes tróficas para reconstruir interacciones entre especies.</li>
+        <li>Datación radiométrica para establecer edades absolutas.</li>
+        <li>Tomografía, SEM y microscopía para analizar detalles morfológicos.</li>
+        <li>Modelos paleoecológicos y bioinformática para reconstruir relaciones y redes tróficas.</li>
       </ul>
 
-      <h3 style="margin-top:12px">Curiosidades útiles para exposición</h3>
+      <h3 style="margin-top:12px">Datos útiles para tu trabajo</h3>
       <ul>
-        <li>La Explosión Cámbrica fue un periodo geológico relativamente corto (a escala geológica) que dio lugar a una explosión de innovación corporal.</li>
-        <li>Muchas formas experimentales del Cámbrico no dejaron descendencia directa; otras sí, y dieron origen a linajes que perduran.</li>
-        <li>El estudio de estos fósiles ayuda a comprender la evolución temprana de órganos sensoriales, locomoción y alimentación.</li>
+        <li>La Explosión Cámbrica ocurrió alrededor de 541 millones de años atrás y duró algunos millones de años (a escala geológica, un intervalo breve pero intenso).</li>
+        <li>Muchos grupos experimentaron ciclos de radiación y extinción locales antes de la consolidación en linajes persistentes.</li>
+        <li>Las condiciones ambientales (nivel del mar, nutrientes, oxígeno) jugaron un papel determinante en la evolución de las formas de vida.</li>
       </ul>
     </section>
 
     <!-- GALERÍA -->
     <section id="galeria" class="panel">
       <h2 class="section-title">Galería del Cámbrico</h2>
-      <p class="muted">Haz clic para ampliar. Para usar tus fotos ponlas en la carpeta <code>images/</code> y nómbralas en minúsculas (ej.: <code>trilobite.jpg</code>).</p>
+      <p class="muted">Haz clic en una imagen para ampliarla. Para usar tus fotos, súbelas a la carpeta <code>/images/</code> o sustituye por URLs públicas.</p>
       <div class="gallery" id="galleryGrid">
-        <!-- Rutas locales (preferidas) -->
+        <!-- Si subes imágenes a /images pon src="images/tuimagen.jpg" -->
         <img src="images/trilobite.jpg" alt="Trilobite" onerror="this.style.display='none'">
         <img src="images/anomalocaris.jpg" alt="Anomalocaris" onerror="this.style.display='none'">
         <img src="images/opabinia.jpg" alt="Opabinia" onerror="this.style.display='none'">
         <img src="images/pikaia.jpg" alt="Pikaia" onerror="this.style.display='none'">
-        <!-- Fallback público -->
+        <!-- fallback a Wikimedia si no subes imágenes -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris (Wikimedia)">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite (Wikimedia)">
       </div>
@@ -252,10 +259,9 @@
     <!-- JUEGOS -->
     <section id="juegos" class="panel">
       <h2 class="section-title">Zona de juegos</h2>
-      <p class="muted">Tres experiencias interactivas. Pulsa en INICIAR para comenzar cada juego — ninguno arranca por sí solo.</p>
+      <p class="muted">Tres experiencias: Quiz avanzado, Submarino temporal y Vuelo del tiempo. Pulsa INICIAR para comenzar — ninguno arranca solo.</p>
 
       <div class="games" style="margin-top:12px">
-
         <!-- QUIZ -->
         <div class="game" id="quizGame">
           <h3>Quiz avanzado</h3>
@@ -288,20 +294,19 @@
             <div style="margin-left:auto;font-weight:700;color:var(--deep)">Puntos: <span id="planeScore">0</span></div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- RESERVAS -->
     <section id="reservas" class="panel">
       <h2 class="section-title">Reservas — Calendario interactivo</h2>
-      <p class="muted">Selecciona fecha de entrada y salida (no se permiten fechas pasadas).</p>
+      <p class="muted">Selecciona fecha de entrada y salida. No se permiten fechas pasadas.</p>
 
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
         <div class="calendar" id="calendarWidget"></div>
 
         <div style="flex:1;min-width:320px">
-          <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.06)">
+          <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,0.06)">
             <h3>Solicitud de reserva</h3>
             <div style="margin-top:8px">
               <div class="muted">Entrada: <strong id="selStart">—</strong></div>
@@ -321,11 +326,12 @@
               <button class="btn" type="submit" style="margin-top:8px">Enviar reserva</button>
               <p id="bookingMsg" class="muted" style="margin-top:8px"></p>
             </form>
+
           </div>
         </div>
       </div>
 
-      <p class="muted" style="margin-top:10px">Nota: Esta web se ha creado como prototipo para un trabajo de instituto; las reservas son simuladas y la presentación interpreta que la agencia vende viajes al pasado (según instrucciones del proyecto).</p>
+      <p class="muted" style="margin-top:10px">Nota: esto es un prototipo para tu trabajo del instituto. Las reservas se muestran como si fueran reales — si lo presentas a tu profesora, indícalo en las notas del proyecto.</p>
     </section>
 
   </main>
@@ -336,53 +342,66 @@
     </div>
   </footer>
 
-  <!-- =========================
-       SCRIPTS (slider, games, calendar, gallery)
-       ========================= -->
+  <!-- =====================
+       SCRIPTS
+       ===================== -->
   <script>
-  // UTIL helpers
+  // UTILIDADES
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function scrollTo(id){
-    const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  function goTo(id){
+    const map = {
+      'hero': document.getElementById('hero'),
+      'info': document.getElementById('info'),
+      'galeria': document.getElementById('galeria'),
+      'juegos': document.getElementById('juegos'),
+      'reservas': document.getElementById('reservas')
+    };
+    const el = map[id] || document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
   }
-  $('#btnReserve').addEventListener('click', ()=> scrollTo('reservas'));
 
   /* -------------------------
-     HERO SLIDER (3s) - robust init on load
+     SLIDER HERO (3s)
      ------------------------- */
   (function heroSlider(){
-    let slides, index = 0, timer;
-    function init(){
-      slides = Array.from(document.querySelectorAll('.hero .slide'));
-      if(slides.length === 0) return;
-      slides.forEach((s,i)=> s.classList.toggle('active', i===0));
-      timer = setInterval(()=> { index = (index+1)%slides.length; slides.forEach((s,i)=> s.classList.toggle('active', i===index)); }, 3000);
-      const hero = document.querySelector('.hero');
-      hero.addEventListener('mouseenter', ()=> clearInterval(timer));
-      hero.addEventListener('mouseleave', ()=> timer = setInterval(()=> { index = (index+1)%slides.length; slides.forEach((s,i)=> s.classList.toggle('active', i===index)); }, 3000));
-      $('#btnContrast').addEventListener('click', ()=> { hero.classList.toggle('light'); const isLight = hero.classList.contains('light'); $$('.title,.subtitle,.logo').forEach(el=> el.style.color = isLight ? '#012' : '#fff';); });
+    const slides = Array.from(document.querySelectorAll('.hero .slide'));
+    let idx = 0;
+    function show(i){
+      slides.forEach((s, j)=> s.classList.toggle('active', i===j));
     }
-    window.addEventListener('load', init);
+    let timer = setInterval(()=>{ idx = (idx+1)%slides.length; show(idx); }, 3000);
+    // pause on hover
+    const hero = document.getElementById('hero');
+    hero.addEventListener('mouseenter', ()=> clearInterval(timer));
+    hero.addEventListener('mouseleave', ()=> { timer = setInterval(()=>{ idx = (idx+1)%slides.length; show(idx); }, 3000); });
+
+    // contrast toggle
+    $('#btnContrast').addEventListener('click', ()=>{
+      hero.classList.toggle('light');
+      const light = hero.classList.contains('light');
+      $$('.title,.subtitle,.logo').forEach(el => el.style.color = light ? 'var(--hero-text-dark)' : 'var(--hero-text-light)');
+      $$('.topnav a').forEach(a => a.style.color = light ? 'var(--deep)' : 'rgba(255,255,255,0.95)');
+      $('#btnContrast').textContent = light ? 'Contraste: claro' : 'Alternar contraste';
+    });
+
+    // reserve CTA
+    $('#btnReserve').addEventListener('click', ()=> goTo('reservas'));
   })();
 
   /* -------------------------
      GALLERY LIGHTBOX
      ------------------------- */
   (function galleryLightbox(){
-    const grid = document.getElementById('galleryGrid');
-    if(!grid) return;
-    grid.addEventListener('click', (e)=>{
+    const grid = $('#galleryGrid');
+    grid && grid.addEventListener('click', (e)=>{
       if(e.target && e.target.tagName === 'IMG'){
-        const src = e.target.src, alt = e.target.alt || '';
         const overlay = document.createElement('div');
-        overlay.style.position='fixed'; overlay.style.inset=0; overlay.style.background='rgba(0,0,0,0.9)';
-        overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center';
-        overlay.style.zIndex=9999; overlay.style.cursor='zoom-out';
-        const img = document.createElement('img'); img.src=src; img.alt=alt; img.style.maxWidth='94%'; img.style.maxHeight='94%'; img.style.borderRadius='8px';
+        overlay.style.position = 'fixed'; overlay.style.inset = 0; overlay.style.background = 'rgba(0,0,0,0.9)'; overlay.style.display='flex';
+        overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=9999; overlay.style.cursor='zoom-out';
+        const img = document.createElement('img'); img.src = e.target.src; img.alt = e.target.alt || ''; img.style.maxWidth='94%'; img.style.maxHeight='94%'; img.style.borderRadius='8px';
         overlay.appendChild(img);
         overlay.addEventListener('click', ()=> overlay.remove());
         document.body.appendChild(overlay);
@@ -391,77 +410,76 @@
   })();
 
   /* -------------------------
-     QUIZ module
+     QUIZ AVANZADO
      ------------------------- */
-  (function Quiz(){
-    const qlist = [
-      {q:"¿Hace cuántos millones de años comenzó el Cámbrico?", a:"541"},
-      {q:"Nombre de un depredador del Cámbrico", a:"anomalocaris"},
-      {q:"Nombre de un cordado primitivo", a:"pikaia"},
-      {q:"Yacimiento en Canadá con conservación excepcional", a:"burgess"},
-      {q:"Organismo con cinco ojos", a:"opabinia"}
+  (function quizModule(){
+    const questions = [
+      {q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541"},
+      {q: "Cita un depredador emblemático del Cámbrico", a: "anomalocaris"},
+      {q: "Nombre de un cordado primitivo", a: "pikaia"},
+      {q: "¿Dónde se encuentra el yacimiento Burgess Shale?", a: "canada"},
+      {q: "Organismo con cinco ojos", a: "opabinia"}
     ];
-    let active=false;
+    let active = false;
     const area = $('#quizArea');
     const status = $('#quizState');
 
     function build(){
-      area.innerHTML=''; active=true; status.textContent='Estado: activo';
-      qlist.forEach((it,i)=>{
-        const row = document.createElement('div'); row.style.marginBottom='10px';
-        row.innerHTML = `<strong>${i+1}.</strong> ${it.q}<div style="margin-top:6px"><input id="q_${i}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6f6f6"></div>`;
-        area.appendChild(row);
+      area.innerHTML = '';
+      questions.forEach((it,i)=>{
+        const div = document.createElement('div');
+        div.style.marginBottom='10px';
+        div.innerHTML = `<strong>${i+1}.</strong> ${it.q}<div style="margin-top:6px"><input id="qa${i}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e1f6fb"></div>`;
+        area.appendChild(div);
       });
+      status.textContent = 'Estado: activo';
+      active = true;
     }
     $('#startQuiz').addEventListener('click', ()=> build());
     $('#checkQuiz').addEventListener('click', ()=>{
       if(!active){ status.textContent = 'Estado: inactivo (pulsa Iniciar)'; return; }
-      let score=0;
-      qlist.forEach((it,i)=>{
-        const v = (document.getElementById('q_'+i).value || '').toLowerCase();
-        if(it.a === '541'){ if(v.includes('541')) score++; }
-        else if(it.a === 'burgess'){ if(v.includes('burgess') || v.includes('canad')) score++; }
-        else if(v && v.includes(it.a)) score++;
+      let score = 0;
+      questions.forEach((it,i)=>{
+        const val = (document.getElementById('qa'+i)?.value || '').toLowerCase();
+        if(it.a === '541'){ if(val.includes('541')) score++; }
+        else if(it.a === 'canada'){ if(val.includes('canad')) score++; }
+        else { if(val.includes(it.a)) score++; }
       });
-      status.textContent = `Resultado: ${score} / ${qlist.length}`;
-      active=false;
+      status.textContent = `Resultado: ${score} / ${questions.length}`;
+      active = false;
     });
   })();
 
   /* -------------------------
-     SUBMARINO - canvas interactive
+     SUBMARINO (canvas)
      ------------------------- */
-  (function Submarine(){
+  (function submarine(){
     const canvas = document.getElementById('subCanvas');
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
     let dpr = window.devicePixelRatio || 1;
     function resize(){
-      const r = canvas.getBoundingClientRect();
-      canvas.width = r.width * dpr;
-      canvas.height = r.height * dpr;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
       ctx.setTransform(dpr,0,0,dpr,0,0);
     }
     window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
 
-    let state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, pointerY:null, raf: null };
+    let state = {running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, mouseY:undefined};
 
     function spawn(){
       const pool = [
-        {label:'Trilobite', ok:true},
-        {label:'Anomalocaris', ok:true},
-        {label:'Pikaia', ok:true},
-        {label:'Opabinia', ok:true},
-        {label:'Teléfono', ok:false},
-        {label:'Coche', ok:false},
-        {label:'Botella', ok:false}
+        {label:'trilobite',ok:true},{label:'anomalocaris',ok:true},{label:'pikaia',ok:true},{label:'opabinia',ok:true},
+        {label:'teléfono',ok:false},{label:'coche',ok:false},{label:'lata',ok:false}
       ];
       const pick = pool[Math.floor(Math.random()*pool.length)];
-      state.items.push({ x: canvas.width/dpr + 20, y: 20 + Math.random()*(canvas.height/dpr - 80), vx: -1.6 - Math.random()*1.6, r: 10 + Math.random()*14, label: pick.label, ok: pick.ok });
+      state.items.push({x:canvas.width/dpr + 40, y:20 + Math.random()*(canvas.height/dpr - 80), vx:-1.6 - Math.random()*1.8, label:pick.label, ok:pick.ok, r:10 + Math.random()*14});
     }
 
-    function drawBackground(){
-      const H = canvas.height/dpr, W = canvas.width/dpr;
+    function drawBG(){
+      const H = canvas.height/dpr;
+      const W = canvas.width/dpr;
       const g = ctx.createLinearGradient(0,0,0,H);
       g.addColorStop(0,'#e6fbff'); g.addColorStop(1,'#d9f3ff');
       ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
@@ -472,86 +490,72 @@
       if(!state.running) return;
       state.tick++;
       if(state.tick % state.spawnRate === 0) spawn();
+      drawBG();
 
-      drawBackground();
-
-      // draw player (sub)
+      // draw player
       const p = state.player;
-      ctx.fillStyle = '#005f7f';
-      ctx.fillRect(p.x, p.y, p.w, p.h);
-      ctx.fillStyle = '#00b4d8';
-      ctx.fillRect(p.x+8, p.y+6, p.w-16, p.h-12);
+      ctx.fillStyle = '#005f7f'; ctx.fillRect(p.x,p.y,p.w,p.h);
+      ctx.fillStyle = '#00b4d8'; ctx.fillRect(p.x+8,p.y+6,p.w-16,p.h-12);
 
-      // draw items
+      // items
       for(let i=state.items.length-1;i>=0;i--){
         const it = state.items[i];
         it.x += it.vx;
         ctx.fillStyle = it.ok ? 'rgba(42,157,143,0.95)' : 'rgba(214,40,40,0.95)';
-        ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font = '12px Poppins'; ctx.fillText(it.label, it.x - it.r, it.y - it.r - 6);
+        ctx.beginPath(); ctx.arc(it.x,it.y,it.r,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle='#fff'; ctx.font='12px Poppins'; ctx.fillText(it.label,it.x - it.r, it.y - it.r - 6);
 
-        // collision simple
+        // collision
         if(it.x < p.x + p.w && it.x > p.x && it.y > p.y && it.y < p.y + p.h){
           if(it.ok) state.score += 10; else state.score = Math.max(0, state.score - 5);
           state.items.splice(i,1);
-          document.getElementById('subScore').textContent = state.score;
-        } else if(it.x < -40) state.items.splice(i,1);
+          $('#subScore').textContent = state.score;
+        } else if(it.x < -60) state.items.splice(i,1);
       }
 
-      // pointer follow
-      if(state.pointerY !== null){
-        p.y += (state.pointerY - p.y - p.h/2) * 0.12;
+      // mouse follow
+      if(state.mouseY !== undefined){
+        p.y += (state.mouseY - p.y - p.h/2) * 0.12;
         p.y = Math.max(6, Math.min(p.y, canvas.height/dpr - p.h - 6));
       }
 
-      // hud
-      ctx.fillStyle = '#003a55'; ctx.font = '13px Poppins';
-      ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 16);
-
-      state.raf = requestAnimationFrame(loop);
+      ctx.fillStyle = '#003a55'; ctx.font='13px Poppins'; ctx.fillText('Recolecta fósiles cámbricos (verde). Evita lo moderno (rojo).', 10, 16);
+      requestAnimationFrame(loop);
     }
 
     // events
-    canvas.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      state.pointerY = e.clientY - r.top;
+    canvas.addEventListener('mousemove', (e)=> {
+      const r = canvas.getBoundingClientRect(); state.mouseY = e.clientY - r.top;
     });
-    canvas.addEventListener('touchmove', e => {
+    canvas.addEventListener('touchmove', (e)=> {
       const r = canvas.getBoundingClientRect();
-      if(e.touches && e.touches[0]) state.pointerY = e.touches[0].clientY - r.top;
+      if(e.touches && e.touches[0]) state.mouseY = e.touches[0].clientY - r.top;
       e.preventDefault();
     }, { passive:false });
 
-    // controls
     $('#startSub').addEventListener('click', ()=>{
-      resize();
-      state.running = true; state.tick=0; state.items = []; state.score = 0; document.getElementById('subScore').textContent = 0;
-      if(state.raf) cancelAnimationFrame(state.raf);
-      loop();
+      resize(); state.running=true; state.tick=0; state.items=[]; state.score=0; $('#subScore').textContent=0; loop();
     });
     $('#resetSub').addEventListener('click', ()=>{
-      state.running = false;
-      state = { running:false, player:{x:80,y:120,w:64,h:28}, items:[], tick:0, score:0, spawnRate:80, pointerY:null, raf:null };
-      cancelAnimationFrame(state.raf);
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      drawBackground();
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
-      document.getElementById('subScore').textContent = 0;
+      state.running=false; state={running:false,player:{x:80,y:120,w:64,h:28},items:[],tick:0,score:0,spawnRate:80,mouseY:undefined};
+      ctx.clearRect(0,0,canvas.width,canvas.height); drawBG(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.',12,22); $('#subScore').textContent=0;
     });
 
-    // initial draw
+    // initial
     (function init(){
-      resize();
-      drawBackground();
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.', 12, 22);
+      const rect = canvas.getBoundingClientRect();
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      drawBG(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Submarino para comenzar.',12,22);
     })();
-
   })();
 
   /* -------------------------
-     PLANE GAME - Avión atrapapalabras
+     PLANE GAME: Vuelo del tiempo
      ------------------------- */
-  (function Plane(){
+  (function planeGame(){
     const canvas = document.getElementById('planeCanvas');
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -559,36 +563,18 @@
     function resize(){ const r = canvas.getBoundingClientRect(); canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
     window.addEventListener('resize', ()=> { dpr = window.devicePixelRatio || 1; resize(); });
 
-    let state = {
-      running:false,
-      player:{x:320,y:200,w:44,h:20},
-      words:[],
-      tick:0,
-      score:0,
-      mouseX:null,
-      currentQ:null,
-      raf:null
-    };
-
+    let state = {running:false,player:{x:320,y:200,w:44,h:20},words:[],tick:0,score:0,mouseX:undefined,currentQ:null};
     const questions = [
-      { q:"Depredador del Cámbrico", correct:["anomalocaris","opabinia"] },
-      { q:"Cordado primitivo", correct:["pikaia"] },
-      { q:"Esqueleto típico", correct:["trilobite","braquiópodo","small shelly"] },
-      { q:"Organismo con cinco ojos", correct:["opabinia"] }
+      {q:"Depredador del Cámbrico", correct:["anomalocaris","opabinia"]},
+      {q:"Cordado primitivo", correct:["pikaia"]},
+      {q:"Esqueleto típico", correct:["trilobite","braquiópodo","small shelly"]},
+      {q:"Organismo con cinco ojos", correct:["opabinia"]}
     ];
-
     const pool = ['trilobite','anomalocaris','pikaia','dinosaurio','alga','opabinia','braquiópodo','fósil','cámbrico','vida','pez','estrella','teléfono','coche'];
 
-    function spawnWord(){
-      const w = pool[Math.floor(Math.random()*pool.length)];
-      state.words.push({ x: 30 + Math.random()*(canvas.width/dpr-60), y: -20, vy: 1 + Math.random()*1.6, text: w });
-    }
+    function spawnWord(){ const w = pool[Math.floor(Math.random()*pool.length)]; state.words.push({x:30 + Math.random()*(canvas.width/dpr-60), y:-20, vy:1 + Math.random()*1.6, text:w}); }
 
-    function drawBG(){
-      const H = canvas.height/dpr;
-      const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fff7f0'); g.addColorStop(1,'#e8f7ff');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
-    }
+    function drawBG(){ const H = canvas.height/dpr; const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fff7f0'); g.addColorStop(1,'#e8f7ff'); ctx.fillStyle=g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr); }
 
     function loop(){
       if(!state.running) return;
@@ -599,118 +585,84 @@
       ctx.fillStyle = '#003a55'; ctx.font = '16px Poppins';
       ctx.fillText('Pregunta: ' + (state.currentQ?.q || '—'), 10, 20);
 
-      // draw plane
+      // plane
       const pl = state.player;
-      ctx.fillStyle = '#0077b6';
-      ctx.beginPath(); ctx.moveTo(pl.x,pl.y); ctx.lineTo(pl.x-22,pl.y+16); ctx.lineTo(pl.x+22,pl.y+16); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#0077b6'; ctx.beginPath(); ctx.moveTo(pl.x,pl.y); ctx.lineTo(pl.x-22,pl.y+16); ctx.lineTo(pl.x+22,pl.y+16); ctx.closePath(); ctx.fill();
 
-      // words
       for(let i=state.words.length-1;i>=0;i--){
         const it = state.words[i]; it.y += it.vy;
-        ctx.fillStyle = '#ffd166';
-        ctx.font = '13px Poppins';
-        const tw = ctx.measureText(it.text).width + 14;
-        const rx = it.x - tw/2;
-        ctx.fillRect(rx, it.y - 14, tw, 22);
-        ctx.fillStyle = '#00303a'; ctx.fillText(it.text, rx + 7, it.y + 4);
+        ctx.fillStyle = '#ffd166'; ctx.font = '13px Poppins'; const tw = ctx.measureText(it.text).width + 14; const rx = it.x - tw/2;
+        ctx.fillRect(rx, it.y-14, tw, 22); ctx.fillStyle = '#00303a'; ctx.fillText(it.text, rx+7, it.y+4);
 
-        // collision detection
         if(it.y > pl.y - 10 && it.y < pl.y + 18 && Math.abs(it.x - pl.x) < 30){
           const correctList = state.currentQ?.correct || [];
           const matched = correctList.some(k => it.text.includes(k));
-          if(matched) { state.score += 10; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; }
-          else { state.score = Math.max(0, state.score - 5); }
+          if(matched){ state.score += 10; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; }
+          else state.score = Math.max(0, state.score - 5);
           state.words.splice(i,1);
-          document.getElementById('planeScore').textContent = state.score;
+          $('#planeScore').textContent = state.score;
         } else if(it.y > canvas.height/dpr + 20) state.words.splice(i,1);
       }
 
-      // plane movement toward mouseX
-      if(state.mouseX !== null){
+      if(state.mouseX !== undefined){
         pl.x += (state.mouseX - pl.x) * 0.12;
         pl.x = Math.max(22, Math.min(pl.x, canvas.width/dpr - 22));
       }
 
-      state.raf = requestAnimationFrame(loop);
+      requestAnimationFrame(loop);
     }
 
-    // pointer events
-    canvas.addEventListener('mousemove', (e)=> {
-      const r = canvas.getBoundingClientRect(); state.mouseX = e.clientX - r.left;
-    });
-    canvas.addEventListener('touchmove', (e)=> {
-      const r = canvas.getBoundingClientRect();
-      if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left;
-      e.preventDefault();
-    }, { passive:false });
+    canvas.addEventListener('mousemove', (e)=> { const r = canvas.getBoundingClientRect(); state.mouseX = e.clientX - r.left; });
+    canvas.addEventListener('touchmove', (e)=> { const r = canvas.getBoundingClientRect(); if(e.touches && e.touches[0]) state.mouseX = e.touches[0].clientX - r.left; e.preventDefault(); }, {passive:false});
 
-    // controls
     $('#startPlane').addEventListener('click', ()=>{
-      resize(); state.running = true; state.score = 0; state.tick = 0; state.words = []; state.currentQ = questions[Math.floor(Math.random()*questions.length)];
-      document.getElementById('planeScore').textContent = 0;
-      if(state.raf) cancelAnimationFrame(state.raf);
-      loop();
+      resize(); state.running = true; state.score=0; state.tick=0; state.words=[]; state.currentQ = questions[Math.floor(Math.random()*questions.length)]; $('#planeScore').textContent = 0; loop();
     });
-
     $('#stopPlane').addEventListener('click', ()=>{
-      state.running = false;
-      state = { running:false, player:{x:320,y:200,w:44,h:20}, words:[], tick:0, score:0, mouseX:null, currentQ:null, raf:null };
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      drawBG();
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
-      document.getElementById('planeScore').textContent = 0;
+      state.running = false; state = {running:false,player:{x:320,y:200,w:44,h:20},words:[],tick:0,score:0,mouseX:undefined,currentQ:null}; ctx.clearRect(0,0,canvas.width,canvas.height); drawBG(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22); $('#planeScore').textContent=0;
     });
 
-    // initial draw
-    (function init(){
-      resize();
-      drawBG();
-      ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22);
-    })();
+    (function init(){ resize(); drawBG(); ctx.fillStyle='#003a55'; ctx.font='14px Poppins'; ctx.fillText('Pulsa Iniciar Vuelo para comenzar.',12,22); })();
   })();
 
   /* -------------------------
-     CALENDAR - simple interactive widget
+     CALENDARIO INTERACTIVO
      ------------------------- */
-  (function Calendar(){
+  (function CalendarWidget(){
     const container = document.getElementById('calendarWidget');
-    if(!container) return;
     let selectedStart = null, selectedEnd = null;
     const today = new Date(); today.setHours(0,0,0,0);
     let viewYear = today.getFullYear(), viewMonth = today.getMonth();
 
     function build(){
       container.innerHTML = '';
-      const cal = document.createElement('div');
-
+      const cal = document.createElement('div'); cal.className='cal-inner';
       const header = document.createElement('div'); header.className='month';
+      header.style.display='flex'; header.style.justifyContent='space-between'; header.style.alignItems='center';
       const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
       const title = document.createElement('div'); title.textContent = `${monthNames[viewMonth]} ${viewYear}`; title.style.fontWeight='800';
       const prev = document.createElement('button'); prev.textContent='◀'; prev.className='btn secondary'; prev.style.padding='6px 10px';
       const next = document.createElement('button'); next.textContent='▶'; next.className='btn secondary'; next.style.padding='6px 10px';
-      prev.onclick = ()=> { if(viewMonth===0){ viewMonth=11; viewYear--;} else viewMonth--; renderGrid(); };
-      next.onclick = ()=> { if(viewMonth===11){ viewMonth=0; viewYear++; } else viewMonth++; renderGrid(); };
+      prev.onclick = ()=> { if(viewMonth===0){ viewMonth=11; viewYear-- } else viewMonth--; renderGrid(); };
+      next.onclick = ()=> { if(viewMonth===11){ viewMonth=0; viewYear++ } else viewMonth++; renderGrid(); };
       const left = document.createElement('div'); left.appendChild(prev); left.appendChild(title);
-      const right = document.createElement('div'); right.appendChild(next);
-      header.appendChild(left); header.appendChild(right); cal.appendChild(header);
+      const right = document.createElement('div'); right.appendChild(next); header.appendChild(left); header.appendChild(right); cal.appendChild(header);
 
-      const weekdays = document.createElement('div'); weekdays.className='weekdays';
-      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; el.style.fontWeight='700'; weekdays.appendChild(el); });
-      cal.appendChild(weekdays);
+      const weekdays = document.createElement('div'); weekdays.className='weekdays'; weekdays.style.display='grid'; weekdays.style.gridTemplateColumns='repeat(7,1fr)';
+      ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d=>{ const el=document.createElement('div'); el.className='weekday'; el.textContent=d; el.style.fontWeight='700'; weekdays.appendChild(el); }); cal.appendChild(weekdays);
 
-      const days = document.createElement('div'); days.className='days'; days.style.marginTop='8px';
-      cal.appendChild(days);
+      const days = document.createElement('div'); days.className='days'; days.style.display='grid'; days.style.gridTemplateColumns='repeat(7,1fr)'; days.style.gap='6px'; days.style.marginTop='8px'; cal.appendChild(days);
       container.appendChild(cal);
 
       function renderGrid(){
         days.innerHTML = '';
         const first = new Date(viewYear, viewMonth, 1);
         const last = new Date(viewYear, viewMonth+1, 0);
-        const firstWeekday = (first.getDay()+6)%7; // Mon=0...Sun=6
+        const firstWeekday = (first.getDay() + 6) % 7;
         for(let i=0;i<firstWeekday;i++){ const e=document.createElement('div'); e.className='weekday'; days.appendChild(e); }
         for(let d=1; d<=last.getDate(); d++){
           const dt = new Date(viewYear, viewMonth, d); dt.setHours(0,0,0,0);
-          const el = document.createElement('div'); el.className='day box'; el.textContent = d;
+          const el = document.createElement('div'); el.className='day box'; el.textContent=d;
           if(dt < today) el.classList.add('disabled'); else el.addEventListener('click', ()=> onDateClick(dt));
           if(selectedStart && sameDay(dt, selectedStart)) el.classList.add('selected');
           else if(selectedEnd && sameDay(dt, selectedEnd)) el.classList.add('selected');
@@ -727,155 +679,26 @@
       updateSummary(); build();
     }
     function sameDay(a,b){ return a && b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
-    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', {day:'2-digit', month:'short', year:'numeric'}); }
+    function formatDate(d){ if(!d) return '—'; return d.toLocaleDateString('es-ES', {day:'2-digit',month:'short',year:'numeric'}); }
     function updateSummary(){ $('#selStart').textContent = selectedStart ? formatDate(selectedStart) : '—'; $('#selEnd').textContent = selectedEnd ? formatDate(selectedEnd) : '—'; if(selectedStart && selectedEnd){ const days = Math.round((selectedEnd-selectedStart)/(1000*60*60*24)); $('#selDays').textContent = days; } else $('#selDays').textContent = '—'; }
 
-    window.CronoviajesCalendar = { init: ()=> build(), getSelection: ()=> ({ start:selectedStart, end:selectedEnd, days: selectedStart && selectedEnd ? Math.round((selectedEnd-selectedStart)/(1000*60*60*24)) : null }) };
+    window.CronoviajesCalendar = { init: ()=> build(), getSelection: ()=> ({start:selectedStart,end:selectedEnd,days:selectedStart && selectedEnd ? Math.round((selectedEnd-selectedStart)/(1000*60*60*24)) : null}) };
     build(); updateSummary();
   })();
 
   /* -------------------------
-     BOOKING FORM (simulado)
+     BOOKING FORM (simulación)
      ------------------------- */
-  (function Booking(){
-    const form = document.getElementById('bookingForm');
-    if(!form) return;
-    form.addEventListener('submit', (e)=>{
+  (function booking(){
+    $('#bookingForm').addEventListener('submit', (e)=> {
       e.preventDefault();
       const sel = window.CronoviajesCalendar?.getSelection();
-      if(!sel || !sel.start || !sel.end){ document.getElementById('bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
-      const name = document.getElementById('bookName').value || 'Cliente';
-      const email = document.getElementById('bookEmail').value || '—';
-      const phone = document.getElementById('bookPhone').value || '—';
-      document.getElementById('bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
+      if(!sel || !sel.start || !sel.end){ $('#bookingMsg').textContent = 'Selecciona entrada y salida en el calendario.'; return; }
+      const name = $('#bookName').value || 'Cliente';
+      const email = $('#bookEmail').value || '—';
+      const phone = $('#bookPhone').value || '—';
+      $('#bookingMsg').textContent = `Gracias ${name}. Su reserva provisional del ${sel.start.toLocaleDateString()} al ${sel.end.toLocaleDateString()} ha sido registrada (simulada). Confirmaremos por ${email} / ${phone}.`;
     });
-  })();
-
-  /* -------------------------
-     MEMORIA (game simple) - uses #memoria container
-     ------------------------- */
-  (function MemoryStarter(){
-    window.iniciarMemoria = function(){
-      const container = document.getElementById('memoria');
-      if(!container) return;
-      container.innerHTML = '';
-      const icons = ['🐚','🦴','🪸','🦑']; // 4 pares
-      const cards = icons.concat(icons).sort(()=>Math.random()-0.5);
-      let open = [], found = 0;
-      cards.forEach((symbol, idx)=>{
-        const d = document.createElement('div'); d.className='card'; d.dataset.sym = symbol;
-        d.addEventListener('click', ()=>{
-          if(d.classList.contains('found') || open.includes(d)) return;
-          d.textContent = symbol;
-          open.push(d);
-          if(open.length === 2){
-            if(open[0].dataset.sym === open[1].dataset.sym){
-              open.forEach(x=> { x.classList.add('found'); x.style.background = '#80cbc4'; x.style.color = '#fff'; });
-              found += 2;
-              open = [];
-              if(found === cards.length) setTimeout(()=> alert('¡Has encontrado todas las parejas!'), 200);
-            } else {
-              setTimeout(()=> { open.forEach(x=> x.textContent = ''); open = []; }, 600);
-            }
-          }
-        });
-        container.appendChild(d);
-      });
-    };
-  })();
-
-  /* -------------------------
-     RECOLECTOR (avión) - simpler one-shot starter
-     ------------------------- */
-  (function RecolectorStarter(){
-    window.iniciarRecolector = function(){
-      const canvas = document.getElementById('juegoRecolector');
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let dpr = window.devicePixelRatio || 1;
-      function resize(){ const r = canvas.getBoundingClientRect(); canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-      window.addEventListener('resize', resize);
-
-      // game state local variables
-      let player = { x: canvas.width/2/dpr - 20, y: canvas.height/dpr - 40, w:40, h:20, vx:0 };
-      let pool = [
-        {txt:'Trilobite', ok:true},{txt:'Anomalocaris', ok:true},{txt:'Pikaia', ok:true},{txt:'Opabinia', ok:true},
-        {txt:'Dinosaurio', ok:false},{txt:'Teléfono', ok:false},{txt:'Coche', ok:false},{txt:'Lata', ok:false}
-      ];
-      let objs = [], score = 0, lives = 3, running = true, raf;
-
-      function spawn(){
-        const p = pool[Math.floor(Math.random()*pool.length)];
-        objs.push({ x: Math.random()*(canvas.width/dpr - 40)+20, y: -20, vy: 1 + Math.random()*1.8, txt: p.txt, ok: p.ok });
-      }
-
-      // keyboard control
-      const keys = {};
-      function keydown(e){ keys[e.key] = true; }
-      function keyup(e){ keys[e.key] = false; if(e.key === 'ArrowLeft' || e.key === 'ArrowRight') player.vx = 0; }
-
-      function update(){
-        // movement
-        if(keys['ArrowLeft']) player.vx = -5;
-        else if(keys['ArrowRight']) player.vx = 5;
-        else player.vx = 0;
-        player.x += player.vx;
-        player.x = Math.max(0, Math.min(player.x, canvas.width/dpr - player.w));
-
-        if(Math.random() < 0.03) spawn();
-
-        // update objects
-        for(let i=objs.length-1;i>=0;i--){
-          const o = objs[i];
-          o.y += o.vy;
-          // collision
-          if(o.y > player.y - 5 && o.y < player.y + player.h + 5 && Math.abs(o.x - (player.x + player.w/2)) < 40){
-            if(o.ok) score += 10; else lives = Math.max(0, lives - 1);
-            objs.splice(i,1);
-          } else if(o.y > canvas.height/dpr + 20) objs.splice(i,1);
-        }
-      }
-
-      function draw(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        // background
-        const H = canvas.height/dpr;
-        const g = ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#fff7ff'); g.addColorStop(1,'#e8f7ff');
-        ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
-
-        // player
-        ctx.fillStyle = '#0077b6'; ctx.fillRect(player.x, player.y, player.w, player.h);
-        // HUD
-        ctx.fillStyle = '#003a55'; ctx.font = '14px Poppins';
-        ctx.fillText('Puntuación: '+score, 12, 22); ctx.fillText('Vidas: '+lives, canvas.width/dpr - 90, 22);
-
-        // objects
-        ctx.font = '13px Poppins';
-        for(const o of objs){
-          ctx.fillStyle = o.ok ? '#2e7d32' : '#c62828';
-          ctx.fillText(o.txt, o.x, o.y);
-        }
-      }
-
-      function loop(){
-        if(!running) return;
-        update();
-        draw();
-        if(lives <= 0){ running = false; cancelAnimationFrame(raf); setTimeout(()=> alert('Juego terminado. Puntuación: '+score), 100); }
-        else raf = requestAnimationFrame(loop);
-      }
-
-      // start the game:
-      resize();
-      player.x = canvas.width/dpr/2 - player.w/2;
-      objs = []; score = 0; lives = 3; running = true;
-      window.addEventListener('keydown', keydown);
-      window.addEventListener('keyup', keyup);
-      loop();
-
-      // attach a cleanup to stop if user navigates away or restarts via re-click
-      // To stop, user can reload page or navigate.
-    };
   })();
 
   // Accessibility shortcuts
@@ -885,52 +708,43 @@
     if(e.key === '3') $('#startPlane').click();
   });
 
-  // Init calendar on load
+  // Init on load
   window.addEventListener('load', ()=> {
     if(window.CronoviajesCalendar) window.CronoviajesCalendar.init();
-    // gallery fallback hide broken images
-    $$('.gallery img').forEach(img=> img.onerror = ()=> img.style.display = 'none');
+    // gallery fallback: hide broken images (some have onerror attr)
+    $$('.gallery img').forEach(img => { img.onerror = ()=> img.style.display = 'none'; });
   });
   </script>
 
   <!-- =========================
-       INSTRUCCIONES (cómo añadir fotos y subir a GitHub)
+       INSTRUCCIONES PARA SUBIR FOTOS y GITHUB PAGES
        =========================
-       1) Añadir tus fotos localmente:
-          - En la misma carpeta donde guardes este index.html crea una carpeta llamada "images"
-            por ejemplo:
-              proyecto/
-                index.html
-                images/
-                  trilobite.jpg
-                  anomalocaris.jpg
-                  opabinia.jpg
-                  pikaia.jpg
-          - En la sección GALERÍA del HTML ya hay etiquetas <img src="images/xyz.jpg">.
-            Cámbialas si quieres nombres distintos.
+       1) Añadir fotos a la web (recomendado: carpeta local)
+          - En la misma carpeta donde guardes index.html crea una carpeta llamada "images"
+          - Pon dentro tus fotos: por ejemplo
+              images/trilobite.jpg
+              images/anomalocaris.jpg
+              images/opabinia.jpg
+          - En la sección GALERÍA del HTML las etiquetas ya apuntan a images/*.jpg.
+            Si tus archivos tienen otros nombres, edita el atributo src de cada <img> para usar el nombre correcto.
 
-       2) Usar URLs externas:
-          - Si no quieres subir imágenes, cambia el src por una URL pública (Pexels/Unsplash/Wikimedia).
-            Ejemplo:
-              <img src="https://images.pexels.com/photos/1103569/pexels-photo-1103569.jpeg">
+       2) Uso de imágenes externas
+          - Si no quieres subir las imágenes, usa enlaces directos en el src:
+            <img src="https://images.pexels.com/....jpg" alt="...">
 
-       3) Subir a GitHub Pages (pasos rápidos):
-          - Crea repo en GitHub (por ejemplo "cronoviajes").
-          - Sube index.html y la carpeta images/ (usando la web o git).
-            En la web: "Add file" -> "Upload files" -> selecciona index.html y la carpeta images.
-          - Ve a Settings -> Pages, selecciona Branch: main (o la rama que uses) y root (/) como carpeta.
-          - Guarda y espera unos minutos; tu sitio quedará en:
-            https://TU_USUARIO.github.io/TU_REPO/
+       3) Subir a GitHub y activar Pages (rápido)
+          - Crea un repositorio en GitHub (por ejemplo "cronoviajes")
+          - Sube index.html a la raíz y sube la carpeta images/ con tus fotos
+            (en interfaz web: "Add file" -> "Upload files" o con git)
+          - Ve a Settings -> Pages en tu repo (o en "Pages" en la barra lateral)
+          - Selecciona la rama main y la carpeta root (/), guarda.
+          - En unos minutos tu sitio estará en https://TU_USUARIO.github.io/TU_REPO/
 
-       4) Consejos de optimización:
-          - Comprime imágenes (TinyPNG, Squoosh) antes de subir para que la web cargue rápido.
-          - Usa nombres sin espacios y en minúscula (p.ej. trilobite.jpg).
-          - GitHub Pages distingue mayúsculas/minúsculas — revisa las rutas si no se ven las imágenes.
-
-       Si quieres, te doy ahora:
-         A) Los comandos exactos de Git para subir desde tu PC (git init, add, commit, push).  
-         B) Un ZIP listo con index.html + 4 imágenes de ejemplo (te explico cómo descargarlo).  
-       Dime cuál prefieres y te lo doy al instante.
+       4) Consejos
+          - Optimiza las imágenes (Squoosh, TinyPNG) antes de subir para reducir carga.
+          - Usa nombres sin espacios y en minúsculas: trilobite.jpg
+          - Ten en cuenta mayúsculas/minúsculas (GitHub Pages es sensible a ellas).
   -->
 </body>
 </html>
+
