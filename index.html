@@ -3,36 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronoviajes - Agencia de Viajes Temporales</title>
+  <title>Cronoviajes - Viaje al Cámbrico</title>
   <style>
-    body {font-family: Arial, sans-serif; margin: 0; background: #f0f4f8;}
-    header {background: #0077b6; color: white; text-align: center; padding: 2rem;}
-    nav a {color: white; margin: 0 1rem; text-decoration: none;}
-    section {padding: 2rem; text-align: center;}
-    footer {background: #023e8a; color: white; text-align: center; padding: 1rem;}
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #f2f8fb;
+      color: #023047;
+    }
+    header {
+      background: linear-gradient(135deg, #0077b6, #0096c7);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p.slogan {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      opacity: 0.9;
+    }
+    nav {
+      background: #023e8a;
+      text-align: center;
+      padding: 0.7rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    section.active {
+      display: block;
+    }
+    footer {
+      background: #023e8a;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    h2 {
+      color: #0077b6;
+    }
+    img {
+      border-radius: 10px;
+      max-width: 90%;
+      margin: 1rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    button {
+      background: #0077b6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #00b4d8;
+    }
+    input[type="text"] {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #0077b6;
+      width: 80%;
+      max-width: 300px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🌍 Cronoviajes</h1>
-    <p>Viaja a cualquier época... sin salir del tiempo.</p>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Destinos</a>
-      <a href="#">Reservas</a>
-      <a href="#">Contacto</a>
-    </nav>
+    <h1>🌊 Cronoviajes: Aventura al Cámbrico</h1>
+    <p class="slogan">“Descubre el pasado, vive el presente”</p>
   </header>
 
-  <section>
-    <h2>Explora el pasado y el futuro</h2>
-    <p>En Cronoviajes, convertimos la historia en tu próximo destino.  
-       Desde la Grecia clásica hasta el año 3000, ¡elige tu aventura temporal!</p>
-    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=60" alt="viaje en el tiempo" width="70%">
+  <nav>
+    <a href="#" onclick="showSection('inicio')">Inicio</a>
+    <a href="#" onclick="showSection('fotos')">Fotos del Cámbrico</a>
+    <a href="#" onclick="showSection('juego')">Juego del Cámbrico</a>
+    <a href="#" onclick="showSection('info')">Más información</a>
+  </nav>
+
+  <section id="inicio" class="active">
+    <h2>Bienvenido al Viaje Temporal</h2>
+    <p>El período Cámbrico fue una de las etapas más fascinantes de la historia de la Tierra. Hace unos 541 millones de años,
+      se produjo la llamada <strong>“Explosión Cámbrica”</strong>, un momento en el que surgió una enorme diversidad de formas de vida marina.</p>
+    <p>En Cronoviajes te llevamos a sumergirte en los mares antiguos, donde criaturas como los <em>trilobites</em> y los <em>anomalocaris</em> dominaban el mundo.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cambrian_Explosion_evolution_spanish.png" alt="Explosión Cámbrica">
+  </section>
+
+  <section id="fotos">
+    <h2>Fotos del Cámbrico</h2>
+    <p>Aquí puedes ver algunas imágenes recreadas y fósiles del período Cámbrico.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Anomalocaris_Canadian_Museum_Nature.jpg" alt="Anomalocaris">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Trilobite_Crotalocephalus_gibbus_2.JPG" alt="Trilobite">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Marrella_splendida_Burgess_Shale.jpg" alt="Fósil de Marrella">
+    <p>👉 Si quieres poner tus propias fotos, súbelas al repositorio y cámbiales el enlace aquí.</p>
+  </section>
+
+  <section id="juego">
+    <h2>🧠 Test del Cámbrico</h2>
+    <p>Responde estas preguntas y demuestra cuánto sabes sobre el período Cámbrico.</p>
+    <div id="quiz"></div>
+    <button onclick="checkAnswers()">Comprobar respuestas</button>
+    <p id="resultado"></p>
+  </section>
+
+  <section id="info">
+    <h2>Más información</h2>
+    <ul>
+      <li>Duración: 541 – 485 millones de años.</li>
+      <li>Ambiente: mares cálidos y poco profundos.</li>
+      <li>Fauna destacada: trilobites, anomalocaris, marrella, espongiarios.</li>
+      <li>Evento clave: la Explosión Cámbrica.</li>
+      <li>Fin del período: extinción masiva marina que dio paso al Ordovícico.</li>
+    </ul>
+    <p>🌡️ El clima fue cálido y sin casquetes polares, favoreciendo ecosistemas marinos muy diversos.</p>
   </section>
 
   <footer>
-    <p>© 2025 Cronoviajes S.A. | Empresa ficticia creada con fines educativos</p>
+    <p>© 2025 Cronoviajes S.A. | Proyecto educativo sobre el Cámbrico</p>
   </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // 🧩 Quiz del Cámbrico
+    const quizData = [
+      { q: "¿Hace cuántos millones de años comenzó el Cámbrico?", a: "541" },
+      { q: "¿Qué animal marino era muy común en el Cámbrico?", a: "trilobite" },
+      { q: "¿Cómo se llama el evento en el que surgieron muchas especies nuevas?", a: "explosión cámbrica" }
+    ];
+
+    const quizContainer = document.getElementById('quiz');
+    quizData.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.innerHTML = `<p>${i + 1}. ${item.q}</p><input type='text' id='q${i}' placeholder='Tu respuesta...'>`;
+      quizContainer.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let correct = 0;
+      quizData.forEach((item, i) => {
+        const answer = document.getElementById('q' + i).value.trim().toLowerCase();
+        if (answer.includes(item.a)) correct++;
+      });
+      const res = document.getElementById('resultado');
+      res.innerHTML = `Has acertado ${correct} de ${quizData.length} preguntas.`;
+      res.style.color = correct === quizData.length ? "green" : "orange";
+    }
+  </script>
 </body>
 </html>
+
