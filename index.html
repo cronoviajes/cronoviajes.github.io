@@ -587,11 +587,11 @@
 
       // plane
       const pl = state.player;
-      ctx.fillStyle = '#003a55'; ctx.beginPath(); ctx.moveTo(pl.x,pl.y); ctx.lineTo(pl.x-22,pl.y+16); ctx.lineTo(pl.x+22,pl.y+16); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#00303a'; ctx.beginPath(); ctx.moveTo(pl.x,pl.y); ctx.lineTo(pl.x-22,pl.y+16); ctx.lineTo(pl.x+22,pl.y+16); ctx.closePath(); ctx.fill();
 
       for(let i=state.words.length-1;i>=0;i--){
         const it = state.words[i]; it.y += it.vy;
-        ctx.fillStyle = '#ffd166'; ctx.font = '13px Poppins'; const tw = ctx.measureText(it.text).width + 14; const rx = it.x - tw/2;
+        ctx.fillStyle = '#00303a'; ctx.font = '13px Poppins'; const tw = ctx.measureText(it.text).width + 14; const rx = it.x - tw/2;
         ctx.fillRect(rx, it.y-14, tw, 22); ctx.fillStyle = '#00303a'; ctx.fillText(it.text, rx+7, it.y+4);
 
         if(it.y > pl.y - 10 && it.y < pl.y + 18 && Math.abs(it.x - pl.x) < 30){
